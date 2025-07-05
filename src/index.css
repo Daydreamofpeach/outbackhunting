@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  @apply font-sans antialiased;
+}
+
+/* Dark mode styles */
+.dark {
+  @apply text-gray-200;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Make tabs work with React Router's scroll position handling */
+html:not(.no-js) {
+  scroll-padding-top: 80px; /* Height of your fixed header */
+}
+
+/* Links and buttons animations */
+a, button {
+  @apply transition-all duration-200;
+}
+
+/* Global focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-amber-500 ring-opacity-50;
+}
+
+/* Section spacing */
+section {
+  @apply py-12 md:py-16 lg:py-20;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  @apply leading-tight;
+}

@@ -13,15 +13,15 @@ const packages = [
   {
     id: 1,
     image: '/assets/img/gallimg/redstag/3.png',
-    species: ['Red Stag'],
+    species: ['Red Deer'],
     difficulty: 'Moderate',
     included: [
-      'Professional hunting guide (1:1)',
-      'Luxury lodge accommodation',
-      'All meals and non-alcoholic beverages',
-      'Field preparation of trophies',
-      'Ground transportation during hunt',
-      'NZ hunting license'
+      'Personalised guided hunt',
+      'Field dressing of game in the field',
+      'Transport of trophies to a taxidermist (if required)',
+      'Digital photos and video footage of your hunt – included at no extra cost',
+      'Tent or hut accommodation for overnight hunts',
+      'Airport pick-up and drop-off (by arrangement)'
     ]
   },
   {
@@ -30,73 +30,26 @@ const packages = [
     species: ['Himalayan Tahr'],
     difficulty: 'Challenging',
     included: [
-      'Professional hunting guide (1:1)',
-      'Helicopter transport to hunting areas',
-      'Backcountry hut accommodation',
-      'All meals',
-      'Trophy preparation',
-      'NZ hunting license',
-      'Emergency satellite communication'
+      'Personalised guided hunt',
+      'Field dressing of game in the field',
+      'Transport of trophies to a taxidermist (if required)',
+      'Digital photos and video footage of your hunt – included at no extra cost',
+      'Tent or hut accommodation for overnight hunts',
+      'Airport pick-up and drop-off (by arrangement)'
     ]
   },
   {
     id: 3,
-    image: '/assets/img/gallimg/fallow/4.png',
-    species: ['Fallow Deer'],
-    difficulty: 'Moderate',
-    included: [
-      'Professional hunting guide (1:1)',
-      'Luxury lodge accommodation',
-      'All meals and non-alcoholic beverages',
-      'Field preparation of trophies',
-      'Ground transportation during hunt',
-      'NZ hunting license'
-    ]
-  },
-  {
-    id: 4,
-    image: '/assets/img/gallimg/Elk/2.png',
-    species: ['Elk'],
+    image: '/assets/img/gallimg/Chamois/3.png',
+    species: ['Chamois'],
     difficulty: 'Challenging',
     included: [
-      'Professional hunting guide (1:1)',
-      'Helicopter access to remote areas',
-      'Luxury lodge accommodation',
-      'All meals and beverages',
-      'Trophy preparation and handling',
-      'Ground transportation during hunt',
-      'NZ hunting license'
-    ]
-  },
-  {
-    id: 5,
-    image: '/assets/img/gallimg/Rams/3.png',
-    species: ['Rams'],
-    difficulty: 'Challenging',
-    included: [
-      'Professional hunting guide (1:1)',
-      'Mountain lodge accommodation',
-      'All meals and non-alcoholic beverages',
-      'Field preparation of trophies',
-      'Ground transportation during hunt',
-      'NZ hunting license',
-      'Emergency satellite communication'
-    ]
-  },
-  {
-    id: 6,
-    image: '/assets/img/gallimg/scenery/3.png',
-    species: ['Red Stag', 'Tahr', 'Chamois', 'Fallow Deer', 'Wild Boar'],
-    difficulty: 'Variable',
-    included: [
-      'Professional hunting guide (1:1)',
-      'Luxury lodge and backcountry accommodation',
-      'All meals and beverages',
-      'Helicopter access where required',
-      'Trophy preparation and handling',
-      'Ground transportation during hunt',
-      'NZ hunting license',
-      'Hunting for up to 5 species'
+      'Personalised guided hunt',
+      'Field dressing of game in the field',
+      'Transport of trophies to a taxidermist (if required)',
+      'Digital photos and video footage of your hunt – included at no extra cost',
+      'Tent or hut accommodation for overnight hunts',
+      'Airport pick-up and drop-off (by arrangement)'
     ]
   }
 ];
@@ -243,7 +196,7 @@ const Packages: React.FC<PackagesProps> = ({ darkMode }) => {
                     <div className="mb-5">
                       <h4 className="font-medium mb-2">What's Included:</h4>
                       <ul className="space-y-1">
-                        {pkg.included.slice(0, 3).map((item, idx) => (
+                        {pkg.included.slice(0, 3).map((item: string, idx: number) => (
                           <li key={idx} className="flex items-start gap-2 text-sm">
                             <ChevronRight size={14} className="text-amber-500 mt-1 flex-shrink-0" />
                             <span>{item}</span>

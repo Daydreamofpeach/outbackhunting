@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Users, Award, MapPin, ShieldCheck } from 'lucide-react';
+import { ChevronRight, Users, Award, MapPin, ShieldCheck, Phone, Mail, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Helmet } from 'react-helmet-async';
@@ -8,40 +8,6 @@ import { Helmet } from 'react-helmet-async';
 interface AboutProps {
   darkMode: boolean;
 }
-
-interface TeamMember {
-  name: string;
-  title: string;
-  description: string;
-  image: string;
-}
-
-const team: TeamMember[] = [
-  {
-    name: 'Mike Thompson',
-    title: 'Founder & Lead Guide',
-    description: 'With over 25 years of hunting experience across New Zealand, Mike founded Outback Hunting New Zealand in 2005. His passion for conservation and ethical hunting practices has established our reputation for excellence.',
-    image: '/assets/img/profile/profile1.png'
-  },
-  {
-    name: 'Sarah Wilson',
-    title: 'Operations Manager',
-    description: 'Sarah ensures every aspect of your hunting trip runs smoothly, from initial booking to trophy export. Her attention to detail and client-first approach guarantees a hassle-free experience.',
-    image: '/assets/img/profile/profile3.png'
-  },
-  {
-    name: 'James Maori',
-    title: 'Senior Guide',
-    description: 'Born and raised in New Zealand\'s South Island, James has an unparalleled knowledge of the alpine terrain. His tracking skills and understanding of animal behavior are legendary among returning clients.',
-    image: '/assets/img/profile/profile4.gif'
-  },
-  {
-    name: 'Emily Chen',
-    title: 'Client Relations & Bookings',
-    description: 'Emily handles all client communications and special requests. Her multilingual skills and tourism background ensure international clients receive clear information and personalized service.',
-    image: '/assets/img/profile/profile1.png'
-  }
-];
 
 const About: React.FC<AboutProps> = ({ darkMode }) => {
   const [headerRef, headerInView] = useInView({
@@ -54,7 +20,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
     threshold: 0.1
   });
 
-  const [teamRef, teamInView] = useInView({
+  const [servicesRef, servicesInView] = useInView({
     triggerOnce: true,
     threshold: 0.1
   });
@@ -67,42 +33,24 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About Outback Hunting New Zealand",
-    "description": "Learn about Outback Hunting New Zealand's story, our experienced team of hunting guides, and our commitment to providing world-class hunting experiences in New Zealand since 2005.",
+    "description": "Learn about Gareth Hall and Outback Hunting New Zealand's story, our guided hunting experiences, and our commitment to providing world-class hunting experiences in New Zealand.",
     "url": "https://outbackhuntingnz.com/about",
     "mainEntity": {
       "@type": "Organization",
       "name": "Outback Hunting New Zealand",
-      "foundingDate": "2005",
-      "description": "Premium New Zealand hunting outfitter providing guided hunting experiences for Red Stag, Tahr, Chamois, and other trophy game.",
+      "description": "Premium New Zealand hunting outfitter providing guided hunting experiences for Red Deer, Chamois, and Tahr.",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "NZ",
-        "addressRegion": "South Island"
+        "addressRegion": "South Island",
+        "addressLocality": "Canterbury"
       },
       "employee": [
         {
           "@type": "Person",
-          "name": "Mike Thompson",
-          "jobTitle": "Founder & Lead Guide",
-          "description": "Over 25 years of hunting experience across New Zealand"
-        },
-        {
-          "@type": "Person",
-          "name": "Sarah Wilson",
-          "jobTitle": "Operations Manager",
-          "description": "Ensures every aspect of hunting trips runs smoothly"
-        },
-        {
-          "@type": "Person",
-          "name": "James Maori",
-          "jobTitle": "Senior Guide",
-          "description": "Expert knowledge of alpine terrain and animal behavior"
-        },
-        {
-          "@type": "Person",
-          "name": "Emily Chen",
-          "jobTitle": "Client Relations & Bookings",
-          "description": "Handles client communications and special requests"
+          "name": "Gareth Hall",
+          "jobTitle": "Owner & Lead Guide",
+          "description": "Over 30 years of hunting experience across New Zealand and internationally"
         }
       ]
     }
@@ -112,13 +60,13 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
     <>
       <Helmet>
         <title>About Us | Outback Hunting New Zealand - Expert New Zealand Hunting Guides</title>
-        <meta name="description" content="Learn about Outback Hunting New Zealand's story, our experienced team of hunting guides, and our commitment to providing world-class hunting experiences in New Zealand since 2005." />
-        <meta name="keywords" content="New Zealand hunting guides, hunting outfitter, Mike Thompson, hunting experience, Outback Hunting New Zealand team, hunting expertise, New Zealand hunting history" />
+        <meta name="description" content="Learn about Gareth Hall and Outback Hunting New Zealand's story, our guided hunting experiences, and our commitment to providing world-class hunting experiences in New Zealand." />
+        <meta name="keywords" content="New Zealand hunting guides, Gareth Hall, hunting outfitter, hunting experience, Outback Hunting New Zealand, hunting expertise, New Zealand hunting history" />
         <link rel="canonical" href="https://outbackhuntingnz.com/about" />
         
         {/* Open Graph */}
         <meta property="og:title" content="About Us | Outback Hunting New Zealand - Expert New Zealand Hunting Guides" />
-        <meta property="og:description" content="Learn about Outback Hunting New Zealand's story, our experienced team of hunting guides, and our commitment to providing world-class hunting experiences in New Zealand since 2005." />
+        <meta property="og:description" content="Learn about Gareth Hall and Outback Hunting New Zealand's story, our guided hunting experiences, and our commitment to providing world-class hunting experiences in New Zealand." />
         <meta property="og:image" content="/assets/img/scenery.jpg" />
         <meta property="og:url" content="https://outbackhuntingnz.com/about" />
         <meta property="og:type" content="website" />
@@ -126,7 +74,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Us | Outback Hunting New Zealand - Expert New Zealand Hunting Guides" />
-        <meta name="twitter:description" content="Learn about Outback Hunting New Zealand's story, our experienced team of hunting guides, and our commitment to providing world-class hunting experiences in New Zealand since 2005." />
+        <meta name="twitter:description" content="Learn about Gareth Hall and Outback Hunting New Zealand's story, our guided hunting experiences, and our commitment to providing world-class hunting experiences in New Zealand." />
         <meta name="twitter:image" content="/assets/img/scenery.jpg" />
         
         {/* Structured Data */}
@@ -134,7 +82,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
-      <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
+    <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
       {/* Header */}
       <section 
         ref={headerRef}
@@ -159,13 +107,13 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             </h1>
             
             <p className="text-xl text-gray-200 mb-6">
-              Discover our story, our team, and our commitment to providing world-class hunting experiences in New Zealand.
+              Meet Gareth Hall and discover our commitment to providing world-class hunting experiences in New Zealand.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Our Story */}
+      {/* Gareth's Story */}
       <section 
         id="story" 
         ref={storyRef} 
@@ -179,31 +127,31 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               transition={{ duration: 0.8 }}
               className="lg:w-1/2"
             >
-              <h2 className="text-3xl font-bold mb-6">Our Story</h2>
+              <h2 className="text-3xl font-bold mb-6">Meet Gareth Hall</h2>
               
               <div className="space-y-4">
                 <p className="leading-relaxed">
-                  Outback Hunting New Zealand was founded in 2005 by Mike Thompson, a lifelong hunter with a passion for New Zealand's wilderness. What began as a small guiding operation has grown into one of the country's most respected hunting outfitters.
+                  My hunting journey began at the age of 12 when I first picked up a pack and rifle, beginning to pursue all the big game New Zealand has to offer.
                 </p>
                 
                 <p className="leading-relaxed">
-                  Our mission has always been to provide exceptional hunting experiences while promoting conservation and sustainable hunting practices. We believe in preserving New Zealand's unique wildlife habitats for future generations of hunters.
+                  Over the past 30+ years, I've hunted deep into the South Island's wilderness, creating unforgettable memories for myself and for clients. I've also hunted abroad in Australia and South Africa, expanding my experience in the field.
                 </p>
                 
                 <p className="leading-relaxed">
-                  Over the years, we've guided hundreds of hunters from around the world, helping them secure trophy-class animals and create memories that last a lifetime. Our team has grown to include experienced guides, logistics experts, and customer service specialists all dedicated to exceeding our clients' expectations.
+                  Hunting is more than a hobby, it's a way of life, and I'm proud to now share that with others through Outback Hunting.
                 </p>
                 
                 <p className="leading-relaxed">
-                  Today, Outback Hunting New Zealand offers access to some of New Zealand's most exclusive hunting territories, from private estates to remote wilderness areas accessible only by helicopter. We continue to innovate and improve our services while maintaining our commitment to ethical hunting and personal attention.
+                  Outback Hunting was originally run by my uncle David and his wife Hayley. I'm now taking over the business, with Dave supporting the handover to ensure we continue delivering top-quality guided hunts.
                 </p>
               </div>
               
               <div className="mt-8 flex flex-wrap gap-6">
                 {[
-                  { icon: <Users size={20} className="mr-2" />, text: '1000+ Happy Clients' },
-                  { icon: <Award size={20} className="mr-2" />, text: '15+ Years Experience' },
-                  { icon: <MapPin size={20} className="mr-2" />, text: '12 Exclusive Locations' },
+                  { icon: <Users size={20} className="mr-2" />, text: '30+ Years Experience' },
+                  { icon: <Award size={20} className="mr-2" />, text: 'International Hunting' },
+                  { icon: <MapPin size={20} className="mr-2" />, text: 'South Island Expert' },
                   { icon: <ShieldCheck size={20} className="mr-2" />, text: 'Licensed & Insured' }
                 ].map((item, index) => (
                   <div 
@@ -256,16 +204,197 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
         </div>
       </section>
 
-      {/* Locations */}
+      {/* Guided Hunts & Services */}
+      <section 
+        id="services" 
+        ref={servicesRef} 
+        className={`py-16 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Guided Hunts</h2>
+            <p className={`max-w-2xl mx-auto text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              I offer tailored wilderness foot hunts for:
+            </p>
+            <div className="flex justify-center gap-6 mt-4">
+              <span className="text-amber-600 font-semibold">• Red Deer</span>
+              <span className="text-amber-600 font-semibold">• Chamois</span>
+              <span className="text-amber-600 font-semibold">• Tahr</span>
+            </div>
+            <p className={`max-w-2xl mx-auto text-lg mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Every hunt is customised based on your goals, fitness level, and preferences. Whether you're after a challenging backcountry experience or a more accessible private land hunt, I'll put together the right package for you.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}>
+              <h3 className="text-xl font-bold mb-4">Hunt Options</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span><strong>Backpack Hunts</strong> - Walk into remote alpine country and camp overnight in tents or huts.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span><strong>Base Camp Hunts</strong> - Comfortable day hunts based out of a lodge or cabin.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span><strong>Helicopter-Assisted Hunts</strong> - Fly into remote areas and save your energy for chasing trophies.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span><strong>Private Land Hunts</strong> - Available upon request for those after a more relaxed hunt.</span>
+                </li>
+              </ul>
+              <p className="mt-6 text-sm italic">
+                As your guide, I'll do everything I can to help you secure the trophy you're after. Hunting always requires a mix of skill, preparation, and luck - and I'll build your hunt plan accordingly.
+              </p>
+            </div>
+
+            <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}>
+              <h3 className="text-xl font-bold mb-4">Included in Your Hunt</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Personalised guided hunt</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Field dressing of game in the field</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Transport of trophies to a taxidermist (if required)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Digital photos and video footage of your hunt – included at no extra cost</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Tent or hut accommodation for overnight hunts</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Airport pick-up and drop-off (by arrangement)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}>
+              <h3 className="text-xl font-bold mb-4">Gear You Will Need</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Rifle (hire available: $250 NZD per hunt)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Binoculars</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Day pack</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Sturdy tramping or hunting boots</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Headlamp</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Weather-appropriate clothing (layers recommended)</span>
+                </li>
+              </ul>
+              
+              <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                <h4 className="font-bold mb-2">If Camping Out:</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>• Sleeping bag</li>
+                  <li>• Sleeping mat</li>
+                  <li>• Larger pack 70L plus</li>
+                  <li>• A two-man tent can be provided if required</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}>
+              <h3 className="text-xl font-bold mb-4">Add-On Experiences</h3>
+              <p className="mb-4">If time allows after the hunt, I offer additional activities such as:</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                    <ChevronRight size={14} className="text-white" />
+                  </div>
+                  <span>Sightseeing in iconic South Island locations</span>
+                </li>
+              </ul>
+              <p className="text-sm italic mb-4">
+                Let me know if you're interested, and we'll make it happen if the schedule and weather allow.
+              </p>
+              <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                <h4 className="font-bold mb-2">Extra Costs (Not Included in Hunt Price):</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>• Helicopter flights (if applicable)</li>
+                  <li>• Hired accommodation (cabins/lodges)</li>
+                  <li>• Spirits</li>
+                  <li>• Restaurant meals</li>
+                  <li>• Add-on experiences</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Location & Logistics */}
       <section 
         id="locations" 
         className={`py-16 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Hunting Locations</h2>
+            <h2 className="text-3xl font-bold mb-4">Location & Logistics</h2>
             <p className={`max-w-2xl mx-auto text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-              Based in Rolleston, Christchurch, we specialize in hunting the spectacular Canterbury Highlands and McKenzie Country regions
+              I'm based just south of Christchurch, so airport pickups and drop-offs are easily arranged. Depending on your chosen hunt, accommodation options include:
             </p>
           </div>
           
@@ -292,188 +421,123 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               </div>
               
               <div className="lg:w-1/2 space-y-8">
-                {[
-                  {
-                    region: 'Canterbury Highlands',
-                    description: 'Spectacular high country terrain featuring rolling tussock grasslands and rugged mountain ranges. Home to some of New Zealand\'s finest Red Stag and Fallow Deer hunting.',
-                    species: ['Red Stag', 'Fallow Deer', 'Wallaby', 'Chamois'],
-                    image: '/assets/img/slider/3.png'
-                  },
-                  {
-                    region: 'McKenzie Country',
-                    description: 'The iconic McKenzie Basin offers vast open landscapes with stunning alpine backdrops. Perfect for Tahr hunting and challenging alpine pursuits.',
-                    species: ['Himalayan Tahr', 'Chamois', 'Red Stag'],
-                    image: '/assets/img/slider/4.png'
-                  },
-                  {
-                    region: 'Southern Alps - Canterbury',
-                    description: 'The Canterbury section of the Southern Alps provides world-class alpine hunting for Tahr and Chamois in breathtaking mountain scenery.',
-                    species: ['Himalayan Tahr', 'Alpine Chamois', 'Red Stag'],
-                    image: '/assets/img/slider/5.png'
-                  },
-                  {
-                    region: 'High Country Estates',
-                    description: 'Exclusive access to private high country stations offering premium hunting experiences with luxury accommodations and stunning views.',
-                    species: ['Red Stag', 'Fallow Deer', 'Elk', 'Wallaby'],
-                    image: '/assets/img/slider/6.png'
-                  },
-                  {
-                    region: 'Alpine Wilderness Areas',
-                    description: 'Remote alpine regions accessible by helicopter, offering pristine hunting environments for the most adventurous hunters.',
-                    species: ['Himalayan Tahr', 'Chamois', 'Red Stag'],
-                    image: '/assets/img/slider/8.png'
-                  },
-                  {
-                    region: 'Tussock Grasslands',
-                    description: 'Vast expanses of golden tussock grasslands providing excellent habitat for Red Stag and Fallow Deer with spectacular mountain vistas.',
-                    species: ['Red Stag', 'Fallow Deer', 'Wallaby'],
-                    image: '/assets/img/slider/9.png'
-                  }
-                ].map((location, index) => (
-                  <div 
-                    key={index}
-                    className={`p-6 rounded-lg ${
-                      darkMode ? 'bg-gray-800' : 'bg-gray-100'
-                    }`}
-                  >
-                    <div className="flex flex-col md:flex-row gap-4">
-                      <div className="md:w-1/3">
-                        <img 
-                          src={location.image} 
-                          alt={location.region} 
-                          className="rounded w-full h-32 object-cover"
-                        />
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+                  <h3 className="text-xl font-bold mb-4">Accommodation Options</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                        <ChevronRight size={14} className="text-white" />
                       </div>
-                      
-                      <div className="md:w-2/3">
-                        <h3 className="text-xl font-bold mb-2">{location.region}</h3>
-                        <p className={`text-sm mb-3 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                          {location.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {location.species.map((species, idx) => (
-                            <span 
-                              key={idx}
-                              className="inline-block px-3 py-1 text-xs rounded-full bg-amber-600 text-white"
-                            >
-                              {species}
-                            </span>
-                          ))}
-                        </div>
+                      <span><strong>Tents or alpine huts</strong> for multi-day backpack hunts</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                        <ChevronRight size={14} className="text-white" />
                       </div>
+                      <span><strong>Hired cabins or lodges</strong> for day hunts</span>
                     </div>
                   </div>
-                ))}
+                </div>
+
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+                  <h3 className="text-xl font-bold mb-4">Hunting Areas</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                        <ChevronRight size={14} className="text-white" />
+                      </div>
+                      <span><strong>Canterbury Highlands</strong> - Spectacular high country terrain featuring rolling tussock grasslands and rugged mountain ranges</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                        <ChevronRight size={14} className="text-white" />
+                      </div>
+                      <span><strong>McKenzie Country</strong> - The iconic McKenzie Basin offers vast open landscapes with stunning alpine backdrops</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
+                        <ChevronRight size={14} className="text-white" />
+                      </div>
+                      <span><strong>Southern Alps</strong> - World-class alpine hunting for Tahr and Chamois in breathtaking mountain scenery</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Conservation & Ethics */}
+      {/* Pricing */}
       <section className={`py-16 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">
-              Our Commitment to Conservation
-            </h2>
-            
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8">Pricing</h2>
             <div className={`p-8 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}>
               <p className="mb-6">
-                At Outback Hunting New Zealand, we believe that ethical hunting and conservation go hand in hand. We are committed to:
+                All pricing is in New Zealand Dollars (NZD) and is inclusive of Taxes.
               </p>
-              
-              <ul className="space-y-4 mb-6">
-                <li className="flex items-start gap-3">
-                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
-                    <ChevronRight size={14} className="text-white" />
-                  </div>
-                  <span>Supporting local conservation initiatives that protect New Zealand's unique ecosystems</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
-                    <ChevronRight size={14} className="text-white" />
-                  </div>
-                  <span>Practicing and promoting sustainable hunting methods that maintain healthy animal populations</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
-                    <ChevronRight size={14} className="text-white" />
-                  </div>
-                  <span>Educating our clients about the importance of ethical hunting practices</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
-                    <ChevronRight size={14} className="text-white" />
-                  </div>
-                  <span>Partnering with landowners to implement habitat improvement projects</span>
-                </li>
-              </ul>
-              
-              <p>
-                We donate a portion of every booking to local conservation efforts, helping to ensure New Zealand's hunting traditions can continue for generations to come.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className={`py-16 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">
-              Frequently Asked Questions
-            </h2>
-            
-            <div className="space-y-6">
-              {[
-                {
-                  question: 'Do I need hunting experience to book with Outback Hunting New Zealand?',
-                  answer: 'While experience is beneficial, we welcome hunters of all skill levels. Our guides will adjust the hunt to match your experience and physical abilities, ensuring a safe and enjoyable experience.'
-                },
-                {
-                  question: 'What is the best time of year to hunt in New Zealand?',
-                  answer: 'The optimal hunting season depends on your target species. Red Stag hunting is best from March to July, with the rut in April. Tahr hunting peaks from May to August. We can advise on the best timing for your specific hunting goals.'
-                },
-                {
-                  question: 'How physically demanding are your hunts?',
-                  answer: 'The physical demands vary by species and location. Estate hunts for Red Stag are generally less strenuous, while alpine hunts for Tahr and Chamois require good fitness levels. We offer options for all fitness levels and can customize the experience to your capabilities.'
-                },
-                {
-                  question: 'Can I bring non-hunting companions?',
-                  answer: 'Absolutely! We welcome non-hunting companions and can arrange alternative activities while you hunt. Our luxury accommodations are perfect for those who want to enjoy New Zealand\'s scenery without participating in the hunt.'
-                },
-                {
-                  question: 'What happens if I don\'t get an opportunity at my target species?',
-                  answer: 'While we have high success rates, hunting involves some uncertainty. We work tirelessly to provide opportunities, but if circumstances prevent a reasonable chance at your target species, we discuss options which may include additional hunting days or adjusted trophy fees.'
-                },
-                {
-                  question: 'How do I book a hunt with Outback Hunting New Zealand?',
-                  answer: 'Contact us through our website or by phone to discuss your hunting goals. Once we understand your preferences, we\'ll propose a suitable package and dates. A 50% deposit is required to secure your booking, with the balance due 60 days before the hunt.'
-                }
-              ].map((item, index) => (
-                <div 
-                  key={index}
-                  className={`p-6 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}
-                >
-                  <h3 className="text-xl font-bold mb-3">{item.question}</h3>
-                  <p>{item.answer}</p>
-                </div>
-              ))}
-            </div>
-            
-            <div className="text-center mt-10">
               <p className="mb-6">
-                Have other questions? We're here to help!
+                Please contact me for custom quotes or to discuss a package that suits your needs and hunting style.
               </p>
               <Link
                 to="/contact"
                 className="inline-flex items-center px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-full transition-colors"
               >
-                Contact Us <ChevronRight size={20} className="ml-2" />
+                Get Custom Quote <ChevronRight size={20} className="ml-2" />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Get in Touch */}
+      <section className={`py-16 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
+            <p className="mb-8 text-lg">
+              Ready to plan your hunt or have a few questions first? I'd be happy to chat and help design a trip you will never forget.
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-6 mb-8">
+              <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} w-full max-w-xs mx-auto`}> 
+                <div className="flex items-center justify-center mb-4">
+                  <Phone size={24} className="text-amber-600" />
+                </div>
+                <h3 className="font-bold mb-2">Phone</h3>
+                <a href="tel:+64273113848" className="text-amber-600 hover:text-amber-700">
+                  +64 27 311 3848
+                </a>
+              </div>
+              
+              <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} w-full max-w-sm mx-auto`}> 
+                <div className="flex items-center justify-center mb-4">
+                  <Mail size={24} className="text-amber-600" />
+                </div>
+                <h3 className="font-bold mb-2">Email</h3>
+                <a href="mailto:info@outbackhuntingnewzealand.com" className="text-amber-600 hover:text-amber-700 break-all">
+                  info@outbackhuntingnewzealand.com
+                </a>
+              </div>
+              
+              <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} w-full max-w-xs mx-auto`}> 
+                <div className="flex items-center justify-center mb-4">
+                  <Calendar size={24} className="text-amber-600" />
+                </div>
+                <h3 className="font-bold mb-2">Book a Hunt</h3>
+                <Link to="/contact" className="text-amber-600 hover:text-amber-700">
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+            
+            <Link
+              to="/contact"
+              className="inline-flex items-center px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-full transition-colors"
+            >
+              Start Planning Your Hunt <ChevronRight size={20} className="ml-2" />
+            </Link>
           </div>
         </div>
       </section>

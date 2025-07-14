@@ -1,62 +1,32 @@
 [
   {
     "id": 1,
-    "title": "Alpine Red Stag Hunt",
-    "price": 850,
+    "title": "Red Deer Hunt",
+    "price": 5500,
     "duration": "5 days",
     "bestSeason": "March - July",
-    "location": "Southern Alps",
-    "huntType": "Red Stag",
-    "description": "Hunt trophy Red Stag in the majestic Southern Alps. Package includes luxury lodge accommodation, experienced guide, and field preparation of trophies."
+    "location": "Canterbury Highlands",
+    "huntType": "Red Deer",
+    "description": "Hunt trophy Red Deer in the majestic Canterbury Highlands. Package includes lodge accommodation, experienced guide, and field preparation of trophies."
   },
   {
     "id": 2,
-    "title": "Wilderness Tahr Adventure",
-    "price": 7200,
+    "title": "Himalayan Tahr Hunt",
+    "price": 5200,
     "duration": "7 days",
     "bestSeason": "May - August",
-    "location": "Mount Cook Region",
+    "location": "Southern Alps",
     "huntType": "Tahr",
-    "description": "Challenge yourself with a hunt for the elusive Himalayan Tahr in rugged alpine terrain. Helicopter access to remote hunting spots included."
+    "description": "Challenge yourself with a hunt for the elusive Himalayan Tahr in rugged alpine terrain. access to remote hunting spots included."
   },
   {
     "id": 3,
-    "title": "Fallow Deer Hunt",
-    "price": 6800,
+    "title": "Chamois Hunt",
+    "price": 5800,
     "duration": "6 days",
-    "bestSeason": "March - June",
-    "location": "Canterbury High Country",
-    "huntType": "Fallow Deer",
-    "description": "Experience the thrill of hunting Fallow Deer in New Zealand's diverse landscapes. Perfect for hunters seeking a classic deer hunting experience."
-  },
-  {
-    "id": 4,
-    "title": "Elk Hunting Expedition",
-    "price": 8900,
-    "duration": "8 days",
-    "bestSeason": "April - July",
-    "location": "Fiordland Region",
-    "huntType": "Elk",
-    "description": "Hunt the majestic New Zealand Elk in the remote wilderness of Fiordland. This premium package includes helicopter access and luxury accommodations."
-  },
-  {
-    "id": 5,
-    "title": "Rams Mountain Hunt",
-    "price": 7500,
-    "duration": "7 days",
-    "bestSeason": "May - September",
+    "bestSeason": "May - October",
     "location": "Southern Alps",
-    "huntType": "Rams",
-    "description": "Chase trophy rams across New Zealand's rugged mountain terrain. This challenging hunt requires good fitness and determination."
-  },
-  {
-    "id": 6,
-    "title": "Premium Combination Hunt",
-    "price": 14500,
-    "duration": "12 days",
-    "bestSeason": "March - September",
-    "location": "Multiple Regions",
-    "huntType": "Combination",
-    "description": "Our signature package offers opportunities for multiple species including Red Stag, Tahr, Chamois, Fallow Deer, and Wild Boar across diverse New Zealand terrain."
+    "huntType": "Chamois",
+    "description": "Experience the thrill of hunting Chamois in New Zealand's alpine terrain. Perfect for hunters seeking a challenging mountain hunting experience."
   }
 ] 

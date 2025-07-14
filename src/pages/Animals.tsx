@@ -10,14 +10,9 @@ interface AnimalsProps {
 }
 
 const animalTabs = [
-  { id: 'redstag', name: 'Red Stag', folder: 'redstag' },
-  { id: 'fallow', name: 'Fallow Deer', folder: 'fallow' },
-  { id: 'elk', name: 'Elk', folder: 'Elk' },
-  { id: 'rams', name: 'Rams', folder: 'Rams' },
+  { id: 'redstag', name: 'Red Deer', folder: 'redstag' },
   { id: 'tahr', name: 'Tahr', folder: 'Tahr' },
-  { id: 'whitetail', name: 'Whitetail', folder: 'Whitetail' },
   { id: 'chamois', name: 'Chamois', folder: 'Chamois' },
-  { id: 'fishing', name: 'Fishing', folder: 'fishing' },
   { id: 'scenery', name: 'Scenery', folder: 'scenery' },
 ];
 
@@ -26,26 +21,11 @@ const animalImages: Record<string, string[]> = {
   redstag: [
     '/assets/img/gallimg/redstag/1.png','/assets/img/gallimg/redstag/2.png','/assets/img/gallimg/redstag/3.png','/assets/img/gallimg/redstag/4.png','/assets/img/gallimg/redstag/5.png','/assets/img/gallimg/redstag/6.png','/assets/img/gallimg/redstag/7.png','/assets/img/gallimg/redstag/8.png','/assets/img/gallimg/redstag/9.png','/assets/img/gallimg/redstag/10.png','/assets/img/gallimg/redstag/11.png','/assets/img/gallimg/redstag/12.png','/assets/img/gallimg/redstag/13.png','/assets/img/gallimg/redstag/14.png','/assets/img/gallimg/redstag/15.png','/assets/img/gallimg/redstag/16.png','/assets/img/gallimg/redstag/17.png','/assets/img/gallimg/redstag/18.png','/assets/img/gallimg/redstag/19.png','/assets/img/gallimg/redstag/20.png','/assets/img/gallimg/redstag/21.png','/assets/img/gallimg/redstag/22.png','/assets/img/gallimg/redstag/23.png','/assets/img/gallimg/redstag/24.png','/assets/img/gallimg/redstag/25.png','/assets/img/gallimg/redstag/26.png','/assets/img/gallimg/redstag/27.png','/assets/img/gallimg/redstag/28.png','/assets/img/gallimg/redstag/29.png','/assets/img/gallimg/redstag/30.jpg','/assets/img/gallimg/redstag/31.jpg','/assets/img/gallimg/redstag/32.jpg','/assets/img/gallimg/redstag/33.jpg','/assets/img/gallimg/redstag/34.jpg','/assets/img/gallimg/redstag/35.png','/assets/img/gallimg/redstag/36.png','/assets/img/gallimg/redstag/37.png'
   ],
-  fallow: [
-    '/assets/img/gallimg/fallow/3.png','/assets/img/gallimg/fallow/4.png','/assets/img/gallimg/fallow/5.png','/assets/img/gallimg/fallow/6.png','/assets/img/gallimg/fallow/7.png','/assets/img/gallimg/fallow/8.png','/assets/img/gallimg/fallow/9.png','/assets/img/gallimg/fallow/10.png','/assets/img/gallimg/fallow/11.png','/assets/img/gallimg/fallow/12.png','/assets/img/gallimg/fallow/13.png','/assets/img/gallimg/fallow/14.png','/assets/img/gallimg/fallow/15.png','/assets/img/gallimg/fallow/16.png','/assets/img/gallimg/fallow/17.png','/assets/img/gallimg/fallow/18.png'
-  ],
-  elk: [
-    '/assets/img/gallimg/Elk/1.png','/assets/img/gallimg/Elk/2.png','/assets/img/gallimg/Elk/3.png'
-  ],
-  rams: [
-    '/assets/img/gallimg/Rams/1.png','/assets/img/gallimg/Rams/3.png','/assets/img/gallimg/Rams/4.png','/assets/img/gallimg/Rams/5.png','/assets/img/gallimg/Rams/6.png','/assets/img/gallimg/Rams/10.png','/assets/img/gallimg/Rams/11.png'
-  ],
   tahr: [
     '/assets/img/gallimg/Tahr/1.png','/assets/img/gallimg/Tahr/2.png','/assets/img/gallimg/Tahr/3.png','/assets/img/gallimg/Tahr/4.png','/assets/img/gallimg/Tahr/5.png','/assets/img/gallimg/Tahr/6.png','/assets/img/gallimg/Tahr/7.png','/assets/img/gallimg/Tahr/9.png','/assets/img/gallimg/Tahr/11.png','/assets/img/gallimg/Tahr/12.png','/assets/img/gallimg/Tahr/13.png','/assets/img/gallimg/Tahr/14.png','/assets/img/gallimg/Tahr/16.png','/assets/img/gallimg/Tahr/17.png','/assets/img/gallimg/Tahr/18.png','/assets/img/gallimg/Tahr/19.png','/assets/img/gallimg/Tahr/20.png','/assets/img/gallimg/Tahr/21.png','/assets/img/gallimg/Tahr/22.png','/assets/img/gallimg/Tahr/23.png','/assets/img/gallimg/Tahr/24.png','/assets/img/gallimg/Tahr/25.png','/assets/img/gallimg/Tahr/26.png','/assets/img/gallimg/Tahr/27.png','/assets/img/gallimg/Tahr/28.png','/assets/img/gallimg/Tahr/29.png','/assets/img/gallimg/Tahr/30.png','/assets/img/gallimg/Tahr/31.png','/assets/img/gallimg/Tahr/32.png','/assets/img/gallimg/Tahr/33.png','/assets/img/gallimg/Tahr/34.png','/assets/img/gallimg/Tahr/35.png','/assets/img/gallimg/Tahr/36.png','/assets/img/gallimg/Tahr/37.png','/assets/img/gallimg/Tahr/38.png','/assets/img/gallimg/Tahr/39.png','/assets/img/gallimg/Tahr/40.png','/assets/img/gallimg/Tahr/41.png','/assets/img/gallimg/Tahr/42.png','/assets/img/gallimg/Tahr/43.png','/assets/img/gallimg/Tahr/44.png','/assets/img/gallimg/Tahr/46.png','/assets/img/gallimg/Tahr/47.png','/assets/img/gallimg/Tahr/48.png','/assets/img/gallimg/Tahr/49.png','/assets/img/gallimg/Tahr/5.png','/assets/img/gallimg/Tahr/51.png','/assets/img/gallimg/Tahr/52.png','/assets/img/gallimg/Tahr/53.png','/assets/img/gallimg/Tahr/54.png','/assets/img/gallimg/Tahr/55.png','/assets/img/gallimg/Tahr/56.png','/assets/img/gallimg/Tahr/57.png','/assets/img/gallimg/Tahr/58.png','/assets/img/gallimg/Tahr/59.png','/assets/img/gallimg/Tahr/6.png','/assets/img/gallimg/Tahr/60.png','/assets/img/gallimg/Tahr/61.png','/assets/img/gallimg/Tahr/62.png','/assets/img/gallimg/Tahr/63.png','/assets/img/gallimg/Tahr/64.png','/assets/img/gallimg/Tahr/65.png','/assets/img/gallimg/Tahr/66.png','/assets/img/gallimg/Tahr/68.png','/assets/img/gallimg/Tahr/69.png','/assets/img/gallimg/Tahr/7.png','/assets/img/gallimg/Tahr/70.png','/assets/img/gallimg/Tahr/71.png','/assets/img/gallimg/Tahr/72.png','/assets/img/gallimg/Tahr/73.png','/assets/img/gallimg/Tahr/74.png'
   ],
-  whitetail: [
-    '/assets/img/gallimg/Whitetail/1.png','/assets/img/gallimg/Whitetail/2.png','/assets/img/gallimg/Whitetail/3.png','/assets/img/gallimg/Whitetail/4.png','/assets/img/gallimg/Whitetail/5.png','/assets/img/gallimg/Whitetail/6.png','/assets/img/gallimg/Whitetail/8.jpg','/assets/img/gallimg/Whitetail/9.jpg','/assets/img/gallimg/Whitetail/10.jpg'
-  ],
   chamois: [
     '/assets/img/gallimg/Chamois/1.png','/assets/img/gallimg/Chamois/2.png','/assets/img/gallimg/Chamois/3.png','/assets/img/gallimg/Chamois/4.png','/assets/img/gallimg/Chamois/5.png','/assets/img/gallimg/Chamois/6.png','/assets/img/gallimg/Chamois/7.png','/assets/img/gallimg/Chamois/8.png','/assets/img/gallimg/Chamois/9.png','/assets/img/gallimg/Chamois/10.png','/assets/img/gallimg/Chamois/11.png','/assets/img/gallimg/Chamois/12.png','/assets/img/gallimg/Chamois/13.png','/assets/img/gallimg/Chamois/14.png','/assets/img/gallimg/Chamois/15.png','/assets/img/gallimg/Chamois/16.png','/assets/img/gallimg/Chamois/17.png','/assets/img/gallimg/Chamois/18.png','/assets/img/gallimg/Chamois/19.png','/assets/img/gallimg/Chamois/20.png','/assets/img/gallimg/Chamois/21.png','/assets/img/gallimg/Chamois/22.png','/assets/img/gallimg/Chamois/23.png','/assets/img/gallimg/Chamois/24.png','/assets/img/gallimg/Chamois/25.png','/assets/img/gallimg/Chamois/26.png','/assets/img/gallimg/Chamois/27.png','/assets/img/gallimg/Chamois/28.png','/assets/img/gallimg/Chamois/29.png','/assets/img/gallimg/Chamois/30.jpg','/assets/img/gallimg/Chamois/31.jpg','/assets/img/gallimg/Chamois/32.jpg','/assets/img/gallimg/Chamois/33.jpg','/assets/img/gallimg/Chamois/34.jpg','/assets/img/gallimg/Chamois/35.png','/assets/img/gallimg/Chamois/36.png','/assets/img/gallimg/Chamois/37.png'
-  ],
-  fishing: [
-    '/assets/img/gallimg/fishing/1.png','/assets/img/gallimg/fishing/2.png','/assets/img/gallimg/fishing/3.png','/assets/img/gallimg/fishing/4.png','/assets/img/gallimg/fishing/6.png','/assets/img/gallimg/fishing/7.png','/assets/img/gallimg/fishing/8.png','/assets/img/gallimg/fishing/9.png','/assets/img/gallimg/fishing/10.png','/assets/img/gallimg/fishing/11.png','/assets/img/gallimg/fishing/12.png','/assets/img/gallimg/fishing/13.png'
   ],
   scenery: [
     '/assets/img/gallimg/scenery/1.png','/assets/img/gallimg/scenery/2.png','/assets/img/gallimg/scenery/3.png','/assets/img/gallimg/scenery/4.png','/assets/img/gallimg/scenery/5.png','/assets/img/gallimg/scenery/6.png','/assets/img/gallimg/scenery/7.png','/assets/img/gallimg/scenery/8.png','/assets/img/gallimg/scenery/9.png','/assets/img/gallimg/scenery/10.png','/assets/img/gallimg/scenery/11.png','/assets/img/gallimg/scenery/12.png','/assets/img/gallimg/scenery/13.png','/assets/img/gallimg/scenery/14.png','/assets/img/gallimg/scenery/15.png','/assets/img/gallimg/scenery/16.png','/assets/img/gallimg/scenery/17.png','/assets/img/gallimg/scenery/18.png','/assets/img/gallimg/scenery/19.png','/assets/img/gallimg/scenery/20.png','/assets/img/gallimg/scenery/21.png','/assets/img/gallimg/scenery/22.png','/assets/img/gallimg/scenery/23.png','/assets/img/gallimg/scenery/24.png','/assets/img/gallimg/scenery/25.png','/assets/img/gallimg/scenery/26.png','/assets/img/gallimg/scenery/27.png','/assets/img/gallimg/scenery/28.png','/assets/img/gallimg/scenery/29.png','/assets/img/gallimg/scenery/30.png','/assets/img/gallimg/scenery/31.png','/assets/img/gallimg/scenery/32.png','/assets/img/gallimg/scenery/33.png','/assets/img/gallimg/scenery/34.png','/assets/img/gallimg/scenery/35.png','/assets/img/gallimg/scenery/36.png','/assets/img/gallimg/scenery/37.png','/assets/img/gallimg/scenery/38.png','/assets/img/gallimg/scenery/39.png','/assets/img/gallimg/scenery/40.png','/assets/img/gallimg/scenery/41.png','/assets/img/gallimg/scenery/42.png','/assets/img/gallimg/scenery/43.png','/assets/img/gallimg/scenery/44.png','/assets/img/gallimg/scenery/45.png','/assets/img/gallimg/scenery/46.png','/assets/img/gallimg/scenery/47.png','/assets/img/gallimg/scenery/48.png','/assets/img/gallimg/scenery/49.png','/assets/img/gallimg/scenery/50.png','/assets/img/gallimg/scenery/51.png','/assets/img/gallimg/scenery/52.png','/assets/img/gallimg/scenery/53.png','/assets/img/gallimg/scenery/54.png','/assets/img/gallimg/scenery/55.png','/assets/img/gallimg/scenery/56.png','/assets/img/gallimg/scenery/57.png','/assets/img/gallimg/scenery/58.png','/assets/img/gallimg/scenery/59.png','/assets/img/gallimg/scenery/60.png','/assets/img/gallimg/scenery/61.png'
@@ -154,7 +134,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
                   </thead>
                   <tbody>
                     <tr className={`${darkMode ? 'border-b border-gray-700' : 'border-b border-gray-300'}`}>
-                      <td className="py-3 px-4 font-medium">Red Stag</td>
+                      <td className="py-3 px-4 font-medium">Red Deer</td>
                       <td className="py-3 px-4">March - July</td>
                       <td className="py-3 px-4">Roar/rut in April</td>
                     </tr>
@@ -163,25 +143,10 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
                       <td className="py-3 px-4">May - August</td>
                       <td className="py-3 px-4">Best winter coats in June/July</td>
                     </tr>
-                    <tr className={`${darkMode ? 'border-b border-gray-700' : 'border-b border-gray-300'}`}>
+                    <tr>
                       <td className="py-3 px-4 font-medium">Chamois</td>
                       <td className="py-3 px-4">May - October</td>
                       <td className="py-3 px-4">Best winter coats in July/August</td>
-                    </tr>
-                    <tr className={`${darkMode ? 'border-b border-gray-700' : 'border-b border-gray-300'}`}>
-                      <td className="py-3 px-4 font-medium">Fallow Deer</td>
-                      <td className="py-3 px-4">March - June</td>
-                      <td className="py-3 px-4">Rut in April</td>
-                    </tr>
-                    <tr className={`${darkMode ? 'border-b border-gray-700' : 'border-b border-gray-300'}`}>
-                      <td className="py-3 px-4 font-medium">Sika Deer</td>
-                      <td className="py-3 px-4">May - August</td>
-                      <td className="py-3 px-4">Rut in May/June</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-medium">Wild Boar, Wallaby, Hare</td>
-                      <td className="py-3 px-4">Year-round</td>
-                      <td className="py-3 px-4">No seasonal restrictions</td>
                     </tr>
                   </tbody>
                 </table>

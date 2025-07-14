@@ -33,34 +33,34 @@ const Footer: React.FC<FooterProps> = ({ darkMode, toggleDarkMode }) => {
           </div>
           {/* Quick Links */}
           <ul className="flex flex-wrap gap-6 text-sm font-medium">
-            <li>
+              <li>
               <Link to="/packages" className="hover:text-amber-500 transition-colors">Packages</Link>
-            </li>
-            <li>
+              </li>
+              <li>
               <Link to="/animals" className="hover:text-amber-500 transition-colors">Animals</Link>
-            </li>
-            <li>
+              </li>
+              <li>
               <Link to="/about" className="hover:text-amber-500 transition-colors">About</Link>
-            </li>
-            <li>
+              </li>
+              <li>
               <Link to="/contact" className="hover:text-amber-500 transition-colors">Contact</Link>
-            </li>
-          </ul>
+              </li>
+            </ul>
           {/* Contact Info */}
           <ul className="flex flex-col gap-1 text-sm">
             <li className="flex items-center gap-2">
               <Phone size={16} className="flex-shrink-0" />
               <span>{contact.phone || 'Loading...'}</span>
-            </li>
+              </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="flex-shrink-0" />
               <span>{contact.email || 'Loading...'}</span>
-            </li>
+              </li>
             <li className="flex items-center gap-2">
               <MapPin size={16} className="flex-shrink-0" />
               <span>{contact.address || 'Loading...'}</span>
-            </li>
-          </ul>
+              </li>
+            </ul>
         </div>
         <div className="mt-6 pt-4 border-t border-gray-800 text-center text-xs relative">
           <p>&copy; {new Date().getFullYear()} Outback Hunting New Zealand. All rights reserved.</p>

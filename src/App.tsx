@@ -21,8 +21,8 @@ function App() {
 
   return (
     <HelmetProvider>
-      <Router>
-        <div className={`min-h-screen flex flex-col ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
+    <Router>
+      <div className={`min-h-screen flex flex-col ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
         <Header darkMode={darkMode} />
         <main className="flex-grow">
           <Routes>
@@ -37,7 +37,7 @@ function App() {
         </main>
         <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       </div>
-      </Router>
+    </Router>
     </HelmetProvider>
   );
 }

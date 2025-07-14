@@ -13,7 +13,7 @@ const packages = [
   {
     id: 1,
     image: '/assets/img/gallimg/redstag/3.png',
-    species: ['Red Stag'],
+    species: ['Red Deer'],
     difficulty: 'Moderate',
     included: [
       'Professional hunting guide',
@@ -43,72 +43,18 @@ const packages = [
   },
   {
     id: 3,
-    image: '/assets/img/gallimg/fallow/4.png',
-    species: ['Fallow Deer'],
-    difficulty: 'Moderate',
+    image: '/assets/img/gallimg/Chamois/3.png',
+    species: ['Chamois'],
+    difficulty: 'Challenging',
     included: [
       'Experienced hunting guide',
-      'Comfortable lodge accommodation',
+      'Mountain lodge accommodation',
       'All meals and refreshments',
       'Field preparation of trophies',
       'Transportation to hunting areas',
       'Hunting permits and licenses',
-      'Basic safety equipment',
-      'Trophy photography services'
-    ]
-  },
-  {
-    id: 4,
-    image: '/assets/img/gallimg/Elk/2.png',
-    species: ['Elk'],
-    difficulty: 'Challenging',
-    included: [
-      'Expert wilderness guide',
-      'Helicopter access to remote areas',
-      'Luxury wilderness lodge',
-      'All meals and premium refreshments',
-      'Field preparation of trophies',
-      'Advanced safety equipment',
-      'Hunting permits and licenses',
-      'Trophy export documentation',
-      'Professional photography services'
-    ]
-  },
-  {
-    id: 5,
-    image: '/assets/img/gallimg/Rams/3.png',
-    species: ['Rams'],
-    difficulty: 'Challenging',
-    included: [
-      'Expert mountain guide',
-      'Helicopter access to alpine areas',
-      'Mountain lodge accommodation',
-      'All meals and high-energy provisions',
-      'Field preparation of trophies',
       'Mountain safety equipment',
-      'Hunting permits and licenses',
-      'Emergency communication systems',
       'Trophy photography services'
-    ]
-  },
-  {
-    id: 6,
-    image: '/assets/img/gallimg/scenery/3.png',
-    species: ['Red Stag', 'Tahr', 'Chamois', 'Fallow Deer', 'Wild Boar'],
-    difficulty: 'Variable',
-    included: [
-      'Multiple expert guides',
-      'Luxury accommodations throughout',
-      'Helicopter access to all areas',
-      'All meals and premium refreshments',
-      'Field preparation of all trophies',
-      'Comprehensive safety equipment',
-      'All hunting permits and licenses',
-      'Trophy export documentation',
-      'Professional photography services',
-      'Trophy mounting consultation',
-      'Personalized hunting strategy',
-      'Flexible itinerary based on conditions'
     ]
   }
 ];

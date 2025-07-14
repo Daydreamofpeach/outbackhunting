@@ -51,21 +51,21 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
     <>
       <Helmet>
         <title>Outback Hunting New Zealand | Premium New Zealand Hunting Experiences</title>
-        <meta name="description" content="Experience the ultimate New Zealand hunting adventure with Outback Hunting New Zealand. Trophy hunting packages for Red Stag, Tahr, Chamois, Fallow Deer, Elk, Rams, and Whitetail. Expert guides, luxury accommodations, and exclusive hunting grounds." />
-        <meta name="keywords" content="New Zealand hunting, Red Stag hunting, Tahr hunting, Chamois hunting, Fallow Deer hunting, Elk hunting, Rams hunting, Whitetail hunting, trophy hunting, guided hunting, hunting packages, hunting outfitter, New Zealand hunting guide" />
-        <link rel="canonical" href="https://outbackhuntingnz.com/" />
+        <meta name="description" content="Outback Hunting New Zealand offers premium hunting packages for Red Deer, Tahr, and Chamois. Expert guides, luxury accommodations, and exclusive hunting grounds." />
+        <meta name="keywords" content="New Zealand hunting, Red Deer hunting, Tahr hunting, Chamois hunting, trophy hunting, guided hunting, hunting packages, hunting outfitter, New Zealand hunting guide" />
+        <link rel="canonical" href="https://outbackhuntingnz.com" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Outback Hunting New Zealand | Premium New Zealand Hunting Experiences" />
-        <meta property="og:description" content="Experience the ultimate New Zealand hunting adventure with Outback Hunting New Zealand. Trophy hunting packages for Red Stag, Tahr, Chamois, Fallow Deer, Elk, Rams, and Whitetail. Expert guides, luxury accommodations, and exclusive hunting grounds." />
-        <meta property="og:image" content="/assets/img/backgrounds/landscape.png" />
-        <meta property="og:url" content="https://outbackhuntingnz.com/" />
+        <meta property="og:title" content="Outback Hunting New Zealand - Premium New Zealand Hunting Experiences" />
+        <meta property="og:description" content="Outback Hunting New Zealand offers premium hunting packages for Red Deer, Tahr, and Chamois. Expert guides, luxury accommodations, and exclusive hunting grounds." />
+        <meta property="og:image" content="/assets/img/scenery.jpg" />
+        <meta property="og:url" content="https://outbackhuntingnz.com" />
         <meta property="og:type" content="website" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Outback Hunting New Zealand | Premium New Zealand Hunting Experiences" />
-        <meta name="twitter:description" content="Experience the ultimate New Zealand hunting adventure with Outback Hunting New Zealand. Trophy hunting packages for Red Stag, Tahr, Chamois, Fallow Deer, Elk, Rams, and Whitetail. Expert guides, luxury accommodations, and exclusive hunting grounds." />
+        <meta name="twitter:title" content="Outback Hunting New Zealand - Premium New Zealand Hunting Experiences" />
+        <meta name="twitter:description" content="Outback Hunting New Zealand offers premium hunting packages for Red Deer, Tahr, and Chamois. Expert guides, luxury accommodations, and exclusive hunting grounds." />
         <meta name="twitter:image" content="/assets/img/backgrounds/landscape.png" />
         
         {/* Structured Data */}
@@ -73,7 +73,7 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
-      <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
+    <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
       {/* Hero Section */}
       <section 
         ref={heroRef}
@@ -98,8 +98,8 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
             </h1>
             
             <p className="text-xl text-gray-200 mb-10">
-              Premium guided hunts in New Zealand's most breathtaking wilderness areas. 
-              Chase trophy game with expert guides in a land of unparalleled beauty.
+              Personal guided hunts for Red Deer, Chamois, and Tahr in New Zealand's most breathtaking wilderness areas. 
+              Experience the thrill of hunting with 30+ years of expertise in the Canterbury Highlands and Southern Alps.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
@@ -130,23 +130,23 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
             {[
               { 
                 icon: <Award size={36} className="text-amber-500" />, 
-                stat: '15+', 
+                stat: '30+', 
                 text: 'Years Experience' 
               },
               { 
                 icon: <Target size={36} className="text-amber-500" />, 
-                stat: '25+', 
+                stat: '3', 
                 text: 'Species Available' 
               },
               { 
                 icon: <MapPin size={36} className="text-amber-500" />, 
-                stat: '12', 
-                text: 'Exclusive Locations' 
+                stat: 'Canterbury', 
+                text: 'South Island Base' 
               },
               { 
                 icon: <Calendar size={36} className="text-amber-500" />, 
-                stat: '500+', 
-                text: 'Successful Hunts' 
+                stat: 'Personal', 
+                text: 'Guided Hunts' 
               },
             ].map((item, index) => (
               <motion.div
@@ -189,21 +189,28 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
             
             <div className="md:w-1/2 space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Why Choose <span className="text-amber-500">Outback Hunting New Zealand</span>
+                Meet <span className="text-amber-500">Gareth Hall</span>
               </h2>
               
               <p className="text-lg leading-relaxed">
-                Since 2005, we've been providing unforgettable hunting experiences across New Zealand's most stunning terrains.
-                Our experienced guides ensure your safety while maximizing your chances of a successful trophy hunt.
+                My hunting journey began at the age of 12 when I first picked up a pack and rifle, beginning to pursue all the big game New Zealand has to offer.
+              </p>
+              
+              <p className="text-lg leading-relaxed">
+                Over the past 30+ years, I've hunted deep into the South Island's wilderness, creating unforgettable memories for myself and for clients. I've also hunted abroad in Australia and South Africa, expanding my experience in the field.
+              </p>
+              
+              <p className="text-lg leading-relaxed">
+                Hunting is more than a hobby, it's a way of life, and I'm proud to now share that with others through Outback Hunting.
               </p>
               
               <ul className="space-y-4">
                 {[
-                  'Expert local guides with decades of combined experience',
-                  'Access to exclusive private hunting grounds',
-                  'Premium accommodations and amenities',
-                  'Customizable packages for every level of hunter',
-                  'State-of-the-art equipment and transportation',
+                  '30+ years of hunting experience across New Zealand and internationally',
+                  'Expert knowledge of Red Deer, Chamois, and Tahr hunting',
+                  'Personalized guided hunts tailored to your goals and fitness level',
+                  'Access to exclusive Canterbury Highlands and Southern Alps terrain',
+                  'Professional field dressing and trophy preparation included',
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="bg-amber-500 rounded-full p-1 mt-1.5 flex-shrink-0">
@@ -219,7 +226,7 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
                   to="/about"
                   className="inline-flex items-center text-amber-500 hover:text-amber-600 font-medium"
                 >
-                  Learn more about us <ChevronRight size={18} className="ml-1" />
+                  Learn more about my story <ChevronRight size={18} className="ml-1" />
                 </Link>
               </div>
             </div>

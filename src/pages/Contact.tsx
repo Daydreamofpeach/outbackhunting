@@ -48,10 +48,36 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    // Create email body with form data
+    const emailBody = `
+New Hunting Inquiry from Outback Hunting Website
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Hunt Type: ${formData.huntType}
+Preferred Dates: ${formData.preferredDates}
+Hunt Duration: ${formData.huntDuration}
+Number of Hunters: ${formData.numHunters}
+
+Additional Information:
+${formData.message}
+
+---
+This inquiry was submitted through the Outback Hunting New Zealand website.
+    `.trim();
+
+    // Create mailto link
+    const mailtoLink = `mailto:info@outbackhuntingnewzealand.com?subject=New Hunting Inquiry - ${formData.huntType}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
     setFormSubmitted(true);
     
-    // Reset form after success message (in a real app, this would happen after API confirms)
+    // Reset form after showing success message
     setTimeout(() => {
       setFormSubmitted(false);
       setFormData({
@@ -241,12 +267,12 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               <div className="mt-8">
                 <iframe 
                   src="https://www.google.com/maps?q=Canterbury,New+Zealand&z=8&output=embed"
-                  width="100%"
-                  height="300"
+                  width="100%" 
+                  height="300" 
                   className="rounded-lg shadow-lg"
                   style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
+                  allowFullScreen 
+                  loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Map of Canterbury, New Zealand"
                 ></iframe>
@@ -284,11 +310,11 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   
                   {formSubmitted ? (
                     <div className={`p-6 rounded-lg ${darkMode ? 'bg-green-900' : 'bg-green-100'} mb-6`}>
-                      <h3 className={`text-xl font-bold mb-2 ${darkMode ? 'text-green-300' : 'text-green-800'}`}>
-                        Thank You!
+                      <h3 className={`text-xl font-bold mb-2 ${darkMode ? 'text-green-400' : 'text-green-600'}`}>
+                        Email Client Opening!
                       </h3>
                       <p className={darkMode ? 'text-green-300' : 'text-green-700'}>
-                        Your message has been received. We'll be in touch with you shortly to discuss your hunting adventure.
+                        Your email client should open with your inquiry details. Please review and send the email to complete your booking request.
                       </p>
                     </div>
                   ) : (
@@ -367,11 +393,8 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                             }`}
                           >
                             <option value="">Select Hunt Type</option>
-                            <option value="Red Stag">Red Stag Hunt</option>
+                            <option value="Red Deer">Red Deer Hunt</option>
                             <option value="Tahr">Tahr Hunt</option>
-                            <option value="Fallow Deer">Fallow Deer Hunt</option>
-                            <option value="Elk">Elk Hunt</option>
-                            <option value="Rams">Rams Hunt</option>
                             <option value="Chamois">Chamois Hunt</option>
                             <option value="Combination">Combination Hunt</option>
                             <option value="Custom">Custom Package</option>

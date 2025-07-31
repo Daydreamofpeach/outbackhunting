@@ -225,7 +225,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               Every hunt is customised based on your goals, fitness level, and preferences. Whether you're after a challenging backcountry experience or a more accessible private land hunt, I'll put together the right package for you.
             </p>
           </div>
-
+          
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}>
               <h3 className="text-xl font-bold mb-4">Hunt Options</h3>
@@ -258,33 +258,33 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               <p className="mt-6 text-sm italic">
                 As your guide, I'll do everything I can to help you secure the trophy you're after. Hunting always requires a mix of skill, preparation, and luck - and I'll build your hunt plan accordingly.
               </p>
-            </div>
-
+              </div>
+              
             <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}>
               <h3 className="text-xl font-bold mb-4">Included in Your Hunt</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
                     <ChevronRight size={14} className="text-white" />
-                  </div>
+                      </div>
                   <span>Personalised guided hunt</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
                     <ChevronRight size={14} className="text-white" />
-                  </div>
+                        </div>
                   <span>Field dressing of game in the field</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
                     <ChevronRight size={14} className="text-white" />
-                  </div>
+                      </div>
                   <span>Transport of trophies to a taxidermist (if required)</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
                     <ChevronRight size={14} className="text-white" />
-                  </div>
+                    </div>
                   <span>Digital photos and video footage of your hunt – included at no extra cost</span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -296,7 +296,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                 <li className="flex items-start gap-3">
                   <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
                     <ChevronRight size={14} className="text-white" />
-                  </div>
+              </div>
                   <span>Airport pick-up and drop-off (by arrangement)</span>
                 </li>
               </ul>
@@ -316,7 +316,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                 <li className="flex items-start gap-3">
                   <div className="bg-amber-500 rounded-full p-1 mt-1 flex-shrink-0">
                     <ChevronRight size={14} className="text-white" />
-                  </div>
+        </div>
                   <span>Binoculars</span>
                 </li>
                 <li className="flex items-start gap-3">

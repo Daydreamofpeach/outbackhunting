@@ -20,8 +20,8 @@ const PackageModal: React.FC<PackageModalProps> = ({ isOpen, onClose, package: p
     >
       <div className="fixed inset-0 bg-black/80" aria-hidden="true" />
       
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+      <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
+        <Dialog.Panel className="w-full max-w-4xl max-h-[85vh] overflow-y-auto">
           <div className={`relative rounded-lg overflow-hidden ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
             {/* Header */}
             <div className="relative h-64 md:h-80">
@@ -55,7 +55,7 @@ const PackageModal: React.FC<PackageModalProps> = ({ isOpen, onClose, package: p
             </div>
             
             {/* Content */}
-            <div className="p-6 md:p-8">
+            <div className="p-6 md:p-8 max-h-[60vh] overflow-y-auto">
               {/* Quick Info */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div className="flex items-center gap-2">
@@ -138,7 +138,7 @@ const PackageModal: React.FC<PackageModalProps> = ({ isOpen, onClose, package: p
                 <h3 className={`text-xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>What's Included</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {pkg.included.map((item: string, index: number) => (
-                    <div key={index} className="flex items-start gap-3">
+                    <div key={index} className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
                       <ChevronRight size={16} className="text-amber-500 mt-1 flex-shrink-0" />
                       <span className={`font-medium ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>{item}</span>
                     </div>
@@ -177,24 +177,26 @@ const PackageModal: React.FC<PackageModalProps> = ({ isOpen, onClose, package: p
               </div>
               
               {/* Booking Section */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={onClose}
-                  className={`flex-1 py-3 px-6 rounded-lg border-2 font-medium transition-colors ${
-                    darkMode 
-                      ? 'border-gray-600 text-gray-300 hover:border-amber-500 hover:text-amber-400' 
-                      : 'border-gray-300 text-gray-700 hover:border-amber-500 hover:text-amber-600'
-                  }`}
-                >
-                  Close Details
-                </button>
-                
-                <a
-                  href={`/contact?package=${pkg.id}&huntType=${encodeURIComponent(pkg.huntType)}&species=${encodeURIComponent(pkg.species.join(', '))}&price=${pkg.price}&duration=${pkg.duration}&location=${encodeURIComponent(pkg.location)}`}
-                  className="flex-1 py-3 px-6 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors text-center"
-                >
-                  Book This Package
-                </a>
+              <div className="border-t pt-6 mt-8">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={onClose}
+                    className={`flex-1 py-3 px-6 rounded-lg border-2 font-medium transition-colors ${
+                      darkMode 
+                        ? 'border-gray-600 text-gray-300 hover:border-amber-500 hover:text-amber-400' 
+                        : 'border-gray-300 text-gray-700 hover:border-amber-500 hover:text-amber-600'
+                    }`}
+                  >
+                    Close Details
+                  </button>
+                  
+                  <a
+                    href={`/contact?package=${pkg.id}&huntType=${encodeURIComponent(pkg.huntType)}&species=${encodeURIComponent(pkg.species.join(', '))}&price=${pkg.price}&duration=${pkg.duration}&location=${encodeURIComponent(pkg.location)}`}
+                    className="flex-1 py-3 px-6 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors text-center"
+                  >
+                    Book This Package
+                  </a>
+                </div>
               </div>
             </div>
           </div>

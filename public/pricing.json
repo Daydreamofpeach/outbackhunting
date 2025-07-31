@@ -1,32 +1,269 @@
-[
-  {
-    "id": 1,
-    "title": "Red Deer Hunt",
-    "price": 5500,
-    "duration": "5 days",
-    "bestSeason": "March - July",
-    "location": "Canterbury Highlands",
-    "huntType": "Red Deer",
-    "description": "Hunt trophy Red Deer in the majestic Canterbury Highlands. Package includes lodge accommodation, experienced guide, and field preparation of trophies."
+{
+  "animals": {
+    "red-deer": {
+      "name": "Red Deer",
+      "species": "Red Deer",
+      "image": "/assets/img/gallimg/redstag/1.png",
+      "baseIncluded": [
+        "Personalised guided hunt",
+        "Field dressing of game in the field",
+        "Transport of trophies to a taxidermist (if required)",
+        "Digital photos and video footage of your hunt",
+        "Douglas Scoring (available upon request)",
+        "Tent or hut accommodation for overnight hunts",
+        "Airport pick-up and drop-off (by arrangement)"
+      ],
+      "baseNotIncluded": [
+        "Helicopter flights (if applicable)",
+        "Hired accommodation (cabins/lodges)",
+        "Spirits",
+        "Restaurant meals",
+        "Add-on experiences"
+      ],
+      "baseYouNeedToBring": [
+        "Rifle (hire available: $250 NZD per hunt)",
+        "Binoculars",
+        "Day pack",
+        "Sturdy tramping or hunting boots",
+        "Headlamp",
+        "Weather-appropriate clothing",
+        "Sleeping bag (if camping out)",
+        "Sleeping mat (if camping out)",
+        "Larger pack 70L plus (if camping out)"
+      ],
+      "extras": [
+        {
+          "id": "helicopter-access",
+          "name": "Helicopter Access",
+          "description": "Helicopter transport to remote hunting areas",
+          "price": 350,
+          "perDay": true
+        },
+        {
+          "id": "rifle-hire",
+          "name": "Rifle Hire",
+          "description": "Rifle hire for your hunt",
+          "price": 250
+        }
+      ],
+      "hunts": {
+        "wilderness": {
+          "id": "red-deer-wilderness",
+          "name": "Red Deer Wilderness",
+          "basePrice": 1500,
+          "baseDays": 4,
+          "location": "South Island Wilderness",
+          "bestSeason": "March - July",
+          "difficulty": "Moderate",
+          "description": "Free range Red Stag hunting in spectacular wilderness areas",
+          "additionalAnimalPrice": 1500,
+          "additionalAnimalDays": 1
+        },
+        "private-300": {
+          "id": "red-stag-private-300",
+          "name": "Red Stag Private Land (300 SCI)",
+          "basePrice": 2700,
+          "baseDays": 3,
+          "location": "Private Land South Island",
+          "bestSeason": "March - July",
+          "difficulty": "Moderate",
+          "description": "Premium Red Stag hunting targeting 300 SCI class animals",
+          "additionalAnimalPrice": 2700,
+          "additionalAnimalDays": 1
+        },
+        "private-360": {
+          "id": "red-stag-private-360",
+          "name": "Red Stag Private Land (360 SCI)",
+          "basePrice": 3900,
+          "baseDays": 4,
+          "location": "Private Land South Island",
+          "bestSeason": "March - July",
+          "difficulty": "Moderate",
+          "description": "Premium Red Stag hunting targeting 360 SCI class animals",
+          "additionalAnimalPrice": 3900,
+          "additionalAnimalDays": 1
+        }
+      }
+    },
+    "chamois": {
+      "name": "Chamois",
+      "species": "Chamois",
+      "image": "/assets/img/gallimg/Chamois/1.png",
+      "baseIncluded": [
+        "Personalised guided hunt",
+        "Field dressing of game in the field",
+        "Transport of trophies to a taxidermist (if required)",
+        "Digital photos and video footage of your hunt",
+        "Douglas Scoring (available upon request)",
+        "Tent or hut accommodation for overnight hunts",
+        "Airport pick-up and drop-off (by arrangement)"
+      ],
+      "baseNotIncluded": [
+        "Helicopter flights (if applicable)",
+        "Hired accommodation (cabins/lodges)",
+        "Spirits",
+        "Restaurant meals",
+        "Add-on experiences"
+      ],
+      "baseYouNeedToBring": [
+        "Rifle (hire available: $250 NZD per hunt)",
+        "Binoculars",
+        "Day pack",
+        "Sturdy tramping or hunting boots",
+        "Headlamp",
+        "Weather-appropriate clothing",
+        "Sleeping bag (if camping out)",
+        "Sleeping mat (if camping out)",
+        "Larger pack 70L plus (if camping out)"
+      ],
+      "extras": [
+        {
+          "id": "helicopter-access",
+          "name": "Helicopter Access",
+          "description": "Helicopter transport to alpine hunting areas",
+          "price": 400,
+          "perDay": true
+        },
+        {
+          "id": "rifle-hire",
+          "name": "Rifle Hire",
+          "description": "Rifle hire for your hunt",
+          "price": 250
+        }
+      ],
+      "hunts": {
+        "wilderness-1": {
+          "id": "chamois-1",
+          "name": "Chamois - 1 Chamois",
+          "basePrice": 1600,
+          "baseDays": 4,
+          "location": "Southern Alps Wilderness",
+          "bestSeason": "May - October",
+          "difficulty": "Challenging",
+          "description": "Alpine hunting for trophy Chamois",
+          "additionalAnimalPrice": 1000,
+          "additionalAnimalDays": 1
+        },
+        "wilderness-2": {
+          "id": "chamois-2",
+          "name": "Chamois - 2 Chamois",
+          "basePrice": 2600,
+          "baseDays": 5,
+          "location": "Southern Alps Wilderness",
+          "bestSeason": "May - October",
+          "difficulty": "Challenging",
+          "description": "Extended hunt for two Chamois in New Zealand's alpine terrain",
+          "additionalAnimalPrice": 1000,
+          "additionalAnimalDays": 1
+        }
+      }
+    },
+    "tahr": {
+      "name": "Himalayan Tahr",
+      "species": "Himalayan Tahr",
+      "image": "/assets/img/gallimg/Tahr/1.png",
+      "baseIncluded": [
+        "Personalised guided hunt",
+        "Field dressing of game in the field",
+        "Transport of trophies to a taxidermist (if required)",
+        "Digital photos and video footage of your hunt",
+        "Douglas Scoring (available upon request)",
+        "Tent or hut accommodation for overnight hunts",
+        "Airport pick-up and drop-off (by arrangement)"
+      ],
+      "baseNotIncluded": [
+        "Helicopter flights (if applicable)",
+        "Hired accommodation (cabins/lodges)",
+        "Spirits",
+        "Restaurant meals",
+        "Add-on experiences"
+      ],
+      "baseYouNeedToBring": [
+        "Rifle (hire available: $250 NZD per hunt)",
+        "Binoculars",
+        "Day pack",
+        "Sturdy tramping or hunting boots",
+        "Headlamp",
+        "Weather-appropriate clothing",
+        "Sleeping bag (if camping out)",
+        "Sleeping mat (if camping out)",
+        "Larger pack 70L plus (if camping out)"
+      ],
+      "extras": [
+        {
+          "id": "helicopter-access",
+          "name": "Helicopter Access",
+          "description": "Helicopter transport to alpine hunting areas",
+          "price": 400,
+          "perDay": true
+        },
+        {
+          "id": "rifle-hire",
+          "name": "Rifle Hire",
+          "description": "Rifle hire for your hunt",
+          "price": 250
+        }
+      ],
+      "hunts": {
+        "wilderness-1": {
+          "id": "tahr-1",
+          "name": "Himalayan Tahr - 1 Tahr",
+          "basePrice": 1900,
+          "baseDays": 4,
+          "location": "Southern Alps Wilderness",
+          "bestSeason": "May - August",
+          "difficulty": "Challenging",
+          "description": "Challenging alpine hunting for the elusive Tahr",
+          "additionalAnimalPrice": 1000,
+          "additionalAnimalDays": 1
+        },
+        "wilderness-2": {
+          "id": "tahr-2",
+          "name": "Himalayan Tahr - 2 Tahr",
+          "basePrice": 2900,
+          "baseDays": 5,
+          "location": "Southern Alps Wilderness",
+          "bestSeason": "May - August",
+          "difficulty": "Challenging",
+          "description": "Extended hunt for two Himalayan Tahr in rugged alpine terrain",
+          "additionalAnimalPrice": 1000,
+          "additionalAnimalDays": 1
+        },
+        "spring-1": {
+          "id": "tahr-spring-1",
+          "name": "Spring Tahr Package - 1 Tahr",
+          "basePrice": 2700,
+          "baseDays": 3,
+          "location": "Southern Alps",
+          "bestSeason": "November - December",
+          "difficulty": "Challenging",
+          "description": "Spring Tahr hunting package available November - December only",
+          "additionalAnimalPrice": 1100,
+          "additionalAnimalDays": 1
+        },
+        "spring-2": {
+          "id": "tahr-spring-2",
+          "name": "Spring Tahr Package - 2 Tahr",
+          "basePrice": 3800,
+          "baseDays": 4,
+          "location": "Southern Alps",
+          "bestSeason": "November - December",
+          "difficulty": "Challenging",
+          "description": "Extended spring Tahr hunting package for two Tahr",
+          "additionalAnimalPrice": 1100,
+          "additionalAnimalDays": 1
+        }
+      }
+    }
   },
-  {
-    "id": 2,
-    "title": "Himalayan Tahr Hunt",
-    "price": 5200,
-    "duration": "7 days",
-    "bestSeason": "May - August",
-    "location": "Southern Alps",
-    "huntType": "Tahr",
-    "description": "Challenge yourself with a hunt for the elusive Himalayan Tahr in rugged alpine terrain. access to remote hunting spots included."
+  "dayRates": {
+    "solo": 290,
+    "additionalHunter": 200,
+    "nonHunter": 180
   },
-  {
-    "id": 3,
-    "title": "Chamois Hunt",
-    "price": 5800,
-    "duration": "6 days",
-    "bestSeason": "May - October",
-    "location": "Southern Alps",
-    "huntType": "Chamois",
-    "description": "Experience the thrill of hunting Chamois in New Zealand's alpine terrain. Perfect for hunters seeking a challenging mountain hunting experience."
+  "booking": {
+    "deposit": 500,
+    "currency": "AUD",
+    "depositNote": "Non-refundable deposit required on booking"
   }
-] 
+} 

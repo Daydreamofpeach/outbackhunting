@@ -16,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
   title,
   description,
   keywords,
-  image = '/src/assets/img/prlogo.png',
+  image = '/assets/img/logo.png',
   url,
   type = 'website',
   structuredData,
@@ -76,6 +76,78 @@ const SEO: React.FC<SEOProps> = ({
           {JSON.stringify(structuredData)}
         </script>
       )}
+      
+      {/* Default Business Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TouristInformationCenter",
+          "name": "Outback Hunting New Zealand",
+          "alternateName": "Outback Hunting NZ",
+          "description": "Professional hunting guides offering guided hunting tours and packages in New Zealand's South Island wilderness areas. Specializing in Red Deer, Himalayan Tahr, Chamois, Whitetail, Fallow Deer, and Arapawa Ram hunting.",
+          "url": "https://outbackhuntingnz.com",
+                     "logo": "https://outbackhuntingnz.com/assets/img/logo.png",
+           "image": "https://outbackhuntingnz.com/assets/img/logo.png",
+          "telephone": "+64-XXX-XXX-XXXX",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "NZ",
+            "addressRegion": "South Island",
+            "addressLocality": "New Zealand"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -45.0,
+            "longitude": 170.0
+          },
+          "openingHours": "Mo-Su 08:00-18:00",
+          "priceRange": "$$",
+          "currenciesAccepted": "AUD, NZD",
+          "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+          "areaServed": {
+            "@type": "Country",
+            "name": "New Zealand"
+          },
+          "serviceArea": {
+            "@type": "Country",
+            "name": "New Zealand"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Hunting Packages",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Red Deer Wilderness Hunt",
+                  "description": "Free range Red Stag hunting in New Zealand wilderness"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Himalayan Tahr Hunt",
+                  "description": "Alpine hunting for Himalayan Tahr in Southern Alps"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Chamois Hunt",
+                  "description": "Mountain hunting for Chamois in alpine terrain"
+                }
+              }
+            ]
+          },
+          "sameAs": [
+            "https://www.facebook.com/outbackhuntingnz",
+            "https://www.instagram.com/outbackhuntingnz"
+          ]
+        })}
+      </script>
       
       {/* Preconnect to external domains for performance */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />

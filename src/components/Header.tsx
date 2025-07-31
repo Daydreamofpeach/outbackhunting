@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Compass } from 'lucide-react';
+import { Menu, X, Compass, Moon, Sun } from 'lucide-react';
 import NavDropdown from './NavDropdown';
 
 interface HeaderProps {
   darkMode: boolean;
+  toggleDarkMode: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ darkMode }) => {
+const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -40,7 +41,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode }) => {
     { 
       title: 'Hunting',
       links: [
-        { name: 'Packages', path: '/packages' },
+        { name: 'Pricing', path: '/packages' },
+        { name: 'Customize Package', path: '/customize' },
         { name: 'Animals', path: '/animals' },
       ]
     },
@@ -73,13 +75,24 @@ const Header: React.FC<HeaderProps> = ({ darkMode }) => {
         <div className="flex justify-between items-center">
           <Link 
             to="/" 
-            className="flex items-center gap-2 text-2xl font-bold transition-transform hover:scale-105"
+            className="flex items-center gap-3 transition-transform hover:scale-105"
           >
-            <Compass size={32} className={`${darkMode ? 'text-amber-500' : 'text-emerald-700'}`} />
-            <span className={`${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight`}>
+            <img 
+              src={darkMode ? '/assets/img/logo.png' : '/assets/img/colorlogo.png'} 
+              alt="Outback Hunting New Zealand Logo" 
+              className="h-16 w-auto"
+            />
+            <span className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight hidden sm:block`}>
               Outback Hunting New Zealand
             </span>
           </Link>
+
+          {/* Mobile Site Title */}
+          <div className="md:hidden flex-1 text-center">
+            <span className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight`}>
+              Outback Hunting
+            </span>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -110,6 +123,27 @@ const Header: React.FC<HeaderProps> = ({ darkMode }) => {
       {/* Mobile Navigation */}
       <div className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className={`px-4 pt-2 pb-6 space-y-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+          {/* Dark Mode Toggle for Mobile */}
+          <div className="flex items-center justify-between py-3 border-b border-gray-700">
+            <span className={`font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              Dark Mode
+            </span>
+            <button 
+              onClick={toggleDarkMode} 
+              className={`p-2 rounded-full transition-all hover:scale-110 ${
+                darkMode 
+                  ? 'bg-gray-700 text-amber-400 hover:bg-gray-600' 
+                  : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+              }`}
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? 
+                <Sun size={20} /> : 
+                <Moon size={20} />
+              }
+            </button>
+          </div>
+          
           {navItems.map((item, idx) => (
             <div key={idx} className="space-y-3">
               <h3 className={`font-semibold ${darkMode ? 'text-amber-400' : 'text-emerald-700'}`}>

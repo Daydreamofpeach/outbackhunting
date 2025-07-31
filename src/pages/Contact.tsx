@@ -105,7 +105,41 @@ This inquiry was submitted through the Outback Hunting New Zealand website.
     const price = searchParams.get('price');
     const duration = searchParams.get('duration');
     const location = searchParams.get('location');
+    const customPackage = searchParams.get('customPackage');
+    const packageDetails = searchParams.get('packageDetails');
 
+    // Handle custom package details
+    if (customPackage === 'true' && packageDetails) {
+      try {
+        const decodedDetails = JSON.parse(decodeURIComponent(packageDetails));
+        setSelectedPackage({
+          id: 'custom',
+          huntType: 'Custom Package',
+          species: decodedDetails.hunts.map((hunt: any) => hunt.species).join(', '),
+          price: decodedDetails.totalPrice,
+          duration: `${decodedDetails.totalDays} days`,
+          location: 'Multiple Locations',
+          details: decodedDetails
+        });
+        
+        // Auto-fill the form with custom package details
+        const huntTypes = decodedDetails.hunts.map((hunt: any) => hunt.name).join(', ');
+        const includedItems = decodedDetails.hunts.flatMap((hunt: any) => hunt.included).join(', ');
+        const extras = decodedDetails.selectedExtras.map((extra: any) => `${extra.name} (${extra.quantity})`).join(', ');
+        
+        setFormData(prev => ({
+          ...prev,
+          huntType: 'Custom Package',
+          huntDuration: `${decodedDetails.totalDays} days`,
+          message: `I'm interested in booking a custom hunting package.\n\nPackage Details:\n- Hunts: ${huntTypes}\n- Total Duration: ${decodedDetails.totalDays} days\n- Additional Days: ${decodedDetails.additionalDays} days\n- Total Price: $${decodedDetails.totalPrice}\n\nIncluded Items: ${includedItems}\n\nSelected Extras: ${extras || 'None'}\n\nPlease contact me to discuss availability and booking details.`
+        }));
+        return;
+      } catch (error) {
+        console.error('Error parsing package details:', error);
+      }
+    }
+
+    // Handle regular package parameters (existing logic)
     if (packageId && huntType) {
       const packageInfo = {
         id: packageId,
@@ -301,7 +335,15 @@ This inquiry was submitted through the Outback Hunting New Zealand website.
                             <p><span className="font-medium">Species:</span> {selectedPackage.species}</p>
                             <p><span className="font-medium">Duration:</span> {selectedPackage.duration}</p>
                             <p><span className="font-medium">Location:</span> {selectedPackage.location}</p>
-                            <p><span className="font-medium">Price:</span> ${selectedPackage.price}</p>
+                            <p><span className="font-medium">Price:</span> ${selectedPackage.price?.toLocaleString('en-US')}</p>
+                            {selectedPackage.details && (
+                              <>
+                                <p><span className="font-medium">Additional Days:</span> {selectedPackage.details.additionalDays} days</p>
+                                {selectedPackage.details.selectedExtras && selectedPackage.details.selectedExtras.length > 0 && (
+                                  <p><span className="font-medium">Extras:</span> {selectedPackage.details.selectedExtras.map((extra: any) => `${extra.name} (${extra.quantity})`).join(', ')}</p>
+                                )}
+                              </>
+                            )}
                           </div>
                         </div>
                       </div>

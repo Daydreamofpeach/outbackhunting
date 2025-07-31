@@ -1,18 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap
 Sitemap: https://outbackhuntingnz.com/sitemap.xml
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
-# Disallow admin or private areas (if any)
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
-
-# Allow all images and assets
-Allow: /src/assets/
-Allow: /images/
-Allow: /assets/ 
+# Crawl-delay
+Crawl-delay: 1 

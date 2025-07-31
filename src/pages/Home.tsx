@@ -107,7 +107,7 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
                 to="/packages"
                 className="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-full transition-colors shadow-lg hover:shadow-xl text-lg inline-flex items-center"
               >
-                Explore Packages <ChevronRight size={20} className="ml-2" />
+                View Pricing <ChevronRight size={20} className="ml-2" />
               </Link>
               <Link
                 to="/contact"

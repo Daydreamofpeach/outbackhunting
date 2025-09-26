@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Compass, Moon, Sun } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import NavDropdown from './NavDropdown';
 
 interface HeaderProps {
@@ -12,9 +12,45 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleSectionClick = (path: string) => {
+    const [page, section] = path.split('#');
+    
+    if (section) {
+      // If we're already on the correct page, just scroll to the section
+      if (location.pathname === page) {
+        const element = document.getElementById(section);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      } else {
+        // Navigate to the page first, then scroll to section
+        navigate(path);
+        // The scroll will happen after the page loads
+        setTimeout(() => {
+          const element = document.getElementById(section);
+          if (element) {
+            element.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }, 100);
+      }
+    } else {
+      // Regular navigation for pages without sections
+      navigate(path);
+    }
+    
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -37,13 +73,36 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
     setIsOpen(false);
   }, [location]);
 
+  // Handle scrolling to sections when page loads with hash
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash) {
+      const elementId = hash.substring(1); // Remove the # symbol
+      const element = document.getElementById(elementId);
+      if (element) {
+        // Small delay to ensure the page has rendered
+        setTimeout(() => {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   const navItems = [
     { 
       title: 'Hunting',
       links: [
-        { name: 'Pricing', path: '/packages' },
+        { name: 'Pricing', path: '/pricing' },
+        { name: 'Hunting Packages', path: '/pricing#packages' },
+        { name: 'Day Rates', path: '/pricing#day-rates' },
+        { name: 'What\'s Included', path: '/pricing#included' },
         { name: 'Customize Package', path: '/customize' },
         { name: 'Animals', path: '/animals' },
+        { name: 'Photo Galleries', path: '/animals#galleries' },
+        { name: 'Hunting Info', path: '/animals#information' },
       ]
     },
     { 
@@ -52,13 +111,14 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
         { name: 'Our Story', path: '/about' },
         { name: 'Our Team', path: '/about#team' },
         { name: 'Our Locations', path: '/about#locations' },
+        { name: 'Our Services', path: '/about#services' },
       ]
     },
     { 
       title: 'Contact',
       links: [
-        { name: 'Get in Touch', path: '/contact' },
-        { name: 'Book a Trip', path: '/contact#booking' },
+        { name: 'Get in Touch', path: '/contact#booking' },
+        { name: 'Book a Trip', path: '/contact' },
       ]
     },
   ];
@@ -78,7 +138,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
             className="flex items-center gap-3 transition-transform hover:scale-105"
           >
             <img 
-              src={darkMode ? '/assets/img/logo.png' : '/assets/img/colorlogo.png'} 
+              src="/assets/img/gareth/GarethLogoC.png" 
               alt="Outback Hunting New Zealand Logo" 
               className="h-16 w-auto"
             />
@@ -102,6 +162,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                 title={item.title} 
                 links={item.links} 
                 darkMode={darkMode}
+                onLinkClick={handleSectionClick}
               />
             ))}
           </nav>
@@ -152,12 +213,12 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
               <ul className="space-y-2 pl-2 border-l-2 border-gray-700">
                 {item.links.map((link, linkIdx) => (
                   <li key={linkIdx}>
-                    <Link 
-                      to={link.path} 
-                      className={`block transition hover:translate-x-1 ${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
+                    <button 
+                      onClick={() => handleSectionClick(link.path)}
+                      className={`block w-full text-left transition hover:translate-x-1 ${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
                     >
                       {link.name}
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>

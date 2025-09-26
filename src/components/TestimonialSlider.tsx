@@ -10,27 +10,17 @@ interface TestimonialSliderProps {
 const testimonials = [
   {
     id: 1,
-    text: "My Red Stag hunting experience with Outback Hunting New Zealand exceeded all expectations. The guides were incredibly knowledgeable and put me onto a magnificent 14-point stag. The accommodations were top-notch, with amazing meals. I'm already planning my return trip!",
-    name: "James Wilson",
-    location: "Texas, USA",
-    rating: 5,
-    image: "/src/assets/img/profile/profile1.png"
+    text: "Just got back from a free range tahr hunt with Gareth and it was everything I hoped for and more. Gareth knows the mountains inside out and put us in the right spot from day one. He's calm, professional, and genuinely passionate about hunting. You're not just following a guide, you're learning as you go. The terrain was rugged and the tahr were wild, exactly what you want from a proper free range hunt. We worked hard for it, but that made the result even better. If you're after an authentic South Island alpine experience with someone who actually knows what they're doing, you won't go wrong with Gareth.",
+    name: "Matt Porter",
+    location: "Tahr Hunt, Unreal Alpine Experience",
+    rating: 5
   },
   {
     id: 2,
-    text: "Hunting Tahr in the Southern Alps was a truly once-in-a-lifetime experience. The terrain was challenging but the views were breathtaking. My guide, Mike, was patient and experienced, ensuring I got a trophy-class bull. The helicopter ride to the hunting area was an adventure in itself!",
-    name: "Robert Johnson",
-    location: "Alberta, Canada",
-    rating: 5,
-    image: "/src/assets/img/profile/profile3.png"
-  },
-  {
-    id: 3,
-    text: "As a female hunter, I was looking for an outfitter that would take my hunt seriously. Outback Hunting New Zealand delivered beyond my expectations. The entire staff was professional, the lodging was comfortable, and I took a beautiful Chamois. I highly recommend them to any hunter visiting New Zealand.",
-    name: "Sarah Mitchell",
-    location: "Colorado, USA",
-    rating: 5,
-    image: "/src/assets/img/profile/profile4.gif"
+    text: "Went out with Gareth again, this time for a fallow buck hunt in Mid Canterbury. Just like last time, he delivered. The country was classic rolling farmland, scattered Matagouri, and open faces ideal for glassing. We saw plenty of deer sign and after a bit of patience and a solid stalk, I dropped a great buck. Gareth's calm and practical approach makes the whole experience feel effortless. He knows how to read the animals and the land without overcomplicating things. If you're after a fair chase fallow hunt with a guide who actually knows what he's doing, I'd highly recommend booking with Gareth.",
+    name: "Matt Porter",
+    location: "Mid Canterbury Fallow Buck Hunt, Genuine Free Range Experience",
+    rating: 5
   }
 ];
 
@@ -97,35 +87,22 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ darkMode }) => {
                 transition={{ duration: 0.5 }}
                 className={`${index === activeIndex ? 'block' : 'hidden'}`}
               >
-                <div className="flex flex-col md:flex-row md:items-center gap-6">
-                  <div className="md:w-1/4 flex justify-center">
-                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-amber-500">
-                      <img 
-                        src={testimonial.image} 
-                        alt={`${testimonial.name} - ${testimonial.location} hunting client testimonial`}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
+                <div className="text-center">
+                  <div className="flex justify-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} size={18} fill="#f59e0b" className="text-amber-500" />
+                    ))}
                   </div>
                   
-                  <div className="md:w-3/4">
-                    <div className="flex mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} size={18} fill="#f59e0b" className="text-amber-500" />
-                      ))}
-                    </div>
-                    
-                    <blockquote className="text-lg italic mb-6">
-                      "{testimonial.text}"
-                    </blockquote>
-                    
-                    <div className="font-medium">
-                      <span className="block text-amber-500">{testimonial.name}</span>
-                      <span className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                        {testimonial.location}
-                      </span>
-                    </div>
+                  <blockquote className="text-lg italic mb-6">
+                    "{testimonial.text}"
+                  </blockquote>
+                  
+                  <div className="font-medium">
+                    <span className="block text-amber-500">{testimonial.name}</span>
+                    <span className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                      {testimonial.location}
+                    </span>
                   </div>
                 </div>
               </motion.div>

@@ -12,6 +12,7 @@ interface NavDropdownProps {
   title: string;
   links: NavLink[];
   darkMode: boolean;
+  onLinkClick?: (path: string) => void;
 }
 
 const NavDropdown: React.FC<NavDropdownProps> = ({ title, links, darkMode }) => {
@@ -25,7 +26,7 @@ const NavDropdown: React.FC<NavDropdownProps> = ({ title, links, darkMode }) => 
     >
       <button 
         onClick={() => setIsOpen(!isOpen)} 
-        className={`flex items-center space-x-1 py-2 font-medium transition-colors ${
+        className={`flex items-center space-x-1 py-2 font-medium transition-colors whitespace-nowrap ${
           darkMode 
             ? 'text-gray-300 hover:text-white' 
             : 'text-gray-900 hover:text-emerald-700'
@@ -53,11 +54,14 @@ const NavDropdown: React.FC<NavDropdownProps> = ({ title, links, darkMode }) => 
               <Link
                 key={index}
                 to={link.path}
-                className={`block px-4 py-2 text-sm transition-colors ${
+                className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
                   darkMode 
                     ? 'text-gray-300 hover:bg-gray-700 hover:text-white' 
                     : 'text-gray-700 hover:bg-gray-100 hover:text-emerald-700'
                 }`}
+                onClick={() => {
+                  setIsOpen(false);
+                }}
               >
                 {link.name}
               </Link>

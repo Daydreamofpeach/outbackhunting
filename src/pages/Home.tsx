@@ -31,7 +31,7 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Outback Hunting New Zealand - Premium New Zealand Hunting Experiences",
-    "description": "Experience the ultimate New Zealand hunting adventure with Outback Hunting New Zealand. Trophy hunting packages for Red Stag, Tahr, Chamois, Fallow Deer, Elk, Rams, and Whitetail. Expert guides, luxury accommodations, and exclusive hunting grounds.",
+    "description": "Experience the ultimate New Zealand hunting adventure with Outback Hunting New Zealand. Trophy hunting packages for Red Deer, Tahr, and Chamois. Expert guides, luxury accommodations, and exclusive hunting grounds.",
     "url": "https://outbackhuntingnz.com",
     "mainEntity": {
       "@type": "TouristInformationCenter",
@@ -74,50 +74,108 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
         </script>
       </Helmet>
     <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
-      {/* Hero Section */}
+      {/* Clean Hero Section */}
       <section 
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        {/* Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
+        </div>
         
         <div className="container mx-auto px-4 z-10 text-center py-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Experience the Ultimate <span className="text-amber-500">New Zealand</span> Hunting Adventure
-            </h1>
+            {/* Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={heroInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="flex justify-center mb-8"
+            >
+              <img 
+                src="/assets/img/gareth/GarethLogoC.png" 
+                alt="Outback Hunting New Zealand Logo" 
+                className="h-24 md:h-32 w-auto drop-shadow-2xl"
+              />
+            </motion.div>
             
-            <p className="text-xl text-gray-200 mb-10">
+            {/* Main Title */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            >
+              Experience the Ultimate <span className="text-amber-500">New Zealand</span> Hunting Adventure
+            </motion.h1>
+            
+            {/* Description */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed"
+            >
               Personal guided hunts for Red Deer, Chamois, and Tahr in New Zealand's most breathtaking wilderness areas. 
               Experience the thrill of hunting with 30+ years of expertise in the Canterbury Highlands and Southern Alps.
-            </p>
+            </motion.p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+            {/* Action Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+            >
               <Link
                 to="/packages"
-                className="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-full transition-colors shadow-lg hover:shadow-xl text-lg inline-flex items-center"
+                className="px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl text-lg inline-flex items-center transform hover:scale-105"
               >
                 View Pricing <ChevronRight size={20} className="ml-2" />
               </Link>
               <Link
                 to="/contact"
-                className="px-8 py-3 bg-transparent hover:bg-white/10 text-white border-2 border-white rounded-full transition-colors text-lg"
+                className="px-8 py-4 bg-transparent hover:bg-white/10 text-white border-2 border-white rounded-full transition-all duration-300 text-lg font-semibold transform hover:scale-105"
               >
                 Contact Us
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
+        
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={heroInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1, delay: 1 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="flex flex-col items-center text-white/70">
+            <span className="text-sm mb-2">Scroll to explore</span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
+            >
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-1 h-3 bg-white/70 rounded-full mt-2"
+              />
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Stats/Features Section */}

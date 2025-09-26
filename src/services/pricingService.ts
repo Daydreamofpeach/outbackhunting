@@ -14,6 +14,7 @@ export interface HuntData {
   youNeedToBring: string[];
   additionalAnimalPrice: number;
   additionalAnimalDays: number;
+  priceOnApplication?: boolean;
   extras: Array<{
     id: string;
     name: string;
@@ -39,20 +40,21 @@ export interface PricingData {
         price: number;
         perDay?: boolean;
       }>;
-      hunts: {
-        [key: string]: {
-          id: string;
-          name: string;
-          basePrice: number;
-          baseDays: number;
-          location: string;
-          bestSeason: string;
-          difficulty: string;
-          description: string;
-          additionalAnimalPrice: number;
-          additionalAnimalDays: number;
+        hunts: {
+          [key: string]: {
+            id: string;
+            name: string;
+            basePrice: number;
+            baseDays: number;
+            location: string;
+            bestSeason: string;
+            difficulty: string;
+            description: string;
+            additionalAnimalPrice: number;
+            additionalAnimalDays: number;
+            priceOnApplication?: boolean;
+          };
         };
-      };
     };
   };
   dayRates: {
@@ -90,117 +92,51 @@ class PricingService {
     const data = await this.loadPricingData();
     const hunts: HuntData[] = [];
 
-    // Define image arrays for each animal type
+    // Define image arrays for each animal type using Gareth images
     const animalImages: Record<string, string[]> = {
-      'Red Deer': [
-        '/assets/img/gallimg/redstag/1.png',
-        '/assets/img/gallimg/redstag/2.png',
-        '/assets/img/gallimg/redstag/3.png',
-        '/assets/img/gallimg/redstag/4.png',
-        '/assets/img/gallimg/redstag/5.png',
-        '/assets/img/gallimg/redstag/6.png',
-        '/assets/img/gallimg/redstag/7.png',
-        '/assets/img/gallimg/redstag/8.png',
-        '/assets/img/gallimg/redstag/9.png',
-        '/assets/img/gallimg/redstag/10.png',
-        '/assets/img/gallimg/redstag/11.png',
-        '/assets/img/gallimg/redstag/12.png',
-        '/assets/img/gallimg/redstag/13.png',
-        '/assets/img/gallimg/redstag/14.png',
-        '/assets/img/gallimg/redstag/15.png',
-        '/assets/img/gallimg/redstag/16.png',
-        '/assets/img/gallimg/redstag/17.png',
-        '/assets/img/gallimg/redstag/18.png',
-        '/assets/img/gallimg/redstag/19.png',
-        '/assets/img/gallimg/redstag/20.png',
-        '/assets/img/gallimg/redstag/21.png'
+      'Red Stag': [
+        '/assets/img/gareth/Deer/DSC00169.JPG',
+        '/assets/img/gareth/Deer/DSC00199.JPG',
+        '/assets/img/gareth/Deer/DSC00233.JPG',
+        '/assets/img/gareth/Deer/DSC00340.JPG',
+        '/assets/img/gareth/Deer/DSC00356.JPG',
+        '/assets/img/gareth/Deer/DSC00388.JPG',
+        '/assets/img/gareth/Deer/IMG_1792.JPG',
+        '/assets/img/gareth/Deer/IMG_3217.JPEG',
+        '/assets/img/gareth/Deer/IMG_5179.JPG',
+        '/assets/img/gareth/Deer/IMG_5184.JPG',
+        '/assets/img/gareth/Deer/IMG_5565.JPEG',
+        '/assets/img/gareth/Deer/P4083013.JPG',
+        '/assets/img/gareth/Deer/12pts 4 persistence.JPG'
       ],
-      'Himalayan Tahr': [
-        '/assets/img/gallimg/Tahr/1.png',
-        '/assets/img/gallimg/Tahr/2.png',
-        '/assets/img/gallimg/Tahr/3.png',
-        '/assets/img/gallimg/Tahr/4.png',
-        '/assets/img/gallimg/Tahr/5.png',
-        '/assets/img/gallimg/Tahr/6.png',
-        '/assets/img/gallimg/Tahr/7.png',
-        '/assets/img/gallimg/Tahr/9.png',
-        '/assets/img/gallimg/Tahr/11.png',
-        '/assets/img/gallimg/Tahr/12.png',
-        '/assets/img/gallimg/Tahr/14.png',
-        '/assets/img/gallimg/Tahr/15.png',
-        '/assets/img/gallimg/Tahr/16.png',
-        '/assets/img/gallimg/Tahr/17.png',
-        '/assets/img/gallimg/Tahr/18.png',
-        '/assets/img/gallimg/Tahr/19.png',
-        '/assets/img/gallimg/Tahr/20.png',
-        '/assets/img/gallimg/Tahr/21.png',
-        '/assets/img/gallimg/Tahr/22.png',
-        '/assets/img/gallimg/Tahr/23.png',
-        '/assets/img/gallimg/Tahr/24.png',
-        '/assets/img/gallimg/Tahr/25.png',
-        '/assets/img/gallimg/Tahr/26.png',
-        '/assets/img/gallimg/Tahr/27.png',
-        '/assets/img/gallimg/Tahr/28.png',
-        '/assets/img/gallimg/Tahr/29.png',
-        '/assets/img/gallimg/Tahr/30.png',
-        '/assets/img/gallimg/Tahr/31.png',
-        '/assets/img/gallimg/Tahr/32.png',
-        '/assets/img/gallimg/Tahr/33.png',
-        '/assets/img/gallimg/Tahr/34.png',
-        '/assets/img/gallimg/Tahr/35.png',
-        '/assets/img/gallimg/Tahr/36.png',
-        '/assets/img/gallimg/Tahr/37.png',
-        '/assets/img/gallimg/Tahr/38.png',
-        '/assets/img/gallimg/Tahr/39.png',
-        '/assets/img/gallimg/Tahr/40.png',
-        '/assets/img/gallimg/Tahr/41.png',
-        '/assets/img/gallimg/Tahr/42.png',
-        '/assets/img/gallimg/Tahr/43.png',
-        '/assets/img/gallimg/Tahr/44.png',
-        '/assets/img/gallimg/Tahr/46.png',
-        '/assets/img/gallimg/Tahr/47.png',
-        '/assets/img/gallimg/Tahr/48.png',
-        '/assets/img/gallimg/Tahr/49.png',
-        '/assets/img/gallimg/Tahr/51.png'
+      'Bull Tahr': [
+        '/assets/img/gareth/Tahr/DSC00990.JPG',
+        '/assets/img/gareth/Tahr/DSC01355.JPG',
+        '/assets/img/gareth/Tahr/DSC01358.JPG',
+        '/assets/img/gareth/Tahr/DSC02282.JPG',
+        '/assets/img/gareth/Tahr/DSC02290 - Copy.JPG',
+        '/assets/img/gareth/Tahr/IMG_0368.JPG',
+        '/assets/img/gareth/Tahr/IMG_0396.JPG',
+        '/assets/img/gareth/Tahr/IMG_0486.JPEG',
+        '/assets/img/gareth/Tahr/IMG_0778.JPG',
+        '/assets/img/gareth/Tahr/IMG_0793.JPG',
+        '/assets/img/gareth/Tahr/IMG_0795.JPG',
+        '/assets/img/gareth/Tahr/IMG_0811.JPG',
+        '/assets/img/gareth/Tahr/IMG_1711.JPG',
+        '/assets/img/gareth/Tahr/IMG_1812.PNG',
+        '/assets/img/gareth/Tahr/IMG_2335.JPEG',
+        '/assets/img/gareth/Tahr/IMG_6741.JPG',
+        '/assets/img/gareth/Tahr/IMG_6812.JPEG',
+        '/assets/img/gareth/Tahr/IMG_6813.JPEG'
       ],
       'Chamois': [
-        '/assets/img/gallimg/Chamois/1.png',
-        '/assets/img/gallimg/Chamois/2.png',
-        '/assets/img/gallimg/Chamois/3.png',
-        '/assets/img/gallimg/Chamois/4.png',
-        '/assets/img/gallimg/Chamois/5.png',
-        '/assets/img/gallimg/Chamois/6.png',
-        '/assets/img/gallimg/Chamois/7.png',
-        '/assets/img/gallimg/Chamois/8.png',
-        '/assets/img/gallimg/Chamois/9.png',
-        '/assets/img/gallimg/Chamois/10.png',
-        '/assets/img/gallimg/Chamois/11.png',
-        '/assets/img/gallimg/Chamois/12.png',
-        '/assets/img/gallimg/Chamois/13.png',
-        '/assets/img/gallimg/Chamois/14.png',
-        '/assets/img/gallimg/Chamois/15.png',
-        '/assets/img/gallimg/Chamois/16.png',
-        '/assets/img/gallimg/Chamois/17.png',
-        '/assets/img/gallimg/Chamois/18.png',
-        '/assets/img/gallimg/Chamois/19.png',
-        '/assets/img/gallimg/Chamois/20.png',
-        '/assets/img/gallimg/Chamois/21.png',
-        '/assets/img/gallimg/Chamois/22.png',
-        '/assets/img/gallimg/Chamois/23.png',
-        '/assets/img/gallimg/Chamois/24.png',
-        '/assets/img/gallimg/Chamois/25.png',
-        '/assets/img/gallimg/Chamois/26.png',
-        '/assets/img/gallimg/Chamois/27.png',
-        '/assets/img/gallimg/Chamois/28.png',
-        '/assets/img/gallimg/Chamois/29.png',
-        '/assets/img/gallimg/Chamois/30.jpg',
-        '/assets/img/gallimg/Chamois/31.jpg',
-        '/assets/img/gallimg/Chamois/32.jpg',
-        '/assets/img/gallimg/Chamois/33.jpg',
-        '/assets/img/gallimg/Chamois/34.jpg',
-        '/assets/img/gallimg/Chamois/35.png',
-        '/assets/img/gallimg/Chamois/36.png',
-        '/assets/img/gallimg/Chamois/37.png'
+        '/assets/img/gareth/Chamois/DSC01085.JPG',
+        '/assets/img/gareth/Chamois/IMG_3131.JPEG',
+        '/assets/img/gareth/Chamois/IMG_3507.JPG',
+        '/assets/img/gareth/Chamois/IMG_3541.JPG',
+        '/assets/img/gareth/Chamois/IMG_6841.JPEG',
+        '/assets/img/gareth/Chamois/IMG_7726.JPEG',
+        '/assets/img/gareth/Chamois/IMG_8510.JPG'
       ]
     };
 
@@ -239,6 +175,10 @@ class PricingService {
   }
 
   calculateHuntPrice(hunt: HuntData, quantity: number): number {
+    if (hunt.priceOnApplication) {
+      return 0; // Return 0 for POA hunts
+    }
+    
     if (quantity <= 1) {
       return hunt.basePrice;
     }
@@ -345,11 +285,11 @@ class PricingService {
   }
 
   getDayRates() {
-    return this.pricingData?.dayRates || { solo: 290, additionalHunter: 200, nonHunter: 180 };
+    return this.pricingData?.dayRates || { solo: 380, additionalHunter: 600, nonHunter: 180 };
   }
 
   getBookingInfo() {
-    return this.pricingData?.booking || { deposit: 500, currency: 'AUD', depositNote: 'Non-refundable deposit required on booking' };
+    return this.pricingData?.booking || { deposit: 0.1, currency: 'NZD', depositNote: 'A 10% deposit is required to secure your booking. The balance is due 30 days before your hunt.' };
   }
 
   generateBillBreakdown(
@@ -367,11 +307,19 @@ class PricingService {
     // Hunt costs
     hunts.forEach(({ hunt, quantity }) => {
       const huntPrice = this.calculateHuntPrice(hunt, quantity);
-      breakdown.push({
-        item: `${hunt.name} (${quantity}x)`,
-        price: huntPrice,
-        description: `${quantity} ${hunt.species}${quantity > 1 ? 's' : ''}`
-      });
+      if (hunt.priceOnApplication) {
+        breakdown.push({
+          item: `${hunt.name} (${quantity}x)`,
+          price: 0,
+          description: `Price on Application - ${quantity} ${hunt.species}${quantity > 1 ? 's' : ''}`
+        });
+      } else {
+        breakdown.push({
+          item: `${hunt.name} (${quantity}x)`,
+          price: huntPrice,
+          description: `${quantity} ${hunt.species}${quantity > 1 ? 's' : ''}`
+        });
+      }
     });
 
     // Additional days

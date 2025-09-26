@@ -143,15 +143,6 @@ const HuntSelector: React.FC<HuntSelectorProps> = ({
                               </p>
                               <div className="flex flex-wrap items-center gap-4 mb-4">
                                 <span className={`px-4 py-2 rounded-xl text-lg font-bold ${
-                                  hunt.difficulty === 'Challenging' 
-                                    ? 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-200' :
-                                  hunt.difficulty === 'Moderate' 
-                                    ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-200' :
-                                    'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200'
-                                }`}>
-                                  {hunt.difficulty}
-                                </span>
-                                <span className={`px-4 py-2 rounded-xl text-lg font-bold ${
                                   darkMode 
                                     ? 'bg-gray-700 text-white' 
                                     : 'bg-gray-200 text-gray-900'
@@ -171,23 +162,23 @@ const HuntSelector: React.FC<HuntSelectorProps> = ({
                                   </div>
                                 </div>
                               </div>
-                              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                                 <span className="text-4xl font-bold text-amber-600">
                                   ${hunt.basePrice.toLocaleString()}
                                 </span>
-                                <div className="flex flex-col sm:flex-row gap-4">
+                                <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                                   <button
                                     onClick={() => onViewDetails(hunt)}
-                                    className="px-6 py-3 text-lg font-bold border-3 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-xl transition-all duration-200 hover:scale-105"
+                                    className="px-6 py-3 text-lg font-bold border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-xl transition-all duration-200 hover:scale-105 flex-1 sm:flex-none"
                                   >
                                     Details
                                   </button>
                                   <button
                                     onClick={() => onAddHunt(hunt)}
-                                    className="px-6 py-3 text-lg font-bold bg-amber-600 hover:bg-amber-700 text-white rounded-xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                                    className="px-6 py-3 text-lg font-bold bg-amber-600 hover:bg-amber-700 text-white rounded-xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 shadow-lg flex-1 sm:flex-none"
                                   >
                                     <Plus size={20} />
-                                    Add
+                                    Add to Package
                                   </button>
                                 </div>
                               </div>
@@ -228,15 +219,6 @@ const HuntSelector: React.FC<HuntSelectorProps> = ({
                     </p>
                     <div className="flex flex-wrap items-center gap-4 mb-4">
                       <span className={`px-4 py-2 rounded-xl text-lg font-bold ${
-                        hunt.difficulty === 'Challenging' 
-                          ? 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-200' :
-                        hunt.difficulty === 'Moderate' 
-                          ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-200' :
-                          'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200'
-                      }`}>
-                        {hunt.difficulty}
-                      </span>
-                      <span className={`px-4 py-2 rounded-xl text-lg font-bold ${
                         darkMode 
                           ? 'bg-gray-700 text-white' 
                           : 'bg-gray-200 text-gray-900'
@@ -256,23 +238,23 @@ const HuntSelector: React.FC<HuntSelectorProps> = ({
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                       <span className="text-4xl font-bold text-amber-600">
                         ${hunt.basePrice.toLocaleString()}
                       </span>
-                      <div className="flex flex-col sm:flex-row gap-4">
+                      <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                         <button
                           onClick={() => onViewDetails(hunt)}
-                          className="px-6 py-3 text-lg font-bold border-3 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-xl transition-all duration-200 hover:scale-105"
+                          className="px-6 py-3 text-lg font-bold border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-xl transition-all duration-200 hover:scale-105 flex-1 sm:flex-none"
                         >
                           Details
                         </button>
                         <button
                           onClick={() => onAddHunt(hunt)}
-                          className="px-6 py-3 text-lg font-bold bg-amber-600 hover:bg-amber-700 text-white rounded-xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                          className="px-6 py-3 text-lg font-bold bg-amber-600 hover:bg-amber-700 text-white rounded-xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 shadow-lg flex-1 sm:flex-none"
                         >
                           <Plus size={20} />
-                          Add
+                          Add to Package
                         </button>
                       </div>
                     </div>

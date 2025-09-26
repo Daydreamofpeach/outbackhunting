@@ -264,7 +264,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
 
   const [hunts, setHunts] = useState<HuntData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [dayRate, setDayRate] = useState(290);
+  const [dayRate, setDayRate] = useState(380);
   const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [selectedHuntForDetails, setSelectedHuntForDetails] = useState<HuntData | null>(null);
@@ -480,7 +480,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{selectedHuntForDetails.name}</h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{selectedHuntForDetails.species} • {selectedHuntForDetails.difficulty}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{selectedHuntForDetails.species}</p>
                   </div>
                   <button
                     onClick={() => setSelectedHuntForDetails(null)}
@@ -523,10 +523,6 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
                         <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
                           <p className="text-sm text-gray-600 dark:text-gray-400">Best Season</p>
                           <p className="font-semibold">{selectedHuntForDetails.bestSeason}</p>
-                        </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Difficulty</p>
-                          <p className="font-semibold">{selectedHuntForDetails.difficulty}</p>
                         </div>
                       </div>
                     </div>
@@ -684,7 +680,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
       {/* Header */}
       <section 
         ref={headerRef}
-        className="relative py-24 md:py-32"
+        className="relative py-24 md:py-32 pt-32 md:pt-40"
         style={{
           backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
           backgroundSize: 'cover',
@@ -782,12 +778,12 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
               <h3 className="text-xl font-bold mb-4">Day Rates (NZD)</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span>1 x 1 (Solo Hunter)</span>
-                    <span className="font-bold text-amber-600">$290.00</span>
+                    <span>1 Person</span>
+                    <span className="font-bold text-amber-600">$380.00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>2 x 1 (Two Hunters)</span>
-                    <span className="font-bold text-amber-600">$200.00 pp</span>
+                    <span>2 People</span>
+                    <span className="font-bold text-amber-600">$600.00</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Non Hunter</span>
@@ -801,7 +797,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
                     <span className="text-amber-500 font-bold">•</span>
-                  <span>A $500.00 NZD deposit is required on booking (non-refundable)</span>
+                  <span>A 10% deposit is required on booking (non-refundable)</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-amber-500 font-bold">•</span>

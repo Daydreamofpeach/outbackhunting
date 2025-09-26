@@ -20,7 +20,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
     threshold: 0.1
   });
 
-  const [servicesRef, servicesInView] = useInView({
+  const [servicesRef] = useInView({
     triggerOnce: true,
     threshold: 0.1
   });
@@ -86,7 +86,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
       {/* Header */}
       <section 
         ref={headerRef}
-        className="relative py-24 md:py-32"
+        className="relative py-24 md:py-32 pt-32 md:pt-40"
         style={{
           backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
           backgroundSize: 'cover',
@@ -115,7 +115,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
 
       {/* Gareth's Story */}
       <section 
-        id="story" 
+        id="team" 
         ref={storyRef} 
         className={`py-16 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}
       >

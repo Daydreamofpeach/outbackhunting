@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Compass, Mail, Phone, MapPin, Moon, Sun } from 'lucide-react';
+import { Mail, Phone, MapPin, Moon, Sun } from 'lucide-react';
 
 interface FooterProps {
   darkMode: boolean;
@@ -25,18 +25,19 @@ const Footer: React.FC<FooterProps> = ({ darkMode, toggleDarkMode }) => {
   return (
     <footer className={`${darkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'} pt-8 pb-4`}>
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8">
+        <div className="flex flex-col items-center text-center gap-8">
           {/* Logo and about */}
-          <div className="flex items-center gap-3 mb-2 md:mb-0">
+          <div className="flex flex-col items-center gap-3">
             <img 
-              src={darkMode ? '/assets/img/logo.png' : '/assets/img/colorlogo.png'} 
+              src="/assets/img/gareth/profile/GarethLogo-02.svg" 
               alt="Outback Hunting New Zealand Logo" 
-              className="h-12 w-auto"
+              className={`h-12 w-auto transition-all duration-300 ${darkMode ? 'invert' : ''}`}
             />
             <span className="text-lg font-bold tracking-tight">Outback Hunting New Zealand</span>
           </div>
+          
           {/* Quick Links */}
-          <ul className="flex flex-wrap gap-6 text-sm font-medium">
+          <ul className="flex flex-wrap justify-center gap-6 text-sm font-medium">
               <li>
                               <Link to="/packages" className="hover:text-amber-500 transition-colors">Pricing</Link>
               </li>
@@ -50,21 +51,32 @@ const Footer: React.FC<FooterProps> = ({ darkMode, toggleDarkMode }) => {
               <Link to="/contact" className="hover:text-amber-500 transition-colors">Contact</Link>
               </li>
             </ul>
+            
           {/* Contact Info */}
-          <ul className="flex flex-col gap-1 text-sm">
+          <ul className="flex flex-col items-center gap-1 text-sm">
             <li className="flex items-center gap-2">
               <Phone size={16} className="flex-shrink-0" />
-              <span>{contact.phone || 'Loading...'}</span>
-              </li>
+              <a 
+                href={`tel:${contact.phone}`}
+                className="hover:text-amber-500 transition-colors"
+              >
+                {contact.phone || 'Loading...'}
+              </a>
+            </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="flex-shrink-0" />
-              <span>{contact.email || 'Loading...'}</span>
-              </li>
+              <Link 
+                to="/contact"
+                className="hover:text-amber-500 transition-colors"
+              >
+                {contact.email || 'Loading...'}
+              </Link>
+            </li>
             <li className="flex items-center gap-2">
               <MapPin size={16} className="flex-shrink-0" />
               <span>{contact.address || 'Loading...'}</span>
-              </li>
-            </ul>
+            </li>
+          </ul>
         </div>
         <div className="mt-6 pt-4 border-t border-gray-800 text-center text-xs relative">
           <p>&copy; {new Date().getFullYear()} Outback Hunting New Zealand. All rights reserved.</p>

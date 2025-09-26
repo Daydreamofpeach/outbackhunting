@@ -1,0 +1,91 @@
+{
+  "parallax1": {
+    "id": "parallax1",
+    "text": {
+      "initial": {
+        "line1": "",
+        "line2":  "",
+        "x": 600,
+        "y1": 80,
+        "y2": 140,
+        "fill1": "#F4EEE2",
+        "fill2": "#CC142B"
+      },
+      "masked": {
+        "line1": "New ZEALAND",
+        "line2": "",
+        "line3": "",
+        "line4": "",
+        "line5": "",
+        "x": 600,
+        "y1": 500,
+        "y2": 560,
+        "y3": 360,
+        "y4": 640,
+        "y5": 690,
+        "fill": "#162a43"
+      }
+    },
+          "logo": {
+        "href": "/assets/img/gareth/profile/GarethLogo-02.svg",
+        "x": "25%",
+        "y": 100,
+        "width": "50%",
+        "height": "100%"
+      },
+    "images": {
+      "sky": "https://assets.codepen.io/721952/sky.jpg",
+      "mountBg": "https://assets.codepen.io/721952/mountBg.png",
+      "mountMg": "https://assets.codepen.io/721952/mountMg.png",
+      "cloud2": "https://assets.codepen.io/721952/cloud2.png",
+      "mountFg": "https://assets.codepen.io/721952/mountFg.png",
+      "cloud1": "https://assets.codepen.io/721952/cloud1.png",
+      "cloud3": "https://assets.codepen.io/721952/cloud3.png",
+      "cloud1Mask": "https://assets.codepen.io/721952/cloud1Mask.jpg"
+    }
+  },
+  "parallax2": {
+    "id": "parallax2",
+    "text": {
+      "initial": {
+        "line1": "",
+        "line2": "",
+        "x": 600,
+        "y1": 100,
+        "y2": 980,
+        "fill": "#F4EEE2"
+      },
+      "masked": {
+        "line1": "",
+        "line2": "",
+        "line3": "",
+        "line4": "",
+        "line5": "",
+        "x": 600,
+        "y1": 200,
+        "y2": 280,
+        "y3": 360,
+        "y4": 440,
+        "y5": 520,
+        "fill": "#162a43"
+      }
+    },
+    "logo": {
+      "href": "",
+      "x": 500,
+      "y": 50,
+      "width": 200,
+      "height": 200
+    },
+    "images": {
+      "sky": "/assets/img/gareth/profile/pl_0001_SKY.jpg",
+      "mountBg": "",
+      "mountMg": "",
+      "cloud2": "",
+      "mountFg": "/assets/img/gareth/profile/half.png",
+      "cloud1": "/assets/img/gareth/profile/TC.png",
+      "cloud3": "",
+      "cloud1Mask": ""
+    }
+  }
+}

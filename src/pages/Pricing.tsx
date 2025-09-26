@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { DollarSign, Plus, Minus, Calendar, MapPin, Users, ChevronRight } from 'lucide-react';
+import { Plus, Minus, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -23,7 +23,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
       {/* Header */}
       <section 
         ref={headerRef}
-        className="relative py-24 md:py-32"
+        className="relative py-24 md:py-32 pt-32 md:pt-40"
         style={{
           backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
           backgroundSize: 'cover',
@@ -44,7 +44,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
             </h1>
             
             <p className="text-xl text-gray-200 mb-6">
-              Transparent pricing for our hunting services. All prices in Australian Dollars.
+              Transparent pricing for our hunting services. All prices in New Zealand Dollars.
             </p>
           </motion.div>
         </div>
@@ -55,74 +55,154 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             
-            {/* Individual Animal Pricing */}
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-8 text-center">Individual Animal Pricing</h2>
+            {/* Wilderness Hunts */}
+            <div id="wilderness-packages" className="mb-16">
+              <h2 className="text-3xl font-bold mb-8 text-center">Wilderness Hunts</h2>
+              <p className="text-center text-gray-600 dark:text-gray-400 mb-8">Remote hunting experiences in New Zealand's wilderness areas</p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                {/* Red Deer */}
+                {/* Red Stag Wilderness */}
                 <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
-                  <h3 className="text-xl font-bold mb-4 text-amber-600">Red Deer</h3>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Red Stag Wilderness</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span>Wilderness Hunt</span>
-                      <span className="font-bold">$1,500</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span>Private Land (300 SCI)</span>
-                      <span className="font-bold">$2,700</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span>Private Land (360 SCI)</span>
-                      <span className="font-bold">$3,900</span>
+                      <span className="font-bold">$2,500</span>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 3-4 days
+                      Duration: 3 days
                     </div>
                   </div>
                 </div>
 
-                {/* Tahr */}
+                {/* Bull Tahr Wilderness */}
                 <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
-                  <h3 className="text-xl font-bold mb-4 text-amber-600">Himalayan Tahr</h3>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Bull Tahr Wilderness</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span>1 Tahr</span>
-                      <span className="font-bold">$1,900</span>
+                      <span className="font-bold">$3,500</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span>2 Tahr</span>
-                      <span className="font-bold">$2,900</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span>Spring Tahr (1)</span>
-                      <span className="font-bold">$2,700</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span>Spring Tahr (2)</span>
-                      <span className="font-bold">$3,800</span>
+                      <span className="font-bold">$5,500</span>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 3-5 days
+                      Duration: 4-5 days
                     </div>
                   </div>
                 </div>
 
-                {/* Chamois */}
+                {/* Spring Tahr */}
                 <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
-                  <h3 className="text-xl font-bold mb-4 text-amber-600">Chamois</h3>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Spring Tahr</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>1 Chamois</span>
-                      <span className="font-bold">$1,600</span>
+                      <span>1 Tahr</span>
+                      <span className="font-bold">$3,000</span>
+                    </div>
+                    <div className="text-sm text-gray-500 mt-2">
+                      Duration: 3 days
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Private Land Hunts */}
+            <div id="private-packages" className="mb-16">
+              <h2 className="text-3xl font-bold mb-8 text-center">Private Land Hunts</h2>
+              <p className="text-center text-gray-600 dark:text-gray-400 mb-8">Premium hunting experiences on private land with comfortable accommodation</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                {/* Red Stag Private */}
+                <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Red Stag Private Land</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span>Silver</span>
+                      <span className="font-bold">$4,400</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>2 Chamois</span>
-                      <span className="font-bold">$2,600</span>
+                      <span>Gold</span>
+                      <span className="font-bold">$5,900</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>400-450"</span>
+                      <span className="font-bold">$8,500</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>450"+</span>
+                      <span className="font-bold text-amber-500">POA</span>
+                    </div>
+                    <div className="text-sm text-gray-500 mt-2">
+                      Duration: 3-7 days
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bull Tahr Private */}
+                <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Bull Tahr Private Land</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span>12"</span>
+                      <span className="font-bold">$4,000</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>13"</span>
+                      <span className="font-bold">$5,000</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>14"</span>
+                      <span className="font-bold">$6,100</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>15"</span>
+                      <span className="font-bold">$8,500</span>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 4-5 days
+                    </div>
+                  </div>
+                </div>
+
+                {/* Chamois Private */}
+                <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Chamois Private Land</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span>Chamois Hunt</span>
+                      <span className="font-bold">$6,400</span>
+                    </div>
+                    <div className="text-sm text-gray-500 mt-2">
+                      Duration: 4 days
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Chamois Wilderness */}
+            <div id="chamois-wilderness" className="mb-16">
+              <h2 className="text-3xl font-bold mb-8 text-center">Chamois Wilderness</h2>
+              <p className="text-center text-gray-600 dark:text-gray-400 mb-8">Wilderness Chamois hunting - additional animals can be discussed</p>
+              
+              <div className="max-w-md mx-auto">
+                <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Chamois Wilderness Hunt</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span>1 Chamois</span>
+                      <span className="font-bold">$3,000</span>
+                    </div>
+                    <div className="text-sm text-gray-500 mt-2">
+                      Duration: 3 days
+                    </div>
+                    <div className="text-xs text-amber-600 mt-2">
+                      *Additional animals pricing to be discussed
                     </div>
                   </div>
                 </div>
@@ -130,20 +210,20 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
             </div>
 
             {/* Day Rates */}
-            <div className="mb-16">
+            <div id="day-rates" className="mb-16">
               <h2 className="text-3xl font-bold mb-8 text-center">Day Rates</h2>
               
               <div className={`p-8 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} border-2 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-amber-600 mb-2">$290</div>
-                    <div className="font-medium">1 x 1 (Solo Hunter)</div>
+                    <div className="text-2xl font-bold text-amber-600 mb-2">$380</div>
+                    <div className="font-medium">1 Person</div>
                     <div className="text-sm text-gray-500">Per day</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-amber-600 mb-2">$200</div>
-                    <div className="font-medium">2 x 1 (Two Hunters)</div>
-                    <div className="text-sm text-gray-500">Per person per day</div>
+                    <div className="text-2xl font-bold text-amber-600 mb-2">$600</div>
+                    <div className="font-medium">2 People</div>
+                    <div className="text-sm text-gray-500">Per day</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-amber-600 mb-2">$180</div>
@@ -155,7 +235,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
             </div>
 
             {/* What's Included */}
-            <div className="mb-16">
+            <div id="included" className="mb-16">
               <h2 className="text-3xl font-bold mb-8 text-center">What's Included</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -244,7 +324,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span>Booking deposit</span>
-                        <span className="font-bold">$500 AUD</span>
+                        <span className="font-bold">10% of hunt cost</span>
                       </div>
                       <div className="text-sm text-gray-500">Non-refundable deposit required to secure booking</div>
                     </div>
@@ -286,7 +366,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <ul className="space-y-2">
                       <li className="flex items-start gap-2">
                         <span className="text-amber-500 font-bold">•</span>
-                        <span>$500 AUD deposit required on booking</span>
+                        <span>10% deposit required on booking</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-amber-500 font-bold">•</span>
@@ -294,7 +374,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-amber-500 font-bold">•</span>
-                        <span>All prices in Australian Dollars</span>
+                        <span>All prices in New Zealand Dollars</span>
                       </li>
                     </ul>
                   </div>

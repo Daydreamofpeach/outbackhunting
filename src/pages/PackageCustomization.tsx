@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Settings, X, Info, Star } from 'lucide-react';
+import { X, Info, Star } from 'lucide-react';
 import { pricingService, HuntData } from '../services/pricingService';
 import PackageBuilder from '../components/PackageBuilder';
 import HuntSelector from '../components/HuntSelector';
+import SEO from '../components/SEO';
 
 interface PackageCustomizationProps {
   darkMode: boolean;
@@ -20,229 +21,6 @@ interface CustomPackage {
   totalDays: number;
 }
 
-// Mobile Package Builder Component
-const MobilePackageBuilder: React.FC<{
-  customPackage: CustomPackage;
-  hunts: HuntData[];
-  darkMode: boolean;
-  dayRate: number;
-  onAddHunt: (hunt: HuntData) => void;
-  onRemoveHunt: (huntId: string) => void;
-  onUpdateHuntQuantity: (huntId: string, quantity: number) => void;
-  onUpdateAdditionalDays: (days: number) => void;
-  onUpdateHunters: (count: number) => void;
-  onUpdateNonHunters: (count: number) => void;
-  onResetPackage: () => void;
-  onGeneratePackageDetails: () => string;
-  billBreakdown: Array<{
-    item: string;
-    price: number;
-    description: string;
-  }>;
-}> = ({ customPackage, hunts, darkMode, dayRate, onAddHunt, onRemoveHunt, onUpdateHuntQuantity, onUpdateAdditionalDays, onUpdateHunters, onUpdateNonHunters, onResetPackage, onGeneratePackageDetails, billBreakdown }) => {
-  const [activeTab, setActiveTab] = useState<'hunts' | 'summary'>('hunts');
-
-  return (
-    <div className="space-y-6">
-      {/* Tab Navigation */}
-      <div className="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
-        <button
-          onClick={() => setActiveTab('hunts')}
-          className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-            activeTab === 'hunts'
-              ? 'bg-white dark:bg-gray-700 text-amber-600 shadow-sm'
-              : 'text-gray-600 dark:text-gray-400'
-          }`}
-        >
-          Available Hunts
-        </button>
-        <button
-          onClick={() => setActiveTab('summary')}
-          className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-            activeTab === 'summary'
-              ? 'bg-white dark:bg-gray-700 text-amber-600 shadow-sm'
-              : 'text-gray-600 dark:text-gray-400'
-          }`}
-        >
-          Package ({customPackage.hunts.length})
-        </button>
-      </div>
-
-      {activeTab === 'hunts' ? (
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <Info size={16} className="text-amber-500" />
-            <span className="text-sm text-gray-600 dark:text-gray-400">
-              Tap to add hunts to your package
-            </span>
-          </div>
-          
-          <div className="space-y-3">
-            {hunts.map((hunt) => (
-              <motion.div
-                key={hunt.id}
-                whileTap={{ scale: 0.98 }}
-                className={`p-4 rounded-lg border-2 ${
-                  darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
-                } hover:border-amber-500 transition-colors`}
-                onClick={() => onAddHunt(hunt)}
-              >
-                <div className="flex gap-3">
-                  <img 
-                    src={hunt.image} 
-                    alt={hunt.name}
-                    className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-sm mb-1">{hunt.name}</h3>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 line-clamp-2">
-                      {hunt.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold text-amber-600">
-                        ${hunt.basePrice.toLocaleString()}
-                      </span>
-                      <span className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded">
-                        {hunt.baseDays} days
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {customPackage.hunts.length === 0 ? (
-            <div className="text-center py-8">
-              <Settings size={48} className="mx-auto text-gray-400 mb-4" />
-              <p className="text-gray-600 dark:text-gray-400">
-                No hunts selected yet. Tap "Available Hunts" to get started!
-              </p>
-            </div>
-          ) : (
-            <>
-              {/* Selected Hunts */}
-              <div className="space-y-3">
-                {customPackage.hunts.map(({ hunt, quantity }) => (
-                  <div key={hunt.id} className={`p-3 rounded-lg ${
-                    darkMode ? 'bg-gray-800' : 'bg-gray-50'
-                  }`}>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium text-sm">{hunt.name}</span>
-                      <button
-                        onClick={() => onRemoveHunt(hunt.id)}
-                        className="text-red-500 hover:text-red-700"
-                      >
-                        <X size={16} />
-                      </button>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => onUpdateHuntQuantity(hunt.id, quantity - 1)}
-                          className="p-1 rounded bg-gray-200 hover:bg-gray-300"
-                        >
-                          <X size={12} />
-                        </button>
-                        <span className="text-sm font-medium">{quantity}</span>
-                        <button
-                          onClick={() => onUpdateHuntQuantity(hunt.id, quantity + 1)}
-                          className="p-1 rounded bg-gray-200 hover:bg-gray-300"
-                        >
-                          <X size={12} />
-                        </button>
-                      </div>
-                      <span className="text-sm font-bold text-amber-600">
-                        ${pricingService.calculateHuntPrice(hunt, quantity).toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Additional Days */}
-              <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
-                <h3 className="font-medium mb-3">Additional Days:</h3>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => onUpdateAdditionalDays(customPackage.additionalDays - 1)}
-                    className="p-2 rounded bg-gray-200 hover:bg-gray-300"
-                  >
-                    <X size={16} />
-                  </button>
-                  <span className="flex-1 text-center font-medium">{customPackage.additionalDays}</span>
-                  <button
-                    onClick={() => onUpdateAdditionalDays(customPackage.additionalDays + 1)}
-                    className="p-2 rounded bg-gray-200 hover:bg-gray-300"
-                  >
-                    <X size={16} />
-                  </button>
-                </div>
-                <p className="text-sm text-gray-500 mt-1">
-                  ${dayRate}/day (1x1 rate)
-                </p>
-              </div>
-
-              {/* Package Summary */}
-              <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
-                <h3 className="font-medium mb-3">Package Summary:</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>Hunt Costs:</span>
-                    <span>${customPackage.hunts.reduce((sum, h) => sum + pricingService.calculateHuntPrice(h.hunt, h.quantity), 0).toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Additional Days:</span>
-                    <span>${(customPackage.additionalDays * dayRate).toLocaleString()}</span>
-                  </div>
-                  <hr className="my-2" />
-                  <div className="flex justify-between font-bold">
-                    <span>Total Price:</span>
-                    <span className="text-amber-600">${customPackage.totalPrice.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Total Days:</span>
-                    <span>{customPackage.totalDays}</span>
-                  </div>
-                </div>
-                
-                {customPackage.hunts.length > 1 && (
-                  <div className={`mt-3 p-3 rounded text-xs ${darkMode ? 'bg-gray-600' : 'bg-gray-100'}`}>
-                    <p className="font-medium mb-1">💡 Smart Day Calculation:</p>
-                    <p>Each additional animal requires only 1 extra day, not the full hunt duration.</p>
-                  </div>
-                )}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="space-y-3">
-                <button
-                  onClick={onResetPackage}
-                  className={`w-full py-3 border-2 rounded-lg font-medium transition-colors ${
-                    darkMode 
-                      ? 'border-gray-600 text-gray-300 hover:border-red-500 hover:text-red-400' 
-                      : 'border-gray-300 text-gray-700 hover:border-red-500 hover:text-red-600'
-                  }`}
-                >
-                  Reset Package
-                </button>
-                
-                <a
-                  href={`/contact?customPackage=true&packageDetails=${onGeneratePackageDetails()}`}
-                   className="block w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg text-center transition-colors"
-                 >
-                   Book Custom Package
-                </a>
-              </div>
-            </>
-          )}
-        </div>
-      )}
-    </div>
-  );
-};
 
 const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode }) => {
   const [headerRef, headerInView] = useInView({
@@ -265,7 +43,6 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
   const [hunts, setHunts] = useState<HuntData[]>([]);
   const [loading, setLoading] = useState(true);
   const [dayRate, setDayRate] = useState(380);
-  const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [selectedHuntForDetails, setSelectedHuntForDetails] = useState<HuntData | null>(null);
 
@@ -442,21 +219,42 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
     );
   }
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Custom New Zealand Hunting Package Builder",
+    "description": "Build your perfect New Zealand hunting package with our interactive package builder. Customize Red Deer, Tahr, and Chamois hunting adventures.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Outback Hunting New Zealand",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NZ",
+        "addressRegion": "Canterbury"
+      }
+    },
+    "areaServed": "Canterbury, New Zealand",
+    "serviceType": "Custom Hunting Package Builder"
+  };
+
   return (
-    <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
-      {/* Mobile Floating Widget */}
-      <div className="md:hidden fixed bottom-6 right-6 z-50">
-        <motion.button
-          onClick={() => setIsMobileModalOpen(true)}
-          className={`p-4 rounded-full shadow-lg ${
-            darkMode ? 'bg-amber-600 text-white' : 'bg-amber-600 text-white'
-          } hover:bg-amber-700 transition-colors`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Settings size={24} />
-        </motion.button>
-      </div>
+    <>
+      <SEO 
+        title="Customize Your New Zealand Hunting Package | Build Custom Hunt | Outback Hunting NZ"
+        description="Build your perfect New Zealand hunting package with our interactive package builder. Customize Red Deer, Tahr, and Chamois hunting adventures. Select hunt durations, add extra days, and create your ideal Canterbury wilderness hunting experience. Get instant pricing and book today."
+        keywords="customize hunting package NZ, build hunting package New Zealand, custom hunting trips NZ, personalized hunting packages, New Zealand hunting package builder, custom Red Deer hunting, custom Tahr hunting, custom Chamois hunting, hunting package customization, tailored hunting adventures NZ, bespoke hunting packages, hunting trip planner New Zealand"
+        image="/assets/img/gareth/Scenery and camps/IMG_6356.JPG"
+        url="/customize"
+        type="service"
+        canonical="https://outbackhuntingnz.com/customize"
+        huntingSpecific={{
+          species: ['Red Deer', 'Tahr', 'Chamois'],
+          location: 'Canterbury',
+          huntType: 'Custom Hunting Packages'
+        }}
+        structuredData={structuredData}
+      />
+      <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
 
       {/* Hunt Details Modal */}
       <AnimatePresence>
@@ -494,35 +292,29 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
               {/* Content */}
               <div className="overflow-y-auto max-h-[calc(85vh-80px)]">
                 <div className="p-6 space-y-8">
-                  {/* Hunt Image and Basic Info */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="relative h-64 lg:h-80 rounded-xl overflow-hidden">
-                      <img 
-                        src={selectedHuntForDetails.image} 
-                        alt={selectedHuntForDetails.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-4 right-4 bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                        ${selectedHuntForDetails.basePrice.toLocaleString()}
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">Hunt Details</h3>
-                        <p className="text-gray-600 dark:text-gray-400">{selectedHuntForDetails.description}</p>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Duration</p>
-                          <p className="font-semibold">{selectedHuntForDetails.baseDays} days</p>
+                  {/* Hunt Details */}
+                  <div className="space-y-6">
+                    <div className="bg-amber-50 dark:bg-amber-900/20 p-6 rounded-xl">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Hunt Details</h3>
+                        <div className="bg-amber-600 text-white px-4 py-2 rounded-full text-lg font-bold">
+                          ${selectedHuntForDetails.basePrice.toLocaleString()}
                         </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Location</p>
-                          <p className="font-semibold">{selectedHuntForDetails.location}</p>
+                      </div>
+                      <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{selectedHuntForDetails.description}</p>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-amber-200 dark:border-amber-700">
+                          <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">Duration</p>
+                          <p className="font-bold text-lg">{selectedHuntForDetails.baseDays} days</p>
                         </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Best Season</p>
-                          <p className="font-semibold">{selectedHuntForDetails.bestSeason}</p>
+                        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-amber-200 dark:border-amber-700">
+                          <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">Location</p>
+                          <p className="font-bold text-lg">{selectedHuntForDetails.location}</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-amber-200 dark:border-amber-700">
+                          <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">Best Season</p>
+                          <p className="font-bold text-lg">{selectedHuntForDetails.bestSeason}</p>
                         </div>
                       </div>
                     </div>
@@ -615,74 +407,13 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
         )}
       </AnimatePresence>
 
-      {/* Mobile Modal */}
-      <AnimatePresence>
-        {isMobileModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 md:hidden"
-          >
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsMobileModalOpen(false)} />
-            <motion.div
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-900 rounded-t-3xl max-h-[85vh] flex flex-col"
-            >
-              {/* Handle Bar */}
-              <div className="flex justify-center pt-3 pb-2 flex-shrink-0">
-                <div className="w-12 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
-              </div>
-              
-              {/* Header */}
-              <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Customize Your Package</h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Build your perfect hunting experience</p>
-                  </div>
-                  <button
-                    onClick={() => setIsMobileModalOpen(false)}
-                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
-              </div>
-              
-              {/* Scrollable Content */}
-              <div className="flex-1 overflow-y-auto px-6 pb-6">
-                {/* Mobile Package Builder */}
-                <MobilePackageBuilder 
-                  customPackage={customPackage}
-                  hunts={hunts}
-                  darkMode={darkMode}
-                  dayRate={dayRate}
-                  onAddHunt={addHunt}
-                  onRemoveHunt={removeHunt}
-                  onUpdateHuntQuantity={updateHuntQuantity}
-                  onUpdateAdditionalDays={updateAdditionalDays}
-                  onUpdateHunters={updateHunters}
-                  onUpdateNonHunters={updateNonHunters}
-                  onResetPackage={resetPackage}
-                  onGeneratePackageDetails={generatePackageDetails}
-                  billBreakdown={billBreakdown}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Header */}
       <section 
         ref={headerRef}
         className="relative py-24 md:py-32 pt-32 md:pt-40"
         style={{
-          backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
+          backgroundImage: 'url(/assets/img/gareth/Scenery and camps/IMG_6356.JPG)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -697,20 +428,20 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
             className="max-w-4xl"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Customize Your Hunting Package
+              Customize Your New Zealand Hunting Package
             </h1>
             
             <p className="text-xl text-gray-200 mb-6">
-              Build your perfect hunting experience by selecting base hunts, adding extra days, and creating your ideal New Zealand adventure.
+              Build your perfect Red Deer, Tahr, or Chamois hunting experience with our interactive package builder. Select hunts, customize durations, and create your ideal Canterbury wilderness adventure.
             </p>
           </motion.div>
         </div>
       </section>
 
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="space-y-12">
           {/* Available Hunts */}
-          <div className="lg:col-span-2">
+          <div>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">Available Hunts</h2>
               <button
@@ -753,7 +484,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
           </div>
 
           {/* Package Builder */}
-          <div className="lg:col-span-1">
+          <div className="max-w-4xl mx-auto">
             <PackageBuilder
               darkMode={darkMode}
               customPackage={customPackage}
@@ -813,6 +544,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
           </div>
         </div>
       </div>
+    </>
   );
 };
 

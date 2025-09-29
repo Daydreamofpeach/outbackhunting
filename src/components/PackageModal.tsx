@@ -24,33 +24,24 @@ const PackageModal: React.FC<PackageModalProps> = ({ isOpen, onClose, package: p
         <Dialog.Panel className="w-full max-w-4xl max-h-[85vh] overflow-y-auto">
           <div className={`relative rounded-lg overflow-hidden ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
             {/* Header */}
-            <div className="relative h-64 md:h-80">
-              <img
-                src={pkg.image}
-                alt={`${pkg.title} - New Zealand hunting package`}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-              
+            <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-8 relative">
               {/* Close button */}
               <button
                 onClick={onClose}
-                className={`absolute top-4 right-4 p-2 rounded-full transition-colors ${
-                  darkMode ? 'bg-gray-800/80 hover:bg-gray-700' : 'bg-white/80 hover:bg-white'
-                }`}
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
               >
-                <X size={20} className={darkMode ? 'text-white' : 'text-gray-900'} />
+                <X size={20} className="text-white" />
               </button>
               
               {/* Price badge */}
-              <div className="absolute top-4 left-4 bg-amber-600 text-white px-4 py-2 rounded-full text-lg font-bold">
+              <div className="absolute top-4 left-4 bg-white text-amber-700 px-4 py-2 rounded-full text-lg font-bold">
                 ${pkg.price.toLocaleString('en-US')}
               </div>
               
               {/* Title */}
-              <div className="absolute bottom-4 left-4 right-4">
-                <h2 className={`text-2xl md:text-3xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-white'}`} style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>{pkg.title}</h2>
-                <p className="text-lg text-white" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>{pkg.description}</p>
+              <div className="pt-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">{pkg.title}</h2>
+                <p className="text-lg text-white/90">{pkg.description}</p>
               </div>
             </div>
             

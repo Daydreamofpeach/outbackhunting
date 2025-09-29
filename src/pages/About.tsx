@@ -4,6 +4,7 @@ import { ChevronRight, Users, Award, MapPin, ShieldCheck, Phone, Mail, Calendar 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 interface AboutProps {
   darkMode: boolean;
@@ -26,7 +27,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
   });
 
   useEffect(() => {
-    document.title = 'About Us | Outback Hunting New Zealand';
+    document.title = 'About Me | Outback Hunting New Zealand';
   }, []);
 
   const structuredData = {
@@ -58,37 +59,28 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
 
   return (
     <>
-      <Helmet>
-        <title>About Us | Outback Hunting New Zealand - Expert New Zealand Hunting Guides</title>
-        <meta name="description" content="Learn about Gareth Hall and Outback Hunting New Zealand's story, our guided hunting experiences, and our commitment to providing world-class hunting experiences in New Zealand." />
-        <meta name="keywords" content="New Zealand hunting guides, Gareth Hall, hunting outfitter, hunting experience, Outback Hunting New Zealand, hunting expertise, New Zealand hunting history" />
-        <link rel="canonical" href="https://outbackhuntingnz.com/about" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="About Us | Outback Hunting New Zealand - Expert New Zealand Hunting Guides" />
-        <meta property="og:description" content="Learn about Gareth Hall and Outback Hunting New Zealand's story, our guided hunting experiences, and our commitment to providing world-class hunting experiences in New Zealand." />
-        <meta property="og:image" content="/assets/img/scenery.jpg" />
-        <meta property="og:url" content="https://outbackhuntingnz.com/about" />
-        <meta property="og:type" content="website" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Us | Outback Hunting New Zealand - Expert New Zealand Hunting Guides" />
-        <meta name="twitter:description" content="Learn about Gareth Hall and Outback Hunting New Zealand's story, our guided hunting experiences, and our commitment to providing world-class hunting experiences in New Zealand." />
-        <meta name="twitter:image" content="/assets/img/scenery.jpg" />
-        
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
+      <SEO 
+        title="About Gareth Hall | Professional New Zealand Hunting Guide | 30+ Years Experience"
+        description="Meet Gareth Hall, professional New Zealand hunting guide with 30+ years experience in Red Deer, Tahr, and Chamois hunting. Based in Canterbury, specializing in wilderness trophy hunting adventures. Learn about our hunting services, expertise, and commitment to world-class hunting experiences."
+        keywords="Gareth Hall hunting guide, New Zealand hunting guide, professional hunting guide NZ, Red Deer hunting guide, Tahr hunting guide, Chamois hunting guide, Canterbury hunting guide, South Island hunting guide, experienced hunting guide, trophy hunting guide NZ, wilderness hunting expert, hunting outfitter New Zealand, hunting guide 30 years experience, New Zealand hunting services, hunting guide Canterbury, alpine hunting guide"
+        image="/assets/img/gareth/profile/Pic2.JPG"
+        url="/about"
+        type="article"
+        canonical="https://outbackhuntingnz.com/about"
+        huntingSpecific={{
+          species: ['Red Deer', 'Tahr', 'Chamois'],
+          location: 'Canterbury',
+          huntType: 'Professional Hunting Guide Services'
+        }}
+        structuredData={structuredData}
+      />
     <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
       {/* Header */}
       <section 
         ref={headerRef}
         className="relative py-24 md:py-32 pt-32 md:pt-40"
         style={{
-          backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
+          backgroundImage: 'url(/assets/img/gareth/Scenery and camps/Arawhata tops 1.JPG)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -103,11 +95,11 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              About Outback Hunting New Zealand
+              About Gareth Hall - Professional New Zealand Hunting Guide
             </h1>
             
             <p className="text-xl text-gray-200 mb-6">
-              Meet Gareth Hall and discover our commitment to providing world-class hunting experiences in New Zealand.
+              Meet Gareth Hall, your expert New Zealand hunting guide with 30+ years experience in Red Deer, Tahr, and Chamois hunting across Canterbury's pristine wilderness areas.
             </p>
           </motion.div>
         </div>
@@ -175,26 +167,26 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             >
               <div className="grid grid-cols-2 gap-4">
                 <img 
-                  src="/assets/img/gallimg/scenery/1.png" 
+                  src="/assets/img/gareth/profile/pic1.JPG" 
+                  alt="Gareth - Professional hunting guide in New Zealand wilderness" 
+                  className="rounded-lg h-64 object-cover w-full shadow-md"
+                  loading="lazy"
+                />
+                <img 
+                  src="/assets/img/gareth/profile/Pic2.JPG" 
+                  alt="Gareth - Expert hunting guide with 30+ years experience" 
+                  className="rounded-lg h-64 object-cover w-full shadow-md"
+                  loading="lazy"
+                />
+                <img 
+                  src="/assets/img/gareth/Scenery and camps/IMG_0266.JPEG" 
                   alt="Hunting in New Zealand wilderness - Professional hunting experience" 
                   className="rounded-lg h-64 object-cover w-full shadow-md"
                   loading="lazy"
                 />
                 <img 
-                  src="/assets/img/gallimg/redstag/1.png" 
-                  alt="Trophy Red Stag hunting in New Zealand - Premium hunting experience" 
-                  className="rounded-lg h-64 object-cover w-full shadow-md"
-                  loading="lazy"
-                />
-                <img 
-                  src="/assets/img/gallimg/scenery/2.png" 
+                  src="/assets/img/gareth/Scenery and camps/IMG_0310.JPG" 
                   alt="New Zealand hunting landscape - Breathtaking wilderness scenery" 
-                  className="rounded-lg h-64 object-cover w-full shadow-md"
-                  loading="lazy"
-                />
-                <img 
-                  src="/assets/img/gallimg/Tahr/1.png" 
-                  alt="Mountain hunting in New Zealand - Alpine hunting adventure" 
                   className="rounded-lg h-64 object-cover w-full shadow-md"
                   loading="lazy"
                 />
@@ -516,8 +508,8 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                   <Mail size={24} className="text-amber-600" />
                 </div>
                 <h3 className="font-bold mb-2">Email</h3>
-                <a href="mailto:info@outbackhuntingnewzealand.com" className="text-amber-600 hover:text-amber-700 break-all">
-                  info@outbackhuntingnewzealand.com
+                <a href="mailto:garethh85@hotmail.com" className="text-amber-600 hover:text-amber-700 break-all">
+                  garethh85@hotmail.com
                 </a>
               </div>
               

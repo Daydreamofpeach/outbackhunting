@@ -9,6 +9,8 @@ import {
   Calendar,
   MapPin
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 interface AnimalsProps {
   darkMode: boolean;
@@ -146,7 +148,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
   
   const imageRef = useRef<HTMLImageElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-  const heroIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const heroIntervalRef = useRef<number | null>(null);
   const preloadedImages = useRef<Map<string, HTMLImageElement>>(new Map());
 
   // Hero slider images - selected from the gallery images (prioritized by size/quality)
@@ -177,7 +179,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
   ];
 
   useEffect(() => {
-    document.title = 'Huntable Species | Outback Hunting New Zealand';
+    document.title = 'New Zealand Hunting Species | Red Deer, Tahr & Chamois Gallery | Outback Hunting NZ';
   }, []);
 
   // Image preloading function
@@ -352,8 +354,57 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
     };
   }, [isModalOpen, handleKeyDown]);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "New Zealand Hunting Species Gallery",
+    "description": "Professional hunting gallery featuring Red Deer, Tahr, and Chamois hunting photos from New Zealand wilderness areas",
+    "contentLocation": {
+      "@type": "Place",
+      "name": "Canterbury, New Zealand"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Gareth Hall",
+      "jobTitle": "Professional Hunting Guide"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Red Deer Hunting",
+        "description": "Trophy Red Deer stag hunting in New Zealand"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Tahr Hunting",
+        "description": "Alpine Tahr hunting in Southern Alps"
+      },
+      {
+        "@type": "Thing",
+        "name": "Chamois Hunting", 
+        "description": "Mountain Chamois hunting in alpine terrain"
+      }
+    ]
+  };
+
   return (
-    <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
+    <>
+      <SEO 
+        title="New Zealand Hunting Species | Red Deer, Tahr & Chamois Gallery"
+        description="Explore our hunting species gallery featuring Red Deer stag hunting, alpine Tahr hunting, and Chamois hunting photos from New Zealand's Canterbury wilderness. Professional hunting guide with 30+ years experience. View trophy hunting galleries and hunting season information."
+        keywords="New Zealand hunting species, Red Deer hunting gallery, Tahr hunting photos, Chamois hunting images, hunting species NZ, trophy hunting gallery, Red Deer stag photos, alpine hunting images, mountain hunting gallery, Canterbury hunting species, South Island hunting animals, New Zealand hunting photos, trophy hunting images, deer hunting gallery NZ, tahr hunting pictures, chamois hunting photos, hunting seasons New Zealand, wildlife hunting gallery"
+        image="/assets/img/gareth/Deer/DSC00169.JPG"
+        url="/animals"
+        type="article"
+        canonical="https://outbackhuntingnz.com/animals"
+        huntingSpecific={{
+          species: ['Red Deer', 'Tahr', 'Chamois'],
+          location: 'Canterbury',
+          huntType: 'Trophy Hunting Gallery'
+        }}
+        structuredData={structuredData}
+      />
+      <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
       {/* Hero Image Slider Section */}
       <section className="relative h-[75vh] overflow-hidden bg-gray-800 pt-20">
         {/* Fallback background */}
@@ -439,12 +490,12 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
               <h1 className={`text-5xl md:text-7xl font-extrabold mb-4 text-center leading-tight ${
                 darkMode ? 'text-white drop-shadow-lg' : 'text-gray-900 drop-shadow-md'
               }`}>
-              Huntable Species
-            </h1>
+                New Zealand Hunting Species
+              </h1>
               <h2 className={`text-2xl md:text-3xl font-semibold mb-4 text-center tracking-wide ${
                 darkMode ? 'text-gray-200 drop-shadow-lg' : 'text-gray-800 drop-shadow-md'
               }`}>
-                Authentic New Zealand Hunting Adventures
+                Red Deer, Tahr & Chamois Hunting Gallery
               </h2>
               <hr className="w-24 border-t-4 border-amber-500 my-6 mx-auto" />
               <p className={`font-light text-lg md:text-xl leading-relaxed text-center mb-8 ${
@@ -792,7 +843,8 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -86,35 +86,29 @@ const ParallaxPackageSection: React.FC<ParallaxPackageSectionProps> = ({ darkMod
               {/* Content */}
               <div className="overflow-y-auto max-h-[calc(85vh-80px)]">
                 <div className="p-6 space-y-8">
-                  {/* Hunt Image and Basic Info */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="relative h-64 lg:h-80 rounded-xl overflow-hidden">
-                      <img 
-                        src={selectedHuntForDetails.image} 
-                        alt={selectedHuntForDetails.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-4 right-4 bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                        ${selectedHuntForDetails.basePrice.toLocaleString()}
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">Hunt Details</h3>
-                        <p className="text-gray-600 dark:text-gray-400">{selectedHuntForDetails.description}</p>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Duration</p>
-                          <p className="font-semibold">{selectedHuntForDetails.baseDays} days</p>
+                  {/* Hunt Details */}
+                  <div className="space-y-6">
+                    <div className="bg-amber-50 dark:bg-amber-900/20 p-6 rounded-xl">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Hunt Details</h3>
+                        <div className="bg-amber-600 text-white px-4 py-2 rounded-full text-lg font-bold">
+                          ${selectedHuntForDetails.basePrice.toLocaleString()}
                         </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Location</p>
-                          <p className="font-semibold">{selectedHuntForDetails.location}</p>
+                      </div>
+                      <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{selectedHuntForDetails.description}</p>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-amber-200 dark:border-amber-700">
+                          <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">Duration</p>
+                          <p className="font-bold text-lg">{selectedHuntForDetails.baseDays} days</p>
                         </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Best Season</p>
-                          <p className="font-semibold">{selectedHuntForDetails.bestSeason}</p>
+                        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-amber-200 dark:border-amber-700">
+                          <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">Location</p>
+                          <p className="font-bold text-lg">{selectedHuntForDetails.location}</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-amber-200 dark:border-amber-700">
+                          <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">Best Season</p>
+                          <p className="font-bold text-lg">{selectedHuntForDetails.bestSeason}</p>
                         </div>
                       </div>
                     </div>
@@ -232,14 +226,12 @@ const ParallaxPackageSection: React.FC<ParallaxPackageSectionProps> = ({ darkMod
                       darkMode ? 'bg-gray-800' : 'bg-white'
                     } border-2 border-transparent hover:border-amber-500 transition-all hover:-translate-y-1`}
                   >
-                    <div className="relative h-48">
-                      <img 
-                        src={hunt.image} 
-                        alt={hunt.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded text-sm font-bold">
-                        ${hunt.basePrice.toLocaleString()}
+                    <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-6 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <h3 className="text-xl font-bold mb-2">{hunt.species}</h3>
+                        <div className="text-2xl font-bold">
+                          ${hunt.basePrice.toLocaleString()}
+                        </div>
                       </div>
                     </div>
                     

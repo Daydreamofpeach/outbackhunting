@@ -130,12 +130,7 @@ const HuntSelector: React.FC<HuntSelectorProps> = ({
                               : 'bg-white border-gray-200 hover:border-amber-500'
                           }`}
                         >
-                          <div className="flex flex-col lg:flex-row gap-6">
-                            <img 
-                              src={hunt.image} 
-                              alt={hunt.name}
-                              className="w-full lg:w-48 h-48 rounded-2xl object-cover flex-shrink-0 shadow-lg"
-                            />
+                          <div className="w-full">
                             <div className="flex-1 min-w-0">
                               <h4 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">{hunt.name}</h4>
                               <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
@@ -206,12 +201,7 @@ const HuntSelector: React.FC<HuntSelectorProps> = ({
                     : 'bg-white border-gray-200 hover:border-amber-500'
                 }`}
               >
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <img 
-                    src={hunt.image} 
-                    alt={hunt.name}
-                    className="w-full lg:w-48 h-48 rounded-2xl object-cover flex-shrink-0 shadow-lg"
-                  />
+                <div className="w-full">
                   <div className="flex-1 min-w-0">
                     <h4 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">{hunt.name}</h4>
                     <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">

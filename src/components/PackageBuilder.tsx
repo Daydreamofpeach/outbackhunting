@@ -59,14 +59,14 @@ const PackageBuilder: React.FC<PackageBuilderProps> = ({
   const totalHuntItems = customPackage.hunts.reduce((sum, { quantity }) => sum + quantity, 0);
 
   return (
-    <div className={`sticky top-24 rounded-3xl border-4 shadow-2xl max-h-[85vh] overflow-hidden flex flex-col ${
+    <div className={`rounded-3xl border-4 shadow-2xl overflow-hidden flex flex-col ${
       darkMode 
         ? 'bg-gray-900 border-gray-700' 
         : 'bg-white border-gray-200'
     }`}>
       {/* Header */}
       <div className="p-6 lg:p-8 border-b-4 border-gray-200 dark:border-gray-700 flex-shrink-0">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex flex-col gap-4">
           <div>
             <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2">Your Package</h2>
             <p className="text-lg lg:text-xl text-gray-700 dark:text-gray-300">
@@ -74,9 +74,11 @@ const PackageBuilder: React.FC<PackageBuilderProps> = ({
             </p>
           </div>
           {customPackage.hunts.length > 0 && (
-            <span className="px-4 lg:px-6 py-2 lg:py-3 bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200 text-xl lg:text-2xl font-bold rounded-2xl border-2 border-amber-300 dark:border-amber-700 self-start">
-              ${customPackage.totalPrice.toLocaleString()}
-            </span>
+            <div className="flex justify-center">
+              <span className="px-4 lg:px-6 py-2 lg:py-3 bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200 text-xl lg:text-2xl font-bold rounded-2xl border-2 border-amber-300 dark:border-amber-700">
+                ${customPackage.totalPrice.toLocaleString()}
+              </span>
+            </div>
           )}
         </div>
       </div>
@@ -163,8 +165,8 @@ const PackageBuilder: React.FC<PackageBuilderProps> = ({
                               <X size={16} className="lg:w-5 lg:h-5" />
                             </button>
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                            <div className="flex items-center gap-3 lg:gap-4">
+                          <div className="flex flex-col gap-4">
+                            <div className="flex items-center justify-center gap-3 lg:gap-4">
                               <button
                                 onClick={() => onUpdateHuntQuantity(hunt.id, quantity - 1)}
                                 className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-all duration-200"
@@ -179,9 +181,11 @@ const PackageBuilder: React.FC<PackageBuilderProps> = ({
                                 <Plus size={16} className="lg:w-5 lg:h-5" />
                               </button>
                             </div>
-                            <span className="text-xl lg:text-2xl font-bold text-amber-600">
-                              ${(hunt.basePrice * quantity).toLocaleString()}
-                            </span>
+                            <div className="flex justify-center">
+                              <span className="text-xl lg:text-2xl font-bold text-amber-600">
+                                ${(hunt.basePrice * quantity).toLocaleString()}
+                              </span>
+                            </div>
                           </div>
                         </motion.div>
                       ))}
@@ -392,14 +396,16 @@ const PackageBuilder: React.FC<PackageBuilderProps> = ({
                     >
                       <div className="p-4 lg:p-6 pt-0 space-y-3 lg:space-y-4">
                         {billBreakdown.map((item, index) => (
-                          <div key={index} className="flex flex-col sm:flex-row sm:justify-between sm:items-start py-3 lg:py-4 border-b-2 border-gray-200 dark:border-gray-600 last:border-b-0 gap-2">
+                          <div key={index} className="flex flex-col py-3 lg:py-4 border-b-2 border-gray-200 dark:border-gray-600 last:border-b-0 gap-2">
                             <div className="flex-1 min-w-0">
                               <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white">{item.item}</p>
                               <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300">{item.description}</p>
                             </div>
-                            <span className="text-xl lg:text-2xl font-bold text-amber-600 sm:ml-4 flex-shrink-0">
-                              ${item.price.toLocaleString()}
-                            </span>
+                            <div className="flex justify-center">
+                              <span className="text-xl lg:text-2xl font-bold text-amber-600">
+                                ${item.price.toLocaleString()}
+                              </span>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -449,13 +455,21 @@ const PackageBuilder: React.FC<PackageBuilderProps> = ({
                     className="overflow-hidden"
                   >
                     <div className="p-4 lg:p-6 pt-0 space-y-4 lg:space-y-6 text-lg lg:text-xl">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                        <span className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">Total Price:</span>
-                        <span className="text-3xl lg:text-4xl font-bold text-amber-600">${customPackage.totalPrice.toLocaleString()}</span>
+                      <div className="flex flex-col gap-2">
+                        <span className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white text-center">Total Price:</span>
+                        <div className="flex justify-center">
+                          <span className="text-3xl lg:text-4xl font-bold text-amber-600">
+                            ${customPackage.totalPrice.toLocaleString()}
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                        <span className="text-lg lg:text-xl text-gray-700 dark:text-gray-300">Total Days:</span>
-                        <span className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">{customPackage.totalDays}</span>
+                      <div className="flex flex-col gap-2">
+                        <span className="text-lg lg:text-xl text-gray-700 dark:text-gray-300 text-center">Total Days:</span>
+                        <div className="flex justify-center">
+                          <span className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
+                            {customPackage.totalDays}
+                          </span>
+                        </div>
                       </div>
                       
                       {/* Day Calculation Explanation */}

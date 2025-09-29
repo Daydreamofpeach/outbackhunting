@@ -25,15 +25,25 @@ export const getOptimizedImageUrl = (
     blur = false
   } = options;
 
-  // In a real production environment, you'd use a service like:
-  // - Vercel Image Optimization
-  // - Cloudinary
-  // - ImageKit
-  // - Or your own image optimization service
+  // For gallery images, we can optimize them locally
+  if (src.includes('/gallimg/')) {
+    // Add cache-busting and optimization hints
+    const params = new URLSearchParams();
+    if (width) params.set('w', width.toString());
+    if (height) params.set('h', height.toString());
+    if (quality !== 80) params.set('q', quality.toString());
+    if (format !== 'webp') params.set('f', format);
+    if (blur) params.set('blur', '1');
+    
+    const paramString = params.toString();
+    return paramString ? `${src}?${paramString}` : src;
+  }
 
-  // For now, return the original src
-  // In production, this would generate optimized URLs like:
-  // `/api/image?src=${encodeURIComponent(src)}&w=${width}&h=${height}&q=${quality}&f=${format}`
+  // For other images, return as-is for now
+  // In production, you could implement:
+  // - Sharp for server-side optimization
+  // - Cloudinary/ImageKit integration
+  // - Custom image optimization API
   
   return src;
 };

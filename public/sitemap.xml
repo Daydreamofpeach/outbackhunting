@@ -1,40 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://outbackhuntingnz.com/</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://outbackhuntingnz.com/assets/img/gareth/profile/Pic2.JPG</image:loc>
+      <image:caption>Professional New Zealand hunting guide Gareth Hall - Red Deer, Tahr and Chamois hunting</image:caption>
+      <image:title>Outback Hunting New Zealand - Professional Hunting Guide</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://outbackhuntingnz.com/about</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://outbackhuntingnz.com/assets/img/gareth/profile/pic1.JPG</image:loc>
+      <image:caption>Gareth Hall - Professional New Zealand hunting guide with 30+ years experience</image:caption>
+      <image:title>About Gareth Hall - Expert Canterbury Hunting Guide</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://outbackhuntingnz.com/packages</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://outbackhuntingnz.com/assets/img/gareth/Deer/IMG_5179.JPG</image:loc>
+      <image:caption>New Zealand hunting packages pricing for Red Deer, Tahr and Chamois</image:caption>
+      <image:title>New Zealand Hunting Packages & Pricing</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://outbackhuntingnz.com/customize</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://outbackhuntingnz.com/assets/img/gareth/Scenery and camps/IMG_6356.JPG</image:loc>
+      <image:caption>Customize your New Zealand hunting package - build your perfect hunting adventure</image:caption>
+      <image:title>Custom New Zealand Hunting Package Builder</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://outbackhuntingnz.com/animals</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://outbackhuntingnz.com/assets/img/gareth/Deer/DSC00169.JPG</image:loc>
+      <image:caption>New Zealand hunting species gallery - Red Deer, Tahr and Chamois hunting photos</image:caption>
+      <image:title>New Zealand Hunting Species Gallery</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://outbackhuntingnz.com/contact</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://outbackhuntingnz.com/assets/img/gareth/Scenery and camps/IMG_0566.JPG</image:loc>
+      <image:caption>Contact Outback Hunting New Zealand to book your hunting adventure</image:caption>
+      <image:title>Book Your New Zealand Hunting Adventure</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://outbackhuntingnz.com/privacy</loc>

@@ -3,6 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import { Mail, Phone, MapPin, Calendar, Users, Clock, Send, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 interface ContactProps {
   darkMode: boolean;
@@ -69,7 +71,7 @@ This inquiry was submitted through the Outback Hunting New Zealand website.
     `.trim();
 
     // Create mailto link
-    const mailtoLink = `mailto:info@outbackhuntingnewzealand.com?subject=New Hunting Inquiry - ${formData.huntType}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:garethh85@hotmail.com?subject=New Hunting Inquiry - ${formData.huntType}&body=${encodeURIComponent(emailBody)}`;
     
     // Open email client
     window.location.href = mailtoLink;
@@ -94,7 +96,7 @@ This inquiry was submitted through the Outback Hunting New Zealand website.
   };
 
   useEffect(() => {
-    document.title = 'Contact Us | Outback Hunting New Zealand';
+    document.title = 'Book Your Hunt | Contact Outback Hunting New Zealand | Red Deer, Tahr & Chamois';
   }, []);
 
   // Handle URL parameters for auto-filling form
@@ -168,14 +170,48 @@ This inquiry was submitted through the Outback Hunting New Zealand website.
       .then(data => setContact(data));
   }, []);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Outback Hunting New Zealand",
+    "description": "Book your New Zealand hunting adventure. Contact professional hunting guide Gareth Hall for Red Deer, Tahr, and Chamois hunting packages.",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "Outback Hunting New Zealand",
+      "telephone": "+64273113848",
+      "email": "garethh85@hotmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NZ",
+        "addressRegion": "Canterbury"
+      }
+    }
+  };
+
   return (
-    <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
+    <>
+      <SEO 
+        title="Book Your Hunt | Contact Outback Hunting New Zealand | Red Deer, Tahr & Chamois"
+        description="Contact professional New Zealand hunting guide Gareth Hall to book your Red Deer, Tahr, or Chamois hunting adventure. Based in Canterbury with 30+ years experience. Get custom hunting package quotes and availability. Phone +64273113848 or email garethh85@hotmail.com"
+        keywords="book New Zealand hunting, contact hunting guide NZ, Red Deer hunting booking, Tahr hunting contact, Chamois hunting booking, New Zealand hunting contact, Canterbury hunting guide contact, hunting package booking, trophy hunting contact NZ, guided hunting booking, Gareth Hall contact, hunting guide phone number, hunting enquiry NZ, book hunting trip New Zealand"
+        image="/assets/img/gareth/Scenery and camps/IMG_0566.JPG"
+        url="/contact"
+        type="service"
+        canonical="https://outbackhuntingnz.com/contact"
+        huntingSpecific={{
+          species: ['Red Deer', 'Tahr', 'Chamois'],
+          location: 'Canterbury',
+          huntType: 'Hunting Booking Contact'
+        }}
+        structuredData={structuredData}
+      />
+      <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
       {/* Header */}
       <section 
         ref={headerRef}
         className="relative py-24 md:py-32 pt-32 md:pt-40"
         style={{
-          backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
+          backgroundImage: 'url(/assets/img/gareth/Scenery and camps/IMG_0566.JPG)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -190,11 +226,11 @@ This inquiry was submitted through the Outback Hunting New Zealand website.
             className="max-w-3xl"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Contact Us
+              Book Your New Zealand Hunting Adventure
             </h1>
             
             <p className="text-xl text-gray-200 mb-6">
-              Get in touch to plan your next hunting adventure in New Zealand. We're here to answer your questions and help you book your dream hunt.
+              Contact professional hunting guide Gareth Hall to book your Red Deer, Tahr, or Chamois hunting adventure in Canterbury's wilderness. Get custom quotes and availability for your trophy hunting experience.
             </p>
           </motion.div>
         </div>
@@ -504,7 +540,8 @@ This inquiry was submitted through the Outback Hunting New Zealand website.
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

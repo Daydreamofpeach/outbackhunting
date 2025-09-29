@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Award, Calendar, MapPin, Target, Settings } from 'lucide-react';
+import { ChevronRight, Award, Calendar, MapPin, Target, Settings, Plus } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ParallaxComponent from '../components/ParallaxComponent';
 import Footer from '../components/Footer';
-import ParallaxPackageSection from '../components/ParallaxPackageSection';
+import CollapsibleHuntingPackages from '../components/CollapsibleHuntingPackages';
 import TestimonialSlider from '../components/TestimonialSlider';
 import AnimalGalleries from '../components/AnimalGalleries';
 import OptimizedImage from '../components/OptimizedImage';
-import ImagePreloader from '../components/ImagePreloader';
+import ImageSlider from '../components/ImageSlider';
+import { HuntData } from '../services/pricingService';
+import SEO from '../components/SEO';
 // import Loading from '../components/Loading';
 // import { useCriticalImageLoader } from '../hooks/useCriticalImageLoader';
 import parallaxConfigs from '../data/parallaxConfigs.json';
@@ -24,9 +27,76 @@ interface ParallaxProps {
 
 const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
   const [contentReady, setContentReady] = useState(true); // Always ready for optimal performance
+  const [selectedHuntForDetails, setSelectedHuntForDetails] = useState<HuntData | null>(null);
   
   // Removed critical image loader to prevent 404 errors and improve performance
   // Images will load naturally without blocking content
+
+  // SEO Structured Data for Home Page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "TouristInformationCenter",
+    "name": "Outback Hunting New Zealand",
+    "description": "Premier New Zealand hunting outfitter offering guided Red Deer, Tahr, and Chamois hunting experiences in Canterbury's pristine wilderness areas.",
+    "url": "https://outbackhuntingnz.com",
+    "logo": "https://outbackhuntingnz.com/assets/img/gareth/profile/GarethLogo-02.svg",
+    "image": "https://outbackhuntingnz.com/assets/img/gareth/profile/Pic2.JPG",
+    "telephone": "+64273113848",
+    "email": "garethh85@hotmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "NZ",
+      "addressRegion": "Canterbury",
+      "addressLocality": "South of Christchurch"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-43.5321",
+      "longitude": "172.6362"
+    },
+    "serviceType": ["Hunting Tours", "Guided Hunting", "Trophy Hunting", "Wilderness Adventures"],
+    "priceRange": "$$$",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Canterbury, New Zealand"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Hunting Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Red Deer Hunting",
+            "description": "Guided Red Deer stag hunting in New Zealand wilderness"
+          }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tahr Hunting",
+            "description": "Alpine Tahr hunting adventures in mountain terrain"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Chamois Hunting",
+            "description": "Mountain Chamois hunting in scenic landscapes"
+          }
+        }
+      ]
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Gareth Hall",
+      "jobTitle": "Professional Hunting Guide",
+      "description": "Expert hunting guide with 30+ years experience in New Zealand wilderness hunting"
+    }
+  };
 
   useEffect(() => {
     // Only run animations when content is ready
@@ -337,8 +407,154 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
   }, [contentReady]);
 
   return (
-    <div className="w-full m-0 p-0 overflow-x-hidden" style={{ overflow: 'visible' }}>
-      {/* No preloaders or loading screens - optimal performance */}
+    <>
+      <SEO 
+        title="New Zealand Hunting Guides | Red Deer, Tahr & Chamois Hunting | Outback Hunting NZ"
+        description="Professional New Zealand hunting guides specializing in Red Deer stag hunting, Tahr alpine hunting, and Chamois mountain hunting. 30+ years experience in Canterbury's wilderness. Book your trophy hunting adventure today."
+        keywords="New Zealand hunting, NZ hunting guides, Red Deer hunting, Tahr hunting, Chamois hunting, stag hunting NZ, trophy hunting New Zealand, guided hunting NZ, Canterbury hunting, South Island hunting, deer stag hunting, alpine hunting NZ, mountain hunting, New Zealand hunting outfitter, wilderness hunting NZ, red stag hunting, bull tahr hunting, hunting guide Canterbury, New Zealand hunting packages, trophy stag NZ, deer hunting South Island, hunting adventures New Zealand, guided stag hunting, hunting trips NZ, backcountry hunting, scenic hunting NZ, hunting holidays New Zealand, trophy deer hunting, New Zealand hunting experience, hunting accommodation NZ, hunting guide Gareth Hall"
+        image="/assets/img/gareth/profile/Pic2.JPG"
+        url="/"
+        type="website"
+        canonical="https://outbackhuntingnz.com/"
+        huntingSpecific={{
+          species: ['Red Deer', 'Tahr', 'Chamois'],
+          location: 'Canterbury',
+          huntType: 'Guided Trophy Hunting'
+        }}
+        structuredData={structuredData}
+      />
+      <div className="w-full m-0 p-0 overflow-x-hidden" style={{ overflow: 'visible' }}>
+        {/* Hunt Details Modal */}
+        <AnimatePresence>
+          {selectedHuntForDetails && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            >
+              <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedHuntForDetails(null)} />
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="relative w-full max-w-4xl max-h-[85vh] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
+              >
+                {/* Header */}
+                <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{selectedHuntForDetails.name}</h2>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{selectedHuntForDetails.species} • {selectedHuntForDetails.difficulty}</p>
+                    </div>
+                    <button
+                      onClick={() => setSelectedHuntForDetails(null)}
+                      className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    >
+                      <Plus size={20} className="rotate-45" />
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="overflow-y-auto max-h-[calc(85vh-80px)]">
+                  <div className="p-6">                    
+                    {/* Hunt Details Grid */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                      <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <div className="text-2xl font-bold text-amber-600">${selectedHuntForDetails.basePrice.toLocaleString()}</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Base Price</div>
+                      </div>
+                      <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <div className="text-2xl font-bold text-amber-600">{selectedHuntForDetails.baseDays}</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Days</div>
+                      </div>
+                      <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <div className="text-lg font-bold text-gray-900 dark:text-white">{selectedHuntForDetails.location}</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Location</div>
+                      </div>
+                      <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <div className="text-lg font-bold text-gray-900 dark:text-white">{selectedHuntForDetails.bestSeason}</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Best Season</div>
+                      </div>
+                    </div>
+                    
+                    {/* Description */}
+                    <div className="mb-6">
+                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Hunt Description</h3>
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{selectedHuntForDetails.description}</p>
+                    </div>
+                    
+                    {/* What's Included */}
+                    <div className="mb-6">
+                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">What's Included</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {selectedHuntForDetails.included.map((item, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <ChevronRight size={16} className="text-green-500 mt-1 flex-shrink-0" />
+                            <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* What's Not Included */}
+                    <div className="mb-6">
+                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Not Included</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {selectedHuntForDetails.notIncluded.map((item, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <ChevronRight size={16} className="text-red-500 mt-1 flex-shrink-0" />
+                            <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* What You Need to Bring */}
+                    <div className="mb-6">
+                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">What You Need to Bring</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {selectedHuntForDetails.youNeedToBring.map((item, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Booking Actions */}
+                    <div className="border-t pt-6 mt-8">
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <button
+                          onClick={() => setSelectedHuntForDetails(null)}
+                          className={`flex-1 py-3 px-6 rounded-lg border-2 font-medium transition-colors ${
+                            darkMode 
+                              ? 'border-gray-600 text-gray-300 hover:border-amber-500 hover:text-amber-400' 
+                              : 'border-gray-300 text-gray-700 hover:border-amber-500 hover:text-amber-600'
+                          }`}
+                        >
+                          Close Details
+                        </button>
+                        
+                        <Link
+                          to={`/contact?hunt=${selectedHuntForDetails.id}&species=${encodeURIComponent(selectedHuntForDetails.species)}&price=${selectedHuntForDetails.basePrice}&days=${selectedHuntForDetails.baseDays}&location=${encodeURIComponent(selectedHuntForDetails.location)}`}
+                          className="flex-1 py-3 px-6 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors text-center"
+                        >
+                          Book This Hunt
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        {/* No preloaders or loading screens - optimal performance */}
       
       {/* First Parallax - Explore New Zealand */}
       <ParallaxComponent config={parallaxConfigs.parallax1} />
@@ -402,7 +618,7 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
         <div className="relative w-full h-screen lg:h-[140vh] xl:h-[160vh] hero-section">
           <OptimizedImage
             src="/assets/img/gareth/profile/Pic2.JPG"
-            alt="Professional hunting guide in New Zealand wilderness"
+            alt="Gareth Hall - Professional New Zealand hunting guide with 30+ years experience specializing in Red Deer, Tahr and Chamois hunting in Canterbury's wilderness areas"
             className="w-full h-full"
             priority={true}
             sizes="100vw"
@@ -418,23 +634,25 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
                 ? 'bg-black/30 border-white/20' 
                 : 'bg-white/30 border-white/40'
             }`}>
-              <h1 className={`text-5xl md:text-6xl font-extrabold mb-2 text-center leading-tight ${
-                darkMode ? 'text-white drop-shadow-lg' : 'text-gray-900 drop-shadow-md'
-              }`}>
-                Outback Hunting
-              </h1>
-              <h2 className={`text-2xl md:text-3xl font-semibold mb-2 text-center tracking-wide ${
-                darkMode ? 'text-gray-200 drop-shadow-lg' : 'text-gray-800 drop-shadow-md'
-              }`}>
-                Guided Big Game Hunts in New Zealand
-              </h2>
+              <header>
+                <h1 className={`text-5xl md:text-6xl font-extrabold mb-2 text-center leading-tight ${
+                  darkMode ? 'text-white drop-shadow-lg' : 'text-gray-900 drop-shadow-md'
+                }`}>
+                  Outback Hunting New Zealand
+                </h1>
+                <h2 className={`text-2xl md:text-3xl font-semibold mb-2 text-center tracking-wide ${
+                  darkMode ? 'text-gray-200 drop-shadow-lg' : 'text-gray-800 drop-shadow-md'
+                }`}>
+                  Professional Red Deer, Tahr & Chamois Hunting Guides
+                </h2>
+              </header>
               <hr className="w-24 border-t-4 border-amber-500 my-4 mx-auto" />
               <p className={`font-light text-lg md:text-xl leading-relaxed text-center mt-2 mb-8 ${
                 darkMode ? 'text-gray-200 drop-shadow-lg' : 'text-gray-800 drop-shadow-md'
               }`}>
-                Tailored wilderness foot hunts for Red Deer, Chamois, and Tahr. Every hunt is customized 
-                based on your goals, fitness level, and preferences. From challenging backcountry experiences 
-                to accessible private land hunts, I'll put together the right package for you.
+                Expert New Zealand hunting guides with 30+ years experience specializing in Red Deer stag hunting, 
+                alpine Tahr hunting, and Chamois mountain hunting in Canterbury's pristine wilderness areas. 
+                Every trophy hunting adventure is customized to your goals, fitness level, and preferences.
               </p>
               
               {/* Action Buttons */}
@@ -513,8 +731,18 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
         </div>
       </section>
 
-      {/* Featured Packages Section */}
-      <ParallaxPackageSection darkMode={darkMode} />
+      {/* Image Slider Section */}
+      <ImageSlider darkMode={darkMode} />
+
+      {/* Featured Packages Section - Collapsible with Scroll Animations */}
+      <CollapsibleHuntingPackages 
+        darkMode={darkMode}
+        onHuntSelect={(hunt) => {
+          // Navigate to customize page with hunt
+          window.location.href = `/customize?hunt=${hunt.id}`;
+        }}
+        onViewDetails={setSelectedHuntForDetails}
+      />
 
       {/* Animal Galleries Section */}
       <AnimalGalleries darkMode={darkMode} />
@@ -526,7 +754,7 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
             <div className="md:w-1/2">
               <OptimizedImage
                 src="/assets/img/gareth/Scenery and camps/Arawhata tops 1.JPG"
-                alt="New Zealand hunting guide in scenic wilderness - Professional hunting experience"
+                alt="Breathtaking Canterbury wilderness landscape where Red Deer, Tahr and Chamois hunting adventures take place with Outback Hunting New Zealand"
                 className="rounded-lg shadow-xl w-full h-auto"
                 style={{ maxHeight: '600px' }}
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -673,14 +901,21 @@ nting-                      <p className="font-medium">Deposit Required</p>
                   </div>
                 </div>
               </div>
-            </div>
+             </div>
+           </div>
+         </div>
+       </section>
 
-            {/* Contact CTA */}
-            <div className="text-center mt-12">
+       {/* Call to Action Section */}
+       <section className={`py-20 ${darkMode ? 'bg-[#0f172a]' : 'bg-gray-100'}`}>
+         <div className="container mx-auto px-4">
+           <div className="max-w-4xl mx-auto">
+             {/* Contact CTA */}
+             <div className="text-center">
               <div className={`inline-block p-6 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg`}>
                 <h3 className="text-xl font-bold mb-2">Ready to Book?</h3>
                 <p className={`mb-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Contact us today to discuss your hunting package and secure your booking.
+                  Ready to plan your hunt or have a few questions first? I'd be happy to chat and help design a trip you will never forget.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
@@ -688,7 +923,7 @@ nting-                      <p className="font-medium">Deposit Required</p>
                     className="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-full transition-colors inline-flex items-center justify-center gap-2"
                   >
                     <ChevronRight size={18} />
-                    Contact Us
+                    Contact Me
                   </Link>
                   <Link
                     to="/customize"
@@ -704,126 +939,23 @@ nting-                      <p className="font-medium">Deposit Required</p>
         </div>
       </section>
 
-
+<div>
       {/* Flipped clouds at the top of the bottom image - Seamless tiling */}
+      {/* 
       <div className="bottom-section relative w-full bg-white">
         {/* Flipped clouds - vertical floating only */}
-        <div
-          className="absolute left-0 top-0 w-full h-full pointer-events-none overflow-hidden"
-          style={{
-            zIndex: 10,
-            transform: 'scaleY(-1)',
-            width: '100%',
-            height: '100%',
-          }}
-        >
-          {/* Cloud Layer 1 Flipped - Optimized with lazy loading */}
-          <div className="cloud-container-1-flipped absolute top-0 left-0 w-full h-full">
-            <OptimizedImage
-              src="https://assets.codepen.io/721952/cloud1.png"
-              alt="Cloud 1 Flipped"
-              className="absolute left-0 w-full h-full opacity-85 pointer-events-none"
-              style={{
-                bottom: '10%',
-                objectFit: 'cover'
-              }}
-              loading="lazy"
-              priority={false}
-            />
-          </div>
-          
-          {/* Cloud Layer 2 Flipped - Optimized with lazy loading */}
-          <div className="cloud-container-2-flipped absolute top-0 left-0 w-full h-full">
-            <OptimizedImage
-              src="https://assets.codepen.io/721952/cloud2.png"
-              alt="Cloud 2 Flipped"
-              className="absolute left-0 w-full h-full opacity-70 pointer-events-none"
-              style={{
-                bottom: '15%',
-                objectFit: 'cover'
-              }}
-              loading="lazy"
-              priority={false}
-            />
-          </div>
-          
-          {/* Cloud Layer 3 Flipped - Optimized with lazy loading */}
-          <div className="cloud-container-3-flipped absolute top-0 left-0 w-full h-full">
-            <OptimizedImage
-              src="https://assets.codepen.io/721952/cloud3.png"
-              alt="Cloud 3 Flipped"
-              className="absolute left-0 w-full h-full opacity-60 pointer-events-none"
-              style={{
-                bottom: '20%',
-                objectFit: 'cover'
-              }}
-              loading="lazy"
-              priority={false}
-            />
-          </div>
-          
-          {/* Cloud Layer 4 Flipped - Optimized with lazy loading */}
-          <div className="cloud-container-4-flipped absolute top-0 left-0 w-full h-full">
-            <OptimizedImage
-              src="https://assets.codepen.io/721952/cloud1.png"
-              alt="Cloud 4 Flipped"
-              className="absolute left-0 w-full h-full opacity-50 pointer-events-none"
-              style={{
-                bottom: '25%',
-                objectFit: 'cover'
-              }}
-              loading="lazy"
-              priority={false}
-            />
-          </div>
-        </div>
+      
         {/* The bottom image itself */}
         <img 
-          src="/assets/img/gareth/profilepicone/half.png" 
+          src="/assets/img/gareth/profile/pic1.JPG" 
           alt="Hunt Image" 
           className="w-full h-auto object-cover"
         />
       </div>
-      {/* Bottom image */}
-      {/* <div className="w-full bg-blue-300">
-        <div className="relative w-full" style={{ aspectRatio: '1200/800' }}>
-          <img 
-            src="/assets/img/gareth/profile/Sky.svg" 
-            alt="Hunt Image Sky" 
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ zIndex: 1 }}
-          />
-          <img 
-            src="/assets/img/gareth/profile/Mountain.svg" 
-            alt="Hunt Image Mountain" 
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ zIndex: 2 }}
-          />
-          <img 
-            src="/assets/img/gareth/profile/Mountain.svg" 
-            alt="Hunt Image Mountain" 
-            className="absolute inset-0 translate-x-2 translate-y-2 w-full h-full object-cover"
-            style={{ zIndex: 2 }}
-          />
-          <img 
-            src="/assets/img/gareth/profile/Front.svg" 
-            alt="Hunt Image Front" 
-            className="absolute translate-y-11 width-110 height-110  translate-x-4 inset-0 w-full h-full object-cover"
-            style={{ zIndex: 3 }}
-          /> */}
-          {/* <img 
-            src="/assets/img/gareth/profile/Front.svg" 
-            alt="Hunt Image Front" 
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ zIndex: 3 }}
-          /> */}
-        {/* </div> */}
-      {/* </div> */}
-      
-      {/* Footer */}
-      <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
   
-    </div>
+        <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      </div>
+    </>
   );
 };
 

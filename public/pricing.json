@@ -3,19 +3,20 @@
     "red-stag": {
       "name": "Red Stag",
       "species": "Red Stag",
-      "image": "/assets/img/gareth/Deer/DSC00169.JPG",
+      "image": "/assets/img/gareth/deer1.png",
       "baseIncluded": [
         "Personalised guided hunt",
         "Field dressing of game in the field",
         "Transport of trophies to a taxidermist (if required)",
         "Digital photos and video footage of your hunt",
         "Douglas Scoring (available upon request)",
-        "Tent or hut accommodation for overnight hunts",
-        "Airport pick-up and drop-off (by arrangement)"
+        "Tent or alpine hut accommodation for multi-day backpack hunts",
+        "Hired cabin or lodge accommodation for day hunts",
+        "Airport pick-up and drop-off from Christchurch (by arrangement)"
       ],
       "baseNotIncluded": [
         "Helicopter flights (if applicable)",
-        "Hired accommodation (cabins/lodges)",
+        "Luxury accommodation",
         "Spirits",
         "Restaurant meals",
         "Add-on experiences"
@@ -54,7 +55,7 @@
           "baseDays": 3,
           "location": "Wilderness Areas",
           "bestSeason": "March - May",
-          "description": "Wilderness Red Stag hunting in remote areas with tent accommodation.",
+          "description": "Wilderness Red Stag hunting in remote areas with tent or alpine hut accommodation.",
           "additionalAnimalPrice": 800,
           "additionalAnimalDays": 1
         },
@@ -65,7 +66,7 @@
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "March - May",
-          "description": "Private land Red Stag hunting with comfortable accommodation.",
+          "description": "Private land Red Stag hunting with hired cabin or lodge accommodation.",
           "additionalAnimalPrice": 800,
           "additionalAnimalDays": 1
         },
@@ -73,10 +74,10 @@
           "id": "red-stag-private-gold",
           "name": "Red Stag Private Land - Gold",
           "basePrice": 5900,
-          "baseDays": 5,
+          "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "March - May",
-          "description": "Premium private land Red Stag hunting with luxury accommodation.",
+          "description": "Premium private land Red Stag hunting with hired cabin or lodge accommodation.",
           "additionalAnimalPrice": 900,
           "additionalAnimalDays": 1
         },
@@ -84,10 +85,10 @@
           "id": "red-stag-private-400-450",
           "name": "Red Stag Private Land - 400-450\"",
           "basePrice": 8500,
-          "baseDays": 7,
+          "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "March - May",
-          "description": "Trophy Red Stag hunting for 400-450 inch stags on private land.",
+          "description": "Trophy Red Stag hunting for 400-450 inch stags on private land with hired cabin or lodge accommodation.",
           "additionalAnimalPrice": 1000,
           "additionalAnimalDays": 1
         },
@@ -95,10 +96,10 @@
           "id": "red-stag-private-450-plus",
           "name": "Red Stag Private Land - 450\"+",
           "basePrice": 0,
-          "baseDays": 7,
+          "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "March - May",
-          "description": "Premium trophy Red Stag hunting for 450+ inch stags. Price on application.",
+          "description": "Premium trophy Red Stag hunting for 450+ inch stags with hired cabin or lodge accommodation. Price on application.",
           "priceOnApplication": true,
           "additionalAnimalPrice": 0,
           "additionalAnimalDays": 0
@@ -115,12 +116,13 @@
         "Transport of trophies to a taxidermist (if required)",
         "Digital photos and video footage of your hunt",
         "Douglas Scoring (available upon request)",
-        "Tent or hut accommodation for overnight hunts",
-        "Airport pick-up and drop-off (by arrangement)"
+        "Tent or alpine hut accommodation for multi-day backpack hunts",
+        "Hired cabin or lodge accommodation for day hunts",
+        "Airport pick-up and drop-off from Christchurch (by arrangement)"
       ],
       "baseNotIncluded": [
         "Helicopter flights (if applicable)",
-        "Hired accommodation (cabins/lodges)",
+        "Luxury accommodation",
         "Spirits",
         "Restaurant meals",
         "Add-on experiences"
@@ -159,7 +161,7 @@
           "baseDays": 3,
           "location": "Wilderness Areas",
           "bestSeason": "May - July",
-          "description": "Wilderness Chamois hunting in alpine terrain. Additional animals can be discussed.",
+          "description": "Wilderness Chamois hunting in alpine terrain with tent or alpine hut accommodation. Additional animals can be discussed.",
           "additionalAnimalPrice": 0,
           "additionalAnimalDays": 0,
           "note": "Additional animals pricing to be discussed"
@@ -168,10 +170,10 @@
           "id": "chamois-private",
           "name": "Chamois Private Land",
           "basePrice": 6400,
-          "baseDays": 4,
+          "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "May - July",
-          "description": "Private land Chamois hunting with comfortable accommodation.",
+          "description": "Private land Chamois hunting with hired cabin or lodge accommodation.",
           "additionalAnimalPrice": 950,
           "additionalAnimalDays": 1
         }
@@ -187,12 +189,13 @@
         "Transport of trophies to a taxidermist (if required)",
         "Digital photos and video footage of your hunt",
         "Douglas Scoring (available upon request)",
-        "Tent or hut accommodation for overnight hunts",
-        "Airport pick-up and drop-off (by arrangement)"
+        "Tent or alpine hut accommodation for multi-day backpack hunts",
+        "Hired cabin or lodge accommodation for day hunts",
+        "Airport pick-up and drop-off from Christchurch (by arrangement)"
       ],
       "baseNotIncluded": [
         "Helicopter flights (if applicable)",
-        "Hired accommodation (cabins/lodges)",
+        "Luxury accommodation",
         "Spirits",
         "Restaurant meals",
         "Add-on experiences"
@@ -228,10 +231,10 @@
           "id": "tahr-wilderness-1",
           "name": "Bull Tahr Wilderness - 1 Tahr",
           "basePrice": 3500,
-          "baseDays": 4,
+          "baseDays": 3,
           "location": "Wilderness Areas",
           "bestSeason": "April - June",
-          "description": "Wilderness Bull Tahr hunting for 1 Tahr in remote alpine areas.",
+          "description": "Wilderness Bull Tahr hunting for 1 Tahr in remote alpine areas with tent or alpine hut accommodation.",
           "additionalAnimalPrice": 0,
           "additionalAnimalDays": 0
         },
@@ -239,10 +242,10 @@
           "id": "tahr-wilderness-2",
           "name": "Bull Tahr Wilderness - 2 Tahr",
           "basePrice": 5500,
-          "baseDays": 5,
+          "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "April - June",
-          "description": "Wilderness Bull Tahr hunting for 2 Tahr in remote alpine areas.",
+          "description": "Wilderness Bull Tahr hunting for 2 Tahr in remote alpine areas with tent or alpine hut accommodation.",
           "additionalAnimalPrice": 0,
           "additionalAnimalDays": 0
         },
@@ -253,7 +256,7 @@
           "baseDays": 3,
           "location": "Wilderness Areas",
           "bestSeason": "Spring",
-          "description": "Spring Tahr hunting for 1 Tahr in accessible terrain.",
+          "description": "Spring Tahr hunting for 1 Tahr in accessible terrain with tent or alpine hut accommodation.",
           "additionalAnimalPrice": 0,
           "additionalAnimalDays": 0
         },
@@ -261,10 +264,10 @@
           "id": "tahr-private-12",
           "name": "Bull Tahr Private Land - 12\"",
           "basePrice": 4000,
-          "baseDays": 4,
+          "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "April - June",
-          "description": "Private land Bull Tahr hunting for 12\" Tahr.",
+          "description": "Private land Bull Tahr hunting for 12\" Tahr with hired cabin or lodge accommodation.",
           "additionalAnimalPrice": 800,
           "additionalAnimalDays": 1
         },
@@ -272,10 +275,10 @@
           "id": "tahr-private-13",
           "name": "Bull Tahr Private Land - 13\"",
           "basePrice": 5000,
-          "baseDays": 4,
+          "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "April - June",
-          "description": "Private land Bull Tahr hunting for 13\" Tahr.",
+          "description": "Private land Bull Tahr hunting for 13\" Tahr with hired cabin or lodge accommodation.",
           "additionalAnimalPrice": 900,
           "additionalAnimalDays": 1
         },
@@ -283,10 +286,10 @@
           "id": "tahr-private-14",
           "name": "Bull Tahr Private Land - 14\"",
           "basePrice": 6100,
-          "baseDays": 5,
+          "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "April - June",
-          "description": "Private land Bull Tahr hunting for 14\" Tahr.",
+          "description": "Private land Bull Tahr hunting for 14\" Tahr with hired cabin or lodge accommodation.",
           "additionalAnimalPrice": 1000,
           "additionalAnimalDays": 1
         },
@@ -294,10 +297,10 @@
           "id": "tahr-private-15",
           "name": "Bull Tahr Private Land - 15\"",
           "basePrice": 8500,
-          "baseDays": 5,
+          "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "April - June",
-          "description": "Private land Bull Tahr hunting for 15\" Tahr.",
+          "description": "Private land Bull Tahr hunting for 15\" Tahr with hired cabin or lodge accommodation.",
           "additionalAnimalPrice": 1100,
           "additionalAnimalDays": 1
         }

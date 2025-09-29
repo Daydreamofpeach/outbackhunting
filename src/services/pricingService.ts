@@ -92,22 +92,12 @@ class PricingService {
     const data = await this.loadPricingData();
     const hunts: HuntData[] = [];
 
-    // Define image arrays for each animal type using Gareth images
+    // Define image arrays for each animal type
     const animalImages: Record<string, string[]> = {
       'Red Stag': [
-        '/assets/img/gareth/Deer/DSC00169.JPG',
-        '/assets/img/gareth/Deer/DSC00199.JPG',
-        '/assets/img/gareth/Deer/DSC00233.JPG',
-        '/assets/img/gareth/Deer/DSC00340.JPG',
-        '/assets/img/gareth/Deer/DSC00356.JPG',
-        '/assets/img/gareth/Deer/DSC00388.JPG',
-        '/assets/img/gareth/Deer/IMG_1792.JPG',
-        '/assets/img/gareth/Deer/IMG_3217.JPEG',
-        '/assets/img/gareth/Deer/IMG_5179.JPG',
-        '/assets/img/gareth/Deer/IMG_5184.JPG',
-        '/assets/img/gareth/Deer/IMG_5565.JPEG',
-        '/assets/img/gareth/Deer/P4083013.JPG',
-        '/assets/img/gareth/Deer/12pts 4 persistence.JPG'
+        '/assets/img/gareth/deer1.png',  // Small packages
+        '/assets/img/gareth/deer2.png',  // Medium packages  
+        '/assets/img/gareth/deer3.png'   // Large packages
       ],
       'Bull Tahr': [
         '/assets/img/gareth/Tahr/DSC00990.JPG',
@@ -145,9 +135,22 @@ class PricingService {
       let imageIndex = 0;
       
       Object.values(animal.hunts).forEach(hunt => {
-        // Assign different image to each hunt package
-        const huntImage = images[imageIndex % images.length];
-        imageIndex++;
+        let huntImage;
+        
+        // For Red Stag hunts, assign deer icons based on package size/price
+        if (animal.species === 'Red Stag') {
+          if (hunt.basePrice <= 3000) {
+            huntImage = images[0]; // deer1.png for small packages
+          } else if (hunt.basePrice <= 6000) {
+            huntImage = images[1]; // deer2.png for medium packages
+          } else {
+            huntImage = images[2]; // deer3.png for large packages
+          }
+        } else {
+          // For other species, cycle through available images
+          huntImage = images[imageIndex % images.length];
+          imageIndex++;
+        }
         
         hunts.push({
           ...hunt,
@@ -183,8 +186,15 @@ class PricingService {
       return hunt.basePrice;
     }
     
-    // First animal at base price, additional animals at additional animal price
-    return hunt.basePrice + (hunt.additionalAnimalPrice * (quantity - 1));
+    // For private land hunts, additional animals cost the same as the base price
+    // For wilderness hunts, additional animals cost 90% of base price (rounded down)
+    if (hunt.location === 'Private Land') {
+      return hunt.basePrice * quantity;
+    } else {
+      // First animal at base price, additional animals at 90% of base price
+      const additionalAnimalPrice = Math.floor(hunt.basePrice * 0.9);
+      return hunt.basePrice + (additionalAnimalPrice * (quantity - 1));
+    }
   }
 
   calculateHuntDays(hunt: HuntData, quantity: number): number {
@@ -192,8 +202,9 @@ class PricingService {
       return hunt.baseDays;
     }
     
-    // First animal takes base days, additional animals take additional animal days
-    return hunt.baseDays + (hunt.additionalAnimalDays * (quantity - 1));
+    // For all hunts, additional animals only add 1 day each
+    // Base days for first animal + 1 day per additional animal
+    return hunt.baseDays + (quantity - 1);
   }
 
   calculatePackagePrice(

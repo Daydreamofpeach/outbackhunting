@@ -72,6 +72,47 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #1f2937 100%);
 }
 
+/* Low Resolution Image Slider Animations */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 60s linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 60s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-scroll-right.paused {
+  animation-play-state: paused;
+}
+
+.animate-scroll-left.paused {
+  animation-play-state: paused;
+}
+
+/* Added gradient radial utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
 /* Smooth scroll indicator animation */
 @keyframes scroll-bounce {
   0%, 20%, 50%, 80%, 100% {

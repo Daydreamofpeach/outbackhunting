@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Helmet } from 'react-helmet-async';
 import FeaturedPackages from '../components/FeaturedPackages';
+import CollapsibleHuntingPackages from '../components/CollapsibleHuntingPackages';
 import TestimonialSlider from '../components/TestimonialSlider';
 import AnimalGalleries from '../components/AnimalGalleries';
 
@@ -50,23 +51,26 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
   return (
     <>
       <Helmet>
-        <title>Outback Hunting New Zealand | Premium New Zealand Hunting Experiences</title>
-        <meta name="description" content="Outback Hunting New Zealand offers premium hunting packages for Red Deer, Tahr, and Chamois. Expert guides, luxury accommodations, and exclusive hunting grounds." />
-        <meta name="keywords" content="New Zealand hunting, Red Deer hunting, Tahr hunting, Chamois hunting, trophy hunting, guided hunting, hunting packages, hunting outfitter, New Zealand hunting guide" />
+        <title>Outback Hunting New Zealand | Premier Red Deer, Tahr & Chamois Hunting | NZ Wilderness Adventures</title>
+        <meta name="description" content="Experience world-class hunting in New Zealand's pristine wilderness. Guided Red Deer stag hunting, Tahr alpine adventures, and Chamois mountain hunts. Trophy hunting packages with expert guide Gareth Hall in Canterbury's stunning landscapes." />
+        <meta name="keywords" content="New Zealand hunting, NZ hunting, Red Deer hunting New Zealand, Tahr hunting, Chamois hunting, stag hunting, trophy hunting NZ, wilderness hunting, alpine hunting, Canterbury hunting, South Island hunting, deer stag antlers, guided hunting New Zealand, hunting outfitter NZ, New Zealand hunting guide, backcountry hunting, mountain hunting, trophy stag, red stag hunting, bull tahr, chamois hunting guide, hunting packages New Zealand, scenic hunting, outback hunting, deer hunting Canterbury, hunting adventures NZ, trophy deer hunting, New Zealand hunting experience, guided stag hunting, hunting guide Gareth Hall, wilderness adventures New Zealand, hunting scenery, New Zealand hunting lodge, hunting accommodation NZ, hunting trips New Zealand, hunting holidays NZ, red deer trophy, tahr trophy, chamois trophy, hunting South Island, Canterbury hunting guide, alpine hunting New Zealand, mountain hunting guide, wilderness hunting guide" />
         <link rel="canonical" href="https://outbackhuntingnz.com" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Outback Hunting New Zealand - Premium New Zealand Hunting Experiences" />
-        <meta property="og:description" content="Outback Hunting New Zealand offers premium hunting packages for Red Deer, Tahr, and Chamois. Expert guides, luxury accommodations, and exclusive hunting grounds." />
-        <meta property="og:image" content="/assets/img/scenery.jpg" />
+        <meta property="og:title" content="Premier New Zealand Red Deer, Tahr & Chamois Hunting | Outback Hunting NZ" />
+        <meta property="og:description" content="Experience world-class hunting in New Zealand's pristine wilderness. Guided Red Deer stag hunting, Tahr alpine adventures, and Chamois mountain hunts with expert guide Gareth Hall." />
+        <meta property="og:image" content="/assets/img/gareth/profile/Pic2.JPG" />
         <meta property="og:url" content="https://outbackhuntingnz.com" />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_NZ" />
+        <meta property="og:site_name" content="Outback Hunting New Zealand" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Outback Hunting New Zealand - Premium New Zealand Hunting Experiences" />
-        <meta name="twitter:description" content="Outback Hunting New Zealand offers premium hunting packages for Red Deer, Tahr, and Chamois. Expert guides, luxury accommodations, and exclusive hunting grounds." />
-        <meta name="twitter:image" content="/assets/img/backgrounds/landscape.png" />
+        <meta name="twitter:title" content="Premier New Zealand Red Deer, Tahr & Chamois Hunting | Outback Hunting NZ" />
+        <meta name="twitter:description" content="Experience world-class hunting in New Zealand's pristine wilderness. Guided Red Deer stag hunting, Tahr alpine adventures, and Chamois mountain hunts." />
+        <meta name="twitter:image" content="/assets/img/gareth/profile/Pic2.JPG" />
+        <meta name="twitter:site" content="@OutbackHuntingNZ" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -83,7 +87,7 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
+            backgroundImage: 'url(/assets/img/gareth/Scenery and camps/IMG_1675.JPG)',
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
@@ -225,8 +229,18 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
         </div>
       </section>
 
-      {/* Featured Packages Section */}
-      <FeaturedPackages darkMode={darkMode} />
+      {/* Featured Packages Section - Collapsible with Scroll Animations */}
+      <CollapsibleHuntingPackages 
+        darkMode={darkMode}
+        onHuntSelect={(hunt) => {
+          // Navigate to customize page with hunt
+          window.location.href = `/customize?hunt=${hunt.id}`;
+        }}
+        onViewDetails={(hunt) => {
+          // Navigate to detailed view or show modal
+          window.location.href = `/pricing#${hunt.id}`;
+        }}
+      />
 
       {/* Animal Galleries Section */}
       <AnimalGalleries darkMode={darkMode} />

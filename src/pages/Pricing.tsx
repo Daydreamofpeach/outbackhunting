@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Minus, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Plus, Minus, ChevronRight, Eye } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { pricingService, HuntData } from '../services/pricingService';
 
 interface PricingProps {
   darkMode: boolean;
@@ -13,19 +14,179 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
     triggerOnce: true,
     threshold: 0.1
   });
+  const [selectedHunt, setSelectedHunt] = useState<HuntData | null>(null);
+  const [hunts, setHunts] = useState<HuntData[]>([]);
 
   useEffect(() => {
     document.title = 'Hunting Pricing | Outback Hunting New Zealand';
+    
+    // Load hunt data for modal functionality
+    const loadHunts = async () => {
+      try {
+        const huntData = await pricingService.getAllHunts();
+        setHunts(huntData);
+      } catch (error) {
+        console.error('Failed to load hunt data:', error);
+      }
+    };
+    
+    loadHunts();
   }, []);
+
+  const getHuntByType = (species: string, type: string): HuntData | null => {
+    return hunts.find(hunt => 
+      hunt.species === species && 
+      hunt.location.toLowerCase().includes(type.toLowerCase())
+    ) || null;
+  };
 
   return (
     <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
+      {/* Hunt Details Modal */}
+      <AnimatePresence>
+        {selectedHunt && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          >
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedHunt(null)} />
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-4xl max-h-[85vh] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
+            >
+              {/* Header */}
+              <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{selectedHunt.name}</h2>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{selectedHunt.species} • {selectedHunt.difficulty}</p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedHunt(null)}
+                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <Plus size={20} className="rotate-45" />
+                  </button>
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div className="overflow-y-auto max-h-[calc(85vh-80px)]">
+                <div className="p-6">
+                  {/* Hunt Image */}
+                  <div className="mb-6">
+                    <img
+                      src={selectedHunt.image}
+                      alt={selectedHunt.name}
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                  </div>
+                  
+                  {/* Hunt Details Grid */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div className="text-2xl font-bold text-amber-600">${selectedHunt.basePrice.toLocaleString()}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Base Price</div>
+                    </div>
+                    <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div className="text-2xl font-bold text-amber-600">{selectedHunt.baseDays}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Days</div>
+                    </div>
+                    <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div className="text-lg font-bold text-gray-900 dark:text-white">{selectedHunt.location}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Location</div>
+                    </div>
+                    <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div className="text-lg font-bold text-gray-900 dark:text-white">{selectedHunt.bestSeason}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Best Season</div>
+                    </div>
+                  </div>
+                  
+                  {/* Description */}
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Hunt Description</h3>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{selectedHunt.description}</p>
+                  </div>
+                  
+                  {/* What's Included */}
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">What's Included</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {selectedHunt.included.map((item, index) => (
+                        <div key={index} className="flex items-start gap-2">
+                          <Plus size={16} className="text-green-500 mt-1 flex-shrink-0" />
+                          <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* What's Not Included */}
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Not Included</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {selectedHunt.notIncluded.map((item, index) => (
+                        <div key={index} className="flex items-start gap-2">
+                          <Minus size={16} className="text-red-500 mt-1 flex-shrink-0" />
+                          <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* What You Need to Bring */}
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">What You Need to Bring</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {selectedHunt.youNeedToBring.map((item, index) => (
+                        <div key={index} className="flex items-start gap-2">
+                          <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Booking Actions */}
+                  <div className="border-t pt-6 mt-8">
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <button
+                        onClick={() => setSelectedHunt(null)}
+                        className={`flex-1 py-3 px-6 rounded-lg border-2 font-medium transition-colors ${
+                          darkMode 
+                            ? 'border-gray-600 text-gray-300 hover:border-amber-500 hover:text-amber-400' 
+                            : 'border-gray-300 text-gray-700 hover:border-amber-500 hover:text-amber-600'
+                        }`}
+                      >
+                        Close Details
+                      </button>
+                      
+                      <Link
+                        to={`/contact?hunt=${selectedHunt.id}&species=${encodeURIComponent(selectedHunt.species)}&price=${selectedHunt.basePrice}&days=${selectedHunt.baseDays}&location=${encodeURIComponent(selectedHunt.location)}`}
+                        className="flex-1 py-3 px-6 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors text-center"
+                      >
+                        Book This Hunt
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Header */}
       <section 
         ref={headerRef}
         className="relative py-24 md:py-32 pt-32 md:pt-40"
         style={{
-          backgroundImage: 'url(/assets/img/backgrounds/landscape.png)',
+          backgroundImage: 'url(/assets/img/gareth/Deer/IMG_5179.JPG)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -73,6 +234,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 3 days
                     </div>
+                    <div className="mt-4">
+                      <button
+                        onClick={() => {
+                          const hunt = getHuntByType('Red Stag', 'wilderness');
+                          if (hunt) setSelectedHunt(hunt);
+                        }}
+                        className="w-full py-2 px-4 border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Eye size={16} />
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -91,6 +264,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 4-5 days
                     </div>
+                    <div className="mt-4">
+                      <button
+                        onClick={() => {
+                          const hunt = getHuntByType('Bull Tahr', 'wilderness');
+                          if (hunt) setSelectedHunt(hunt);
+                        }}
+                        className="w-full py-2 px-4 border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Eye size={16} />
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -104,6 +289,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 3 days
+                    </div>
+                    <div className="mt-4">
+                      <button
+                        onClick={() => {
+                          const hunt = getHuntByType('Bull Tahr', 'wilderness');
+                          if (hunt) setSelectedHunt(hunt);
+                        }}
+                        className="w-full py-2 px-4 border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Eye size={16} />
+                        View Details
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -140,6 +337,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 3-7 days
                     </div>
+                    <div className="mt-4">
+                      <button
+                        onClick={() => {
+                          const hunt = getHuntByType('Red Stag', 'private');
+                          if (hunt) setSelectedHunt(hunt);
+                        }}
+                        className="w-full py-2 px-4 border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Eye size={16} />
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -166,6 +375,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 4-5 days
                     </div>
+                    <div className="mt-4">
+                      <button
+                        onClick={() => {
+                          const hunt = getHuntByType('Bull Tahr', 'private');
+                          if (hunt) setSelectedHunt(hunt);
+                        }}
+                        className="w-full py-2 px-4 border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Eye size={16} />
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -179,6 +400,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 4 days
+                    </div>
+                    <div className="mt-4">
+                      <button
+                        onClick={() => {
+                          const hunt = getHuntByType('Chamois', 'private');
+                          if (hunt) setSelectedHunt(hunt);
+                        }}
+                        className="w-full py-2 px-4 border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Eye size={16} />
+                        View Details
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -203,6 +436,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     </div>
                     <div className="text-xs text-amber-600 mt-2">
                       *Additional animals pricing to be discussed
+                    </div>
+                    <div className="mt-4">
+                      <button
+                        onClick={() => {
+                          const hunt = getHuntByType('Chamois', 'wilderness');
+                          if (hunt) setSelectedHunt(hunt);
+                        }}
+                        className="w-full py-2 px-4 border-2 border-amber-600 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Eye size={16} />
+                        View Details
+                      </button>
                     </div>
                   </div>
                 </div>

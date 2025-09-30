@@ -159,7 +159,7 @@ const HuntSelector: React.FC<HuntSelectorProps> = ({
                               </div>
                               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                                 <span className="text-4xl font-bold text-amber-600">
-                                  ${hunt.basePrice.toLocaleString()}
+                                  {hunt.priceOnApplication ? 'POA' : hunt.basePrice.toLocaleString()}
                                 </span>
                                 <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                                   <button
@@ -230,7 +230,7 @@ const HuntSelector: React.FC<HuntSelectorProps> = ({
                     </div>
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                       <span className="text-4xl font-bold text-amber-600">
-                        ${hunt.basePrice.toLocaleString()}
+                        {hunt.priceOnApplication ? 'POA' : hunt.basePrice.toLocaleString()}
                       </span>
                       <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                         <button

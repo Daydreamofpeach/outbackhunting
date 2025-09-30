@@ -78,19 +78,11 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
               {/* Content */}
               <div className="overflow-y-auto max-h-[calc(85vh-80px)]">
                 <div className="p-6">
-                  {/* Hunt Image */}
-                  <div className="mb-6">
-                    <img
-                      src={selectedHunt.image}
-                      alt={selectedHunt.name}
-                      className="w-full h-64 object-cover rounded-lg"
-                    />
-                  </div>
                   
                   {/* Hunt Details Grid */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                     <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                      <div className="text-2xl font-bold text-amber-600">${selectedHunt.basePrice.toLocaleString()}</div>
+                      <div className="text-2xl font-bold text-amber-600">{selectedHunt.priceOnApplication ? 'POA' : `$${selectedHunt.basePrice.toLocaleString()}`}</div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">Base Price</div>
                     </div>
                     <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
@@ -232,7 +224,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                       <span className="font-bold">$2,500</span>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 3 days
+                      Duration: 4 days
                     </div>
                     <div className="mt-4">
                       <button
@@ -251,7 +243,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
 
                 {/* Bull Tahr Wilderness */}
                 <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
-                  <h3 className="text-xl font-bold mb-4 text-amber-600">Bull Tahr Wilderness</h3>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Bull Tahr Wilderness - 12"</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span>1 Tahr</span>
@@ -281,14 +273,14 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
 
                 {/* Spring Tahr */}
                 <div className={`p-6 rounded-lg border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
-                  <h3 className="text-xl font-bold mb-4 text-amber-600">Spring Tahr</h3>
+                  <h3 className="text-xl font-bold mb-4 text-amber-600">Spring Tahr - 12"</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span>1 Tahr</span>
                       <span className="font-bold">$3,000</span>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 3 days
+                      Duration: 4 days
                     </div>
                     <div className="mt-4">
                       <button
@@ -432,7 +424,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                       <span className="font-bold">$3,000</span>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 3 days
+                      Duration: 4 days
                     </div>
                     <div className="text-xs text-amber-600 mt-2">
                       *Additional animals pricing to be discussed
@@ -569,7 +561,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span>Booking deposit</span>
-                        <span className="font-bold">10% of hunt cost</span>
+                        <span className="font-bold">25% of hunt cost</span>
                       </div>
                       <div className="text-sm text-gray-500">Non-refundable deposit required to secure booking</div>
                     </div>
@@ -580,7 +572,7 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span>Helicopter access</span>
-                        <span className="font-bold">POA</span>
+                        <span className="font-bold text-amber-500">POA</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Extra hunting days</span>
@@ -611,11 +603,15 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                     <ul className="space-y-2">
                       <li className="flex items-start gap-2">
                         <span className="text-amber-500 font-bold">•</span>
-                        <span>10% deposit required on booking</span>
+                        <span>25% deposit required on booking</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-amber-500 font-bold">•</span>
-                        <span>Remaining balance due 60 days before hunt</span>
+                        <span>Final payment due at conclusion of hunt</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-amber-500 font-bold">•</span>
+                        <span>Pricing may vary based on specific requirements</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-amber-500 font-bold">•</span>

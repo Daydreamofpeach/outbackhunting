@@ -9,7 +9,6 @@ import {
   Calendar,
   MapPin
 } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 import SEO from '../components/SEO';
 
 interface AnimalsProps {
@@ -30,6 +29,7 @@ const animalGalleries: AnimalGallery[] = [
     name: 'deer',
     displayName: 'Red Deer',
     images: [
+      // Original Gareth images
       '/assets/img/gareth/Deer/12pts 4 persistence.JPG',
       '/assets/img/gareth/Deer/DSC00169.JPG',
       '/assets/img/gareth/Deer/DSC00199.JPG',
@@ -42,7 +42,29 @@ const animalGalleries: AnimalGallery[] = [
       '/assets/img/gareth/Deer/IMG_5179.JPG',
       '/assets/img/gareth/Deer/IMG_5184.JPG',
       '/assets/img/gareth/Deer/IMG_5565.JPEG',
-      '/assets/img/gareth/Deer/P4083013.JPG'
+      '/assets/img/gareth/Deer/P4083013.JPG',
+      // Additional Red Stag images from gallimg
+      '/assets/img/gallimg/redstag/1.png',
+      '/assets/img/gallimg/redstag/2.png',
+      '/assets/img/gallimg/redstag/3.png',
+      '/assets/img/gallimg/redstag/4.png',
+      '/assets/img/gallimg/redstag/5.png',
+      '/assets/img/gallimg/redstag/6.png',
+      '/assets/img/gallimg/redstag/7.png',
+      '/assets/img/gallimg/redstag/8.png',
+      '/assets/img/gallimg/redstag/9.png',
+      '/assets/img/gallimg/redstag/10.png',
+      '/assets/img/gallimg/redstag/11.png',
+      '/assets/img/gallimg/redstag/12.png',
+      '/assets/img/gallimg/redstag/13.png',
+      '/assets/img/gallimg/redstag/14.png',
+      '/assets/img/gallimg/redstag/15.png',
+      '/assets/img/gallimg/redstag/16.png',
+      '/assets/img/gallimg/redstag/17.png',
+      '/assets/img/gallimg/redstag/18.png',
+      '/assets/img/gallimg/redstag/19.png',
+      '/assets/img/gallimg/redstag/20.png',
+      '/assets/img/gallimg/redstag/21.png'
     ],
     description: 'Hunt the iconic red deer, New Zealand\'s most prized trophy animal.',
     season: 'March - July',
@@ -52,6 +74,7 @@ const animalGalleries: AnimalGallery[] = [
     name: 'tahr',
     displayName: 'Tahr',
     images: [
+      // Original Gareth images
       '/assets/img/gareth/Tahr/DSC00990.JPG',
       '/assets/img/gareth/Tahr/DSC01355.JPG',
       '/assets/img/gareth/Tahr/DSC01358.JPG',
@@ -69,7 +92,76 @@ const animalGalleries: AnimalGallery[] = [
       '/assets/img/gareth/Tahr/IMG_2335.JPEG',
       '/assets/img/gareth/Tahr/IMG_6741.JPG',
       '/assets/img/gareth/Tahr/IMG_6812.JPEG',
-      '/assets/img/gareth/Tahr/IMG_6813.JPEG'
+      '/assets/img/gareth/Tahr/IMG_6813.JPEG',
+      // Additional Tahr images from gallimg
+      '/assets/img/gallimg/Tahr/1.png',
+      '/assets/img/gallimg/Tahr/2.png',
+      '/assets/img/gallimg/Tahr/3.png',
+      '/assets/img/gallimg/Tahr/4.png',
+      '/assets/img/gallimg/Tahr/5.png',
+      '/assets/img/gallimg/Tahr/6.png',
+      '/assets/img/gallimg/Tahr/7.png',
+      '/assets/img/gallimg/Tahr/9.png',
+      '/assets/img/gallimg/Tahr/11.png',
+      '/assets/img/gallimg/Tahr/12.png',
+      '/assets/img/gallimg/Tahr/13.png',
+      '/assets/img/gallimg/Tahr/14.png',
+      '/assets/img/gallimg/Tahr/16.png',
+      '/assets/img/gallimg/Tahr/17.png',
+      '/assets/img/gallimg/Tahr/18.png',
+      '/assets/img/gallimg/Tahr/19.png',
+      '/assets/img/gallimg/Tahr/20.png',
+      '/assets/img/gallimg/Tahr/21.png',
+      '/assets/img/gallimg/Tahr/22.png',
+      '/assets/img/gallimg/Tahr/23.png',
+      '/assets/img/gallimg/Tahr/24.png',
+      '/assets/img/gallimg/Tahr/25.png',
+      '/assets/img/gallimg/Tahr/26.png',
+      '/assets/img/gallimg/Tahr/27.png',
+      '/assets/img/gallimg/Tahr/28.png',
+      '/assets/img/gallimg/Tahr/29.png',
+      '/assets/img/gallimg/Tahr/30.png',
+      '/assets/img/gallimg/Tahr/31.png',
+      '/assets/img/gallimg/Tahr/32.png',
+      '/assets/img/gallimg/Tahr/33.png',
+      '/assets/img/gallimg/Tahr/34.png',
+      '/assets/img/gallimg/Tahr/35.png',
+      '/assets/img/gallimg/Tahr/36.png',
+      '/assets/img/gallimg/Tahr/37.png',
+      '/assets/img/gallimg/Tahr/38.png',
+      '/assets/img/gallimg/Tahr/39.png',
+      '/assets/img/gallimg/Tahr/40.png',
+      '/assets/img/gallimg/Tahr/41.png',
+      '/assets/img/gallimg/Tahr/42.png',
+      '/assets/img/gallimg/Tahr/43.png',
+      '/assets/img/gallimg/Tahr/44.png',
+      '/assets/img/gallimg/Tahr/46.png',
+      '/assets/img/gallimg/Tahr/47.png',
+      '/assets/img/gallimg/Tahr/48.png',
+      '/assets/img/gallimg/Tahr/49.png',
+      '/assets/img/gallimg/Tahr/51.png',
+      '/assets/img/gallimg/Tahr/52.png',
+      '/assets/img/gallimg/Tahr/53.png',
+      '/assets/img/gallimg/Tahr/54.png',
+      '/assets/img/gallimg/Tahr/55.png',
+      '/assets/img/gallimg/Tahr/56.png',
+      '/assets/img/gallimg/Tahr/57.png',
+      '/assets/img/gallimg/Tahr/58.png',
+      '/assets/img/gallimg/Tahr/59.png',
+      '/assets/img/gallimg/Tahr/60.png',
+      '/assets/img/gallimg/Tahr/61.png',
+      '/assets/img/gallimg/Tahr/62.png',
+      '/assets/img/gallimg/Tahr/63.png',
+      '/assets/img/gallimg/Tahr/64.png',
+      '/assets/img/gallimg/Tahr/65.png',
+      '/assets/img/gallimg/Tahr/66.png',
+      '/assets/img/gallimg/Tahr/68.png',
+      '/assets/img/gallimg/Tahr/69.png',
+      '/assets/img/gallimg/Tahr/70.png',
+      '/assets/img/gallimg/Tahr/71.png',
+      '/assets/img/gallimg/Tahr/72.png',
+      '/assets/img/gallimg/Tahr/73.png',
+      '/assets/img/gallimg/Tahr/74.png'
     ],
     description: 'Challenge yourself with tahr hunting in New Zealand\'s alpine regions.',
     season: 'May - August',
@@ -79,13 +171,51 @@ const animalGalleries: AnimalGallery[] = [
     name: 'chamois',
     displayName: 'Chamois',
     images: [
+      // Original Gareth images
       '/assets/img/gareth/Chamois/DSC01085.JPG',
       '/assets/img/gareth/Chamois/IMG_3131.JPEG',
       '/assets/img/gareth/Chamois/IMG_3507.JPG',
       '/assets/img/gareth/Chamois/IMG_3541.JPG',
       '/assets/img/gareth/Chamois/IMG_6841.JPEG',
       '/assets/img/gareth/Chamois/IMG_7726.JPEG',
-      '/assets/img/gareth/Chamois/IMG_8510.JPG'
+      '/assets/img/gareth/Chamois/IMG_8510.JPG',
+      // Additional Chamois images from gallimg
+      '/assets/img/gallimg/Chamois/1.png',
+      '/assets/img/gallimg/Chamois/2.png',
+      '/assets/img/gallimg/Chamois/3.png',
+      '/assets/img/gallimg/Chamois/4.png',
+      '/assets/img/gallimg/Chamois/5.png',
+      '/assets/img/gallimg/Chamois/6.png',
+      '/assets/img/gallimg/Chamois/7.png',
+      '/assets/img/gallimg/Chamois/8.png',
+      '/assets/img/gallimg/Chamois/9.png',
+      '/assets/img/gallimg/Chamois/10.png',
+      '/assets/img/gallimg/Chamois/11.png',
+      '/assets/img/gallimg/Chamois/12.png',
+      '/assets/img/gallimg/Chamois/13.png',
+      '/assets/img/gallimg/Chamois/14.png',
+      '/assets/img/gallimg/Chamois/15.png',
+      '/assets/img/gallimg/Chamois/16.png',
+      '/assets/img/gallimg/Chamois/17.png',
+      '/assets/img/gallimg/Chamois/18.png',
+      '/assets/img/gallimg/Chamois/20.png',
+      '/assets/img/gallimg/Chamois/21.png',
+      '/assets/img/gallimg/Chamois/22.png',
+      '/assets/img/gallimg/Chamois/23.png',
+      '/assets/img/gallimg/Chamois/24.png',
+      '/assets/img/gallimg/Chamois/25.png',
+      '/assets/img/gallimg/Chamois/26.png',
+      '/assets/img/gallimg/Chamois/27.png',
+      '/assets/img/gallimg/Chamois/28.png',
+      '/assets/img/gallimg/Chamois/29.png',
+      '/assets/img/gallimg/Chamois/30.jpg',
+      '/assets/img/gallimg/Chamois/31.jpg',
+      '/assets/img/gallimg/Chamois/32.jpg',
+      '/assets/img/gallimg/Chamois/33.jpg',
+      '/assets/img/gallimg/Chamois/34.jpg',
+      '/assets/img/gallimg/Chamois/35.png',
+      '/assets/img/gallimg/Chamois/36.png',
+      '/assets/img/gallimg/Chamois/37.png'
     ],
     description: 'Experience the thrill of hunting chamois in New Zealand\'s alpine terrain.',
     season: 'May - October',
@@ -142,120 +272,31 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
   const [imageError, setImageError] = useState(false);
-  const [heroImageIndex, setHeroImageIndex] = useState(0);
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [heroImageLoading, setHeroImageLoading] = useState(true);
   
   const imageRef = useRef<HTMLImageElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-  const heroIntervalRef = useRef<number | null>(null);
-  const preloadedImages = useRef<Map<string, HTMLImageElement>>(new Map());
 
-  // Hero slider images - selected from the gallery images (prioritized by size/quality)
-  const heroImages = [
-    // Start with smaller, more reliable images
-    '/assets/img/gareth/Scenery and camps/IMG_1675.JPG',
-    '/assets/img/gareth/Deer/DSC00169.JPG',
-    '/assets/img/gareth/Tahr/DSC00990.JPG',
-    '/assets/img/gareth/Chamois/DSC01085.JPG',
-    '/assets/img/gareth/Scenery and camps/IMG_1973.JPEG',
-    '/assets/img/gareth/Deer/IMG_1792.JPG',
-    '/assets/img/gareth/Tahr/IMG_0368.JPG',
-    '/assets/img/gareth/Chamois/IMG_3507.JPG',
-    '/assets/img/gareth/Scenery and camps/IMG_2725.JPEG',
-    '/assets/img/gareth/Deer/DSC00340.JPG',
-    '/assets/img/gareth/Tahr/DSC01355.JPG',
-    '/assets/img/gareth/Chamois/IMG_3541.JPG',
-    // Additional images
-    '/assets/img/gareth/Scenery and camps/IMG_3656.JPEG',
-    '/assets/img/gareth/Deer/IMG_5179.JPG',
-    '/assets/img/gareth/Tahr/IMG_0778.JPG',
-    '/assets/img/gareth/Scenery and camps/IMG_6356.JPG',
-    '/assets/img/gareth/Scenery and camps/IMG_6560.JPEG',
-    '/assets/img/gareth/Scenery and camps/IMG_6643.JPEG',
-    '/assets/img/gareth/Scenery and camps/IMG_7930.JPG',
-    '/assets/img/gareth/Scenery and camps/IMG_8499.JPG',
-    '/assets/img/gareth/Scenery and camps/IMG_8545.JPG'
-  ];
+  // Single hero image for faster loading
+  const heroImage = '/assets/img/gareth/Chamois/IMG_3541.JPG';
 
   useEffect(() => {
     document.title = 'New Zealand Hunting Species | Red Deer, Tahr & Chamois Gallery | Outback Hunting NZ';
   }, []);
 
-  // Image preloading function
-  const preloadImage = (src: string, index: number): Promise<void> => {
-    return new Promise((resolve, reject) => {
-      if (preloadedImages.current.has(src)) {
-        resolve();
-        return;
-      }
-
-      const img = new Image();
-      img.onload = () => {
-        preloadedImages.current.set(src, img);
-        setLoadedImages(prev => new Set([...prev, index]));
-        resolve();
-      };
-      img.onerror = () => {
-        console.error(`Failed to preload image: ${src}`);
-        reject(new Error(`Failed to load ${src}`));
-      };
-      img.src = src;
-    });
-  };
-
-  // Preload all hero images
+  // Simple hero image loading
   useEffect(() => {
-    const preloadAllImages = async () => {
-      setHeroImageLoading(true);
-      
-      try {
-        // Preload first image immediately
-        await preloadImage(heroImages[0], 0);
-        
-        // Then preload the rest asynchronously
-        const preloadPromises = heroImages.slice(1).map((src, index) => 
-          preloadImage(src, index + 1)
-        );
-        
-        await Promise.allSettled(preloadPromises);
-        setHeroImageLoading(false);
-      } catch (error) {
-        console.error('Error preloading images:', error);
-        setHeroImageLoading(false);
-      }
+    setHeroImageLoading(true);
+    const img = new Image();
+    img.onload = () => {
+      setHeroImageLoading(false);
     };
-
-    preloadAllImages();
-  }, []);
-
-  // Hero image slider - continuous loop (only start when first image is loaded)
-  useEffect(() => {
-    // Don't start slider until first image is loaded
-    if (heroImageLoading || !loadedImages.has(0)) {
-      return;
-    }
-
-    // Clear any existing interval
-    if (heroIntervalRef.current) {
-      clearInterval(heroIntervalRef.current);
-    }
-
-    // Set up new interval for continuous looping
-    heroIntervalRef.current = setInterval(() => {
-      setHeroImageIndex((prev) => {
-        const nextIndex = (prev + 1) % heroImages.length;
-        return nextIndex;
-      });
-    }, 4000);
-
-    return () => {
-      if (heroIntervalRef.current) {
-        clearInterval(heroIntervalRef.current);
-        heroIntervalRef.current = null;
-      }
+    img.onerror = () => {
+      console.error('Failed to load hero image:', heroImage);
+      setHeroImageLoading(false);
     };
-  }, [heroImages.length, heroImageLoading, loadedImages]); // Depend on loading state
+    img.src = heroImage;
+  }, [heroImage]);
 
 
   // Image loading handler
@@ -264,10 +305,6 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
     setImageError(false);
   };
 
-  // Manual navigation with loop support for hero slider
-  const goToHeroImage = (index: number) => {
-    setHeroImageIndex(index);
-  };
 
   const handleImageError = () => {
     setImageLoading(false);
@@ -405,71 +442,38 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
         structuredData={structuredData}
       />
       <div className={darkMode ? 'text-gray-200' : 'text-gray-800'}>
-      {/* Hero Image Slider Section */}
+      {/* Hero Image Section */}
       <section className="relative h-[75vh] overflow-hidden bg-gray-800 pt-20">
         {/* Fallback background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900"></div>
-        
-        {/* Debug indicator */}
-        <div className="absolute top-4 left-4 z-30 bg-black/70 text-white p-2 rounded text-sm">
-          Image {heroImageIndex + 1} of {heroImages.length} 
-          {heroImageLoading && ' (Loading...)'}
-        </div>
         
         {/* Loading indicator */}
         {heroImageLoading && (
           <div className="absolute inset-0 flex items-center justify-center z-20">
             <div className="bg-black/50 text-white p-4 rounded-lg">
               <div className="animate-spin w-8 h-8 border-2 border-white border-t-transparent rounded-full mx-auto mb-2"></div>
-              <div>Loading images...</div>
+              <div>Loading image...</div>
             </div>
           </div>
         )}
         
-        {/* Hero Image Slider */}
-        <div className="absolute inset-0">
-          {heroImages.map((image, index) => {
-            const isLoaded = loadedImages.has(index);
-            const isActive = index === heroImageIndex;
-            
-            return (
-              <div
-                key={index}
-                className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-                  isActive && isLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
-                style={{
-                  backgroundImage: isLoaded ? `url(${image})` : 'none',
-                  backgroundColor: '#333' // Fallback color
-                }}
-              />
-            );
-          })}
-        </div>
-
-        {/* Hero Slider Navigation Dots - Top */}
-        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-          {heroImages.map((_, index) => {
-            const isLoaded = loadedImages.has(index);
-            const isActive = index === heroImageIndex;
-            
-            return (
-              <button
-                key={index}
-                onClick={() => goToHeroImage(index)}
-                disabled={!isLoaded}
-                className={`w-4 h-4 rounded-full transition-all duration-300 backdrop-blur-sm ${
-                  isActive && isLoaded
-                    ? 'bg-white scale-125 shadow-lg' 
-                    : isLoaded
-                    ? 'bg-white/40 hover:bg-white/60 hover:scale-110'
-                    : 'bg-gray-500/30 cursor-not-allowed'
-                }`}
-                title={isLoaded ? `Image ${index + 1}` : 'Loading...'}
-              />
-            );
-          })}
-        </div>
+        {/* Hero Image */}
+        <img
+          src={heroImage}
+          alt="Chamois hunting in New Zealand mountains"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            heroImageLoading ? 'opacity-0' : 'opacity-100'
+          }`}
+          onLoad={() => setHeroImageLoading(false)}
+          onError={() => {
+            console.error('Failed to load hero image:', heroImage);
+            setHeroImageLoading(false);
+          }}
+          style={{
+            // High-quality image from Gareth's collection
+            imageRendering: 'auto'
+          }}
+        />
       </section>
 
       {/* Content Section */}
@@ -645,7 +649,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
               </div>
 
               {/* Main Image Container */}
-              <div className="relative bg-black min-h-[400px] max-h-[70vh] flex items-center justify-center">
+              <div className="relative bg-black min-h-[400px] max-h-[60vh] flex items-center justify-center">
                 {/* Loading indicator */}
                 {imageLoading && (
                   <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -684,6 +688,18 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
                       src={selectedGallery.images[currentImageIndex]}
                       alt={`${selectedGallery.displayName} hunting photo ${currentImageIndex + 1}`}
                       className="max-w-full max-h-full object-contain"
+                      style={{
+                        // Double the size for gallimg images and add upsampling
+                        transform: selectedGallery.images[currentImageIndex].includes('/gallimg/') 
+                          ? 'scale(2)' 
+                          : 'scale(1)',
+                        imageRendering: selectedGallery.images[currentImageIndex].includes('/gallimg/')
+                          ? 'pixelated' // For low-res images, use pixelated rendering
+                          : 'auto',
+                        filter: selectedGallery.images[currentImageIndex].includes('/gallimg/')
+                          ? 'contrast(1.1) saturate(1.1) brightness(1.05)' // Enhance low-res images
+                          : 'none'
+                      }}
                       initial={{ opacity: 0, scale: 1.05 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
@@ -725,7 +741,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
 
               {/* Thumbnail Navigation */}
               {selectedGallery && selectedGallery.images.length > 1 && (
-                <div className={`p-4 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <div className={`p-4 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} max-h-[20vh] overflow-y-auto`}>
                   <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                     {selectedGallery.images.map((image, index) => (
                       <button
@@ -743,6 +759,15 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
                           src={image}
                           alt={`${selectedGallery.displayName} thumbnail ${index + 1}`}
                           className="w-full h-full object-cover"
+                          style={{
+                            // Apply same upsampling to thumbnails for consistency
+                            imageRendering: image.includes('/gallimg/')
+                              ? 'pixelated'
+                              : 'auto',
+                            filter: image.includes('/gallimg/')
+                              ? 'contrast(1.1) saturate(1.1) brightness(1.05)'
+                              : 'none'
+                          }}
                           loading="lazy"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;

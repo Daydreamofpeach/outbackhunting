@@ -37,8 +37,8 @@
           "id": "helicopter-access",
           "name": "Helicopter Access",
           "description": "Helicopter transport to remote hunting areas",
-          "price": 350,
-          "perDay": true
+          "price": 0,
+          "priceOnApplication": true
         },
         {
           "id": "rifle-hire",
@@ -52,7 +52,7 @@
           "id": "red-stag-wilderness",
           "name": "Red Stag Wilderness Hunt",
           "basePrice": 2500,
-          "baseDays": 3,
+          "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "March - May",
           "description": "Wilderness Red Stag hunting in remote areas with tent or alpine hut accommodation.",
@@ -143,8 +143,8 @@
           "id": "helicopter-access",
           "name": "Helicopter Access",
           "description": "Helicopter transport to remote hunting areas",
-          "price": 350,
-          "perDay": true
+          "price": 0,
+          "priceOnApplication": true
         },
         {
           "id": "rifle-hire",
@@ -158,7 +158,7 @@
           "id": "chamois-wilderness",
           "name": "Chamois Wilderness Hunt",
           "basePrice": 3000,
-          "baseDays": 3,
+          "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "May - July",
           "description": "Wilderness Chamois hunting in alpine terrain with tent or alpine hut accommodation. Additional animals can be discussed.",
@@ -216,8 +216,8 @@
           "id": "helicopter-access",
           "name": "Helicopter Access",
           "description": "Helicopter transport to remote hunting areas",
-          "price": 350,
-          "perDay": true
+          "price": 0,
+          "priceOnApplication": true
         },
         {
           "id": "rifle-hire",
@@ -229,9 +229,9 @@
       "hunts": {
         "wilderness-1": {
           "id": "tahr-wilderness-1",
-          "name": "Bull Tahr Wilderness - 1 Tahr",
+          "name": "Bull Tahr Wilderness - 12\"",
           "basePrice": 3500,
-          "baseDays": 3,
+          "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "April - June",
           "description": "Wilderness Bull Tahr hunting for 1 Tahr in remote alpine areas with tent or alpine hut accommodation.",
@@ -240,7 +240,7 @@
         },
         "wilderness-2": {
           "id": "tahr-wilderness-2",
-          "name": "Bull Tahr Wilderness - 2 Tahr",
+          "name": "Bull Tahr Wilderness - 2x 12\"",
           "basePrice": 5500,
           "baseDays": 4,
           "location": "Wilderness Areas",
@@ -251,9 +251,9 @@
         },
         "spring-1": {
           "id": "tahr-spring-1",
-          "name": "Spring Tahr - 1 Tahr",
+          "name": "Spring Tahr - 12\"",
           "basePrice": 3000,
-          "baseDays": 3,
+          "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "Spring",
           "description": "Spring Tahr hunting for 1 Tahr in accessible terrain with tent or alpine hut accommodation.",
@@ -313,8 +313,8 @@
     "nonHunter": 180
   },
   "booking": {
-    "deposit": 0.1,
+    "deposit": 0.25,
     "currency": "NZD",
-    "depositNote": "A 10% deposit is required to secure your booking. The balance is due 30 days before your hunt."
+    "depositNote": "A 25% deposit is required to secure your booking. Final payment is due at the conclusion of your hunt as pricing may vary based on your specific requirements and additional services."
   }
 }

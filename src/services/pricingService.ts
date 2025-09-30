@@ -8,7 +8,6 @@ export interface HuntData {
   bestSeason: string;
   difficulty: string;
   description: string;
-  image: string;
   included: string[];
   notIncluded: string[];
   youNeedToBring: string[];
@@ -21,6 +20,7 @@ export interface HuntData {
     description: string;
     price: number;
     perDay?: boolean;
+    priceOnApplication?: boolean;
   }>;
 }
 
@@ -39,6 +39,7 @@ export interface PricingData {
         description: string;
         price: number;
         perDay?: boolean;
+        priceOnApplication?: boolean;
       }>;
         hunts: {
           [key: string]: {
@@ -92,70 +93,12 @@ class PricingService {
     const data = await this.loadPricingData();
     const hunts: HuntData[] = [];
 
-    // Define image arrays for each animal type
-    const animalImages: Record<string, string[]> = {
-      'Red Stag': [
-        '/assets/img/gareth/deer1.png',  // Small packages
-        '/assets/img/gareth/deer2.png',  // Medium packages  
-        '/assets/img/gareth/deer3.png'   // Large packages
-      ],
-      'Bull Tahr': [
-        '/assets/img/gareth/Tahr/DSC00990.JPG',
-        '/assets/img/gareth/Tahr/DSC01355.JPG',
-        '/assets/img/gareth/Tahr/DSC01358.JPG',
-        '/assets/img/gareth/Tahr/DSC02282.JPG',
-        '/assets/img/gareth/Tahr/DSC02290 - Copy.JPG',
-        '/assets/img/gareth/Tahr/IMG_0368.JPG',
-        '/assets/img/gareth/Tahr/IMG_0396.JPG',
-        '/assets/img/gareth/Tahr/IMG_0486.JPEG',
-        '/assets/img/gareth/Tahr/IMG_0778.JPG',
-        '/assets/img/gareth/Tahr/IMG_0793.JPG',
-        '/assets/img/gareth/Tahr/IMG_0795.JPG',
-        '/assets/img/gareth/Tahr/IMG_0811.JPG',
-        '/assets/img/gareth/Tahr/IMG_1711.JPG',
-        '/assets/img/gareth/Tahr/IMG_1812.PNG',
-        '/assets/img/gareth/Tahr/IMG_2335.JPEG',
-        '/assets/img/gareth/Tahr/IMG_6741.JPG',
-        '/assets/img/gareth/Tahr/IMG_6812.JPEG',
-        '/assets/img/gareth/Tahr/IMG_6813.JPEG'
-      ],
-      'Chamois': [
-        '/assets/img/gareth/Chamois/DSC01085.JPG',
-        '/assets/img/gareth/Chamois/IMG_3131.JPEG',
-        '/assets/img/gareth/Chamois/IMG_3507.JPG',
-        '/assets/img/gareth/Chamois/IMG_3541.JPG',
-        '/assets/img/gareth/Chamois/IMG_6841.JPEG',
-        '/assets/img/gareth/Chamois/IMG_7726.JPEG',
-        '/assets/img/gareth/Chamois/IMG_8510.JPG'
-      ]
-    };
 
     Object.values(data.animals).forEach(animal => {
-      const images = animalImages[animal.species] || [animal.image];
-      let imageIndex = 0;
-      
       Object.values(animal.hunts).forEach(hunt => {
-        let huntImage;
-        
-        // For Red Stag hunts, assign deer icons based on package size/price
-        if (animal.species === 'Red Stag') {
-          if (hunt.basePrice <= 3000) {
-            huntImage = images[0]; // deer1.png for small packages
-          } else if (hunt.basePrice <= 6000) {
-            huntImage = images[1]; // deer2.png for medium packages
-          } else {
-            huntImage = images[2]; // deer3.png for large packages
-          }
-        } else {
-          // For other species, cycle through available images
-          huntImage = images[imageIndex % images.length];
-          imageIndex++;
-        }
-        
         hunts.push({
           ...hunt,
           species: animal.species,
-          image: huntImage,
           included: animal.baseIncluded,
           notIncluded: animal.baseNotIncluded,
           youNeedToBring: animal.baseYouNeedToBring,
@@ -233,6 +176,9 @@ class PricingService {
       const extra = hunt.hunt.extras.find(e => e.id === selectedExtra.extraId);
       if (!extra) return sum;
       
+      // Skip POA extras in cost calculation
+      if (extra.priceOnApplication) return sum;
+      
       if (extra.perDay) {
         return sum + (extra.price * selectedExtra.quantity * totalDays);
       } else {
@@ -300,7 +246,7 @@ class PricingService {
   }
 
   getBookingInfo() {
-    return this.pricingData?.booking || { deposit: 0.1, currency: 'NZD', depositNote: 'A 10% deposit is required to secure your booking. The balance is due 30 days before your hunt.' };
+    return this.pricingData?.booking || { deposit: 0.25, currency: 'NZD', depositNote: 'A 25% deposit is required to secure your booking. Final payment is due at the conclusion of your hunt as pricing may vary based on your specific requirements and additional services.' };
   }
 
   generateBillBreakdown(
@@ -368,15 +314,23 @@ class PricingService {
       const extra = hunt.hunt.extras.find(e => e.id === selectedExtra.extraId);
       if (!extra) return;
       
-      const extraPrice = extra.perDay 
-        ? extra.price * selectedExtra.quantity * totalDays
-        : extra.price * selectedExtra.quantity;
-      
-      breakdown.push({
-        item: extra.name,
-        price: extraPrice,
-        description: `${selectedExtra.quantity}x ${extra.description}${extra.perDay ? ` for ${totalDays} days` : ''}`
-      });
+      if (extra.priceOnApplication) {
+        breakdown.push({
+          item: extra.name,
+          price: 0,
+          description: `${selectedExtra.quantity}x ${extra.description} - Price on Application`
+        });
+      } else {
+        const extraPrice = extra.perDay 
+          ? extra.price * selectedExtra.quantity * totalDays
+          : extra.price * selectedExtra.quantity;
+        
+        breakdown.push({
+          item: extra.name,
+          price: extraPrice,
+          description: `${selectedExtra.quantity}x ${extra.description}${extra.perDay ? ` for ${totalDays} days` : ''}`
+        });
+      }
     });
 
     return breakdown;

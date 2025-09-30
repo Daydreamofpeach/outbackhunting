@@ -471,7 +471,7 @@ This inquiry was submitted through the Outback Hunting New Zealand website.
                                 : 'bg-gray-100 text-gray-900 focus:ring-amber-500'
                             }`}
                           >
-                            <option value="3 days">3 days</option>
+                            <option value="4 days">4 days</option>
                             <option value="5 days">5 days</option>
                             <option value="6 days">6 days</option>
                             <option value="7 days">7 days</option>

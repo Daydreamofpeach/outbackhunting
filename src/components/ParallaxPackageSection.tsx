@@ -92,7 +92,7 @@ const ParallaxPackageSection: React.FC<ParallaxPackageSectionProps> = ({ darkMod
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Hunt Details</h3>
                         <div className="bg-amber-600 text-white px-4 py-2 rounded-full text-lg font-bold">
-                          ${selectedHuntForDetails.basePrice.toLocaleString()}
+                          {selectedHuntForDetails.priceOnApplication ? 'POA' : `$${selectedHuntForDetails.basePrice.toLocaleString()}`}
                         </div>
                       </div>
                       <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{selectedHuntForDetails.description}</p>
@@ -187,7 +187,7 @@ const ParallaxPackageSection: React.FC<ParallaxPackageSectionProps> = ({ darkMod
                               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{extra.description}</p>
                             </div>
                             <span className="text-lg font-bold text-amber-600 ml-4">
-                              ${extra.price.toLocaleString()}{extra.perDay ? '/day' : ''}
+                              {extra.priceOnApplication ? 'POA' : `$${extra.price.toLocaleString()}${extra.perDay ? '/day' : ''}`}
                             </span>
                           </div>
                         </div>
@@ -239,7 +239,7 @@ const ParallaxPackageSection: React.FC<ParallaxPackageSectionProps> = ({ darkMod
                       <div className="flex items-start justify-between mb-2">
                         <h3 className="text-lg font-bold">{hunt.name}</h3>
                         <span className="text-2xl font-bold text-amber-600">
-                          ${hunt.basePrice.toLocaleString()}
+                          {hunt.priceOnApplication ? 'POA' : `$${hunt.basePrice.toLocaleString()}`}
                         </span>
                       </div>
                       

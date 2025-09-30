@@ -67,25 +67,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ darkMode }) => {
         </div>
 
 
-        {/* Slide Content Overlay */}
-        <div className="absolute bottom-8 left-8 right-8 z-10">
-          <div className={`backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl border max-w-2xl ${
-            darkMode 
-              ? 'bg-black/40 border-white/20' 
-              : 'bg-white/40 border-white/60'
-          }`}>
-            <h3 className={`text-2xl md:text-3xl font-black mb-3 ${
-              darkMode ? 'text-white drop-shadow-lg' : 'text-gray-900 drop-shadow-md'
-            }`}>
-              New Zealand Hunting Adventures
-            </h3>
-            <p className={`text-lg leading-relaxed ${
-              darkMode ? 'text-gray-200 drop-shadow-lg' : 'text-gray-800 drop-shadow-md'
-            }`}>
-              Experience the thrill of hunting in some of New Zealand's most spectacular wilderness areas.
-            </p>
-          </div>
-        </div>
       </div>
 
       {/* Dot Indicators */}

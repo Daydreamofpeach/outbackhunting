@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { Analytics } from '@vercel/analytics/react';
 import ParallaxNavbar from './components/ParallaxNavbar';
 import Footer from './components/Footer';
 import SEO from './components/SEO';
@@ -46,6 +47,7 @@ function App() {
           <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         </div>
       </Router>
+      <Analytics />
     </HelmetProvider>
   );
 }

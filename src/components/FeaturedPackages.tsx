@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, MapPin, ChevronRight, Users, Target, Calendar, Plus, Minus, X, Settings } from 'lucide-react';
+import { ChevronRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { pricingService, HuntData } from '../services/pricingService';
+import { HuntData } from '../services/pricingService';
 import CollapsibleHuntingPackages from './CollapsibleHuntingPackages';
 
 interface FeaturedPackagesProps {
@@ -51,40 +50,31 @@ const FeaturedPackages: React.FC<FeaturedPackagesProps> = ({ darkMode }) => {
               {/* Content */}
               <div className="overflow-y-auto max-h-[calc(85vh-80px)]">
                 <div className="p-6 space-y-8">
-                  {/* Hunt Image and Basic Info */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="relative h-64 lg:h-80 rounded-xl overflow-hidden">
-                      <img 
-                        src={selectedHuntForDetails.image} 
-                        alt={selectedHuntForDetails.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-4 right-4 bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                        ${selectedHuntForDetails.basePrice.toLocaleString()}
-                      </div>
+                  {/* Hunt Basic Info */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Hunt Details</h3>
+                        <div className="bg-amber-600 text-white px-4 py-2 rounded-full text-lg font-bold">
+                          {selectedHuntForDetails.priceOnApplication ? 'POA' : `$${selectedHuntForDetails.basePrice.toLocaleString()}`}
+                        </div>
                     </div>
-                    <div className="space-y-4">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">Hunt Details</h3>
-                        <p className="text-gray-600 dark:text-gray-400">{selectedHuntForDetails.description}</p>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{selectedHuntForDetails.description}</p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Duration</p>
+                        <p className="font-semibold">{selectedHuntForDetails.baseDays} days</p>
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Duration</p>
-                          <p className="font-semibold">{selectedHuntForDetails.baseDays} days</p>
-                        </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Location</p>
-                          <p className="font-semibold">{selectedHuntForDetails.location}</p>
-                        </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Best Season</p>
-                          <p className="font-semibold">{selectedHuntForDetails.bestSeason}</p>
-                        </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">Difficulty</p>
-                          <p className="font-semibold">{selectedHuntForDetails.difficulty}</p>
-                        </div>
+                      <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Location</p>
+                        <p className="font-semibold">{selectedHuntForDetails.location}</p>
+                      </div>
+                      <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Best Season</p>
+                        <p className="font-semibold">{selectedHuntForDetails.bestSeason}</p>
+                      </div>
+                      <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Difficulty</p>
+                        <p className="font-semibold">{selectedHuntForDetails.difficulty}</p>
                       </div>
                     </div>
                   </div>
@@ -162,7 +152,7 @@ const FeaturedPackages: React.FC<FeaturedPackagesProps> = ({ darkMode }) => {
                               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{extra.description}</p>
                             </div>
                             <span className="text-lg font-bold text-amber-600 ml-4">
-                              ${extra.price.toLocaleString()}{extra.perDay ? '/day' : ''}
+                              {extra.priceOnApplication ? 'POA' : `$${extra.price.toLocaleString()}${extra.perDay ? '/day' : ''}`}
                             </span>
                           </div>
                         </div>

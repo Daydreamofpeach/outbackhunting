@@ -298,7 +298,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Hunt Details</h3>
                         <div className="bg-amber-600 text-white px-4 py-2 rounded-full text-lg font-bold">
-                          ${selectedHuntForDetails.basePrice.toLocaleString()}
+                          {selectedHuntForDetails.priceOnApplication ? 'POA' : `$${selectedHuntForDetails.basePrice.toLocaleString()}`}
                         </div>
                       </div>
                       <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{selectedHuntForDetails.description}</p>
@@ -393,7 +393,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
                               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{extra.description}</p>
                             </div>
                             <span className="text-lg font-bold text-amber-600 ml-4">
-                              ${extra.price.toLocaleString()}{extra.perDay ? '/day' : ''}
+                              {extra.priceOnApplication ? 'POA' : `$${extra.price.toLocaleString()}${extra.perDay ? '/day' : ''}`}
                             </span>
                           </div>
                         </div>
@@ -465,7 +465,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
                   <div className="space-y-2 text-sm">
                     <p className="font-medium">Smart Package Building:</p>
                     <ul className="space-y-1 text-gray-600 dark:text-gray-400">
-                      <li>• <strong>First animal:</strong> Uses the full hunt duration (3-4 days)</li>
+                      <li>• <strong>First animal:</strong> Uses the full hunt duration (4 days)</li>
                       <li>• <strong>Additional animals:</strong> Only 1 extra day per animal</li>
                       <li>• <strong>Same location hunts:</strong> Can be combined efficiently</li>
                       <li>• <strong>Different locations:</strong> May require travel days</li>
@@ -528,7 +528,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
                     <span className="text-amber-500 font-bold">•</span>
-                  <span>A 10% deposit is required on booking (non-refundable)</span>
+                  <span>A 25% deposit is required on booking (non-refundable). Final payment due at conclusion of hunt as pricing may vary based on your specific requirements.</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-amber-500 font-bold">•</span>

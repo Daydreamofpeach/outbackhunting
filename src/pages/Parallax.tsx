@@ -874,15 +874,15 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-nting-                      <p className="font-medium">Deposit Required</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">10% of hunt cost (non-refundable)</p>
+<p className="font-medium">Deposit Required</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">25% of hunt cost (non-refundable)</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <p className="font-medium">Balance Due</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">30 days before your hunt</p>
+                      <p className="font-medium">Final Payment</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Due at conclusion of hunt</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

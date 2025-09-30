@@ -13,7 +13,7 @@ interface OptimizedImageProps {
   width?: number;
   height?: number;
   onLoad?: () => void;
-  onError?: () => void;
+  onError?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -64,9 +64,9 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     onLoad?.();
   };
 
-  const handleError = () => {
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     setHasError(true);
-    onError?.();
+    onError?.(e);
   };
 
   return (

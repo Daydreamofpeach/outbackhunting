@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Moon, Sun } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 interface FooterProps {
   darkMode: boolean;
@@ -28,10 +29,13 @@ const Footer: React.FC<FooterProps> = ({ darkMode, toggleDarkMode }) => {
         <div className="flex flex-col items-center text-center gap-8">
           {/* Logo and about */}
           <div className="flex flex-col items-center gap-3">
-            <img 
+            <OptimizedImage 
               src="/assets/img/gareth/profile/GarethLogo-02.svg" 
               alt="Outback Hunting New Zealand Logo" 
-              className={`h-12 w-auto transition-all duration-300 ${darkMode ? 'invert' : ''}`}
+              className="h-12 w-auto transition-all duration-300"
+              style={{
+                filter: darkMode ? 'brightness(0) invert(1)' : 'none'
+              }}
             />
             <span className="text-lg font-bold tracking-tight">Outback Hunting New Zealand</span>
           </div>

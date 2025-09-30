@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Moon, Sun, Home, Target, Users, Phone, Package, Settings, MapPin, Calendar, Award } from 'lucide-react';
 import { gsap } from 'gsap';
 import NavDropdown from './NavDropdown';
+import OptimizedImage from './OptimizedImage';
 
 interface ParallaxNavbarProps {
   darkMode: boolean;
@@ -129,10 +130,14 @@ const ParallaxNavbar: React.FC<ParallaxNavbarProps> = ({ darkMode, toggleDarkMod
               onClick={() => navigate('/')}
               className="flex items-center gap-4 transition-transform hover:scale-105 bg-transparent border-none cursor-pointer"
             >
-              <img 
+              <OptimizedImage 
                 src="/assets/img/gareth/profile/GarethLogo-02.svg" 
                 alt="Outback Hunting New Zealand Logo" 
-                className={`h-16 w-auto ${darkMode ? 'invert' : ''}`}
+                className="h-16 w-auto transition-all duration-300"
+                style={{
+                  filter: darkMode ? 'brightness(0) invert(1)' : 'none'
+                }}
+                priority={true}
               />
               <div className="hidden md:block">
                 <div className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight drop-shadow-lg leading-tight`}>

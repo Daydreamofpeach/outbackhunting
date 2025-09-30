@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, Users, Award, MapPin, ShieldCheck, Phone, Mail, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Helmet } from 'react-helmet-async';
 import SEO from '../components/SEO';
+import OptimizedImage from '../components/OptimizedImage';
 
 interface AboutProps {
   darkMode: boolean;
@@ -166,25 +166,25 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               className="lg:w-1/2"
             >
               <div className="grid grid-cols-2 gap-4">
-                <img 
+                <OptimizedImage 
                   src="/assets/img/gareth/profile/pic1.JPG" 
                   alt="Gareth - Professional hunting guide in New Zealand wilderness" 
                   className="rounded-lg h-64 object-cover w-full shadow-md"
                   loading="lazy"
                 />
-                <img 
+                <OptimizedImage 
                   src="/assets/img/gareth/profile/Pic2.JPG" 
                   alt="Gareth - Expert hunting guide with 30+ years experience" 
                   className="rounded-lg h-64 object-cover w-full shadow-md"
                   loading="lazy"
                 />
-                <img 
+                <OptimizedImage 
                   src="/assets/img/gareth/Scenery and camps/IMG_0266.JPEG" 
                   alt="Hunting in New Zealand wilderness - Professional hunting experience" 
                   className="rounded-lg h-64 object-cover w-full shadow-md"
                   loading="lazy"
                 />
-                <img 
+                <OptimizedImage 
                   src="/assets/img/gareth/Scenery and camps/IMG_0310.JPG" 
                   alt="New Zealand hunting landscape - Breathtaking wilderness scenery" 
                   className="rounded-lg h-64 object-cover w-full shadow-md"

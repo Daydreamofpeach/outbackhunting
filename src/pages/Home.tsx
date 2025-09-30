@@ -4,10 +4,10 @@ import { ChevronRight, Award, Calendar, MapPin, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Helmet } from 'react-helmet-async';
-import FeaturedPackages from '../components/FeaturedPackages';
 import CollapsibleHuntingPackages from '../components/CollapsibleHuntingPackages';
 import TestimonialSlider from '../components/TestimonialSlider';
 import AnimalGalleries from '../components/AnimalGalleries';
+import OptimizedImage from '../components/OptimizedImage';
 
 interface HomeProps {
   darkMode: boolean;
@@ -107,10 +107,11 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="flex justify-center mb-8"
             >
-              <img 
+              <OptimizedImage 
                 src="/assets/img/gareth/GarethLogoC.png" 
                 alt="Outback Hunting New Zealand Logo" 
                 className="h-24 md:h-32 w-auto drop-shadow-2xl"
+                priority={true}
               />
             </motion.div>
             
@@ -250,7 +251,7 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/2">
-              <img
+              <OptimizedImage
                 src="/assets/img/scenery.jpg"
                 alt="New Zealand hunting guide in scenic wilderness - Professional hunting experience"
                 className="rounded-lg shadow-xl w-full h-auto object-cover"

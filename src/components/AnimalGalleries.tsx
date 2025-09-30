@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { X, ChevronLeft, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import OptimizedImage from './OptimizedImage';
 
 interface AnimalGalleriesProps {
   darkMode: boolean;
@@ -310,7 +311,7 @@ const AnimalGalleries: React.FC<AnimalGalleriesProps> = ({ darkMode }) => {
               onClick={() => openGallery(animal)}
             >
               <div className="relative h-64 overflow-hidden">
-                <img
+                <OptimizedImage
                   src={animal.images[0]}
                   alt={`${animal.displayName} hunting in New Zealand - Trophy ${animal.displayName} gallery`}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -433,7 +434,7 @@ const AnimalGalleries: React.FC<AnimalGalleriesProps> = ({ darkMode }) => {
                             : 'border-gray-300 hover:border-gray-500'
                         }`}
                       >
-                        <img
+                        <OptimizedImage
                           src={image}
                           alt={`${selectedAnimal?.displayName} hunting thumbnail ${index + 1}`}
                           className="w-full h-full object-cover"

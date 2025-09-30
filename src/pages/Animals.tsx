@@ -10,6 +10,7 @@ import {
   MapPin
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import OptimizedImage from '../components/OptimizedImage';
 
 interface AnimalsProps {
   darkMode: boolean;
@@ -458,7 +459,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
         )}
         
         {/* Hero Image */}
-        <img
+        <OptimizedImage
           src={heroImage}
           alt="Chamois hunting in New Zealand mountains"
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
@@ -473,6 +474,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
             // High-quality image from Gareth's collection
             imageRendering: 'auto'
           }}
+          priority={true}
         />
       </section>
 
@@ -569,7 +571,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
                 onClick={() => openGallery(gallery)}
               >
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={gallery.images[0]}
                     alt={`${gallery.displayName} hunting in New Zealand`}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -755,7 +757,7 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
                             : 'border-gray-300 hover:border-gray-500 hover:scale-105'
                         }`}
                       >
-                        <img
+                        <OptimizedImage
                           src={image}
                           alt={`${selectedGallery.displayName} thumbnail ${index + 1}`}
                           className="w-full h-full object-cover"

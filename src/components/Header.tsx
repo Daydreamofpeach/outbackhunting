@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import NavDropdown from './NavDropdown';
+import OptimizedImage from './OptimizedImage';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -137,10 +138,14 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
             to="/" 
             className="flex items-center gap-3 transition-transform hover:scale-105"
           >
-            <img 
-              src="/assets/img/gareth/GarethLogoC.png" 
+            <OptimizedImage 
+              src="/assets/img/gareth/profile/GarethLogo-02.svg" 
               alt="Outback Hunting New Zealand Logo" 
-              className="h-16 w-auto"
+              className="h-16 w-auto transition-all duration-300"
+              style={{
+                filter: darkMode ? 'brightness(0) invert(1)' : 'none'
+              }}
+              priority={true}
             />
             <span className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight hidden sm:block`}>
               Outback Hunting New Zealand

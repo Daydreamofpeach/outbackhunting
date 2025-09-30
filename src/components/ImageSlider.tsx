@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
+import OptimizedImage from './OptimizedImage';
 
 interface ImageSliderProps {
   darkMode: boolean;
 }
 
-const ImageSlider: React.FC<ImageSliderProps> = ({ darkMode }) => {
+const ImageSlider: React.FC<ImageSliderProps> = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -57,10 +57,11 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ darkMode }) => {
       >
         {/* Current Slide */}
         <div className="absolute inset-0 w-full h-full">
-          <img
+          <OptimizedImage
             src={sliderImages[currentIndex]}
             alt={`Hunting experience ${currentIndex + 1}`}
             className="w-full h-full object-cover"
+            priority={true}
           />
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import OptimizedImage from "./OptimizedImage";
 
 interface ImageCardProps {
   src: string;
@@ -17,18 +18,14 @@ function ImageCard({ src, onHover, alt }: ImageCardProps) {
       onMouseLeave={() => onHover(false, null)}
     >
       <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:border-amber-500/50">
-        <img
+        <OptimizedImage
           src={src}
           alt={alt}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           style={{ imageRendering: "pixelated" }}
           loading="lazy"
-          decoding="async"
           width={160}
           height={112}
-          // SEO improvements
-          itemProp="image"
-          fetchPriority="low"
         />
         {/* Overlay for low-res effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 pointer-events-none" />

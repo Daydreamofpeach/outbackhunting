@@ -36,9 +36,6 @@ const AnimalGalleries: React.FC<AnimalGalleriesProps> = ({ darkMode }) => {
         '/assets/img/gareth/Deer/DSC00388.JPG',
         '/assets/img/gareth/Deer/IMG_1792.JPG',
         '/assets/img/gareth/Deer/IMG_3217.JPEG',
-        '/assets/img/gareth/Deer/IMG_5179.JPG',
-        '/assets/img/gareth/Deer/IMG_5184.JPG',
-        '/assets/img/gareth/Deer/IMG_5565.JPEG',
         '/assets/img/gareth/Deer/P4083013.JPG',
         // Additional Red Stag images from gallimg
         '/assets/img/gallimg/redstag/1.png',
@@ -386,8 +383,19 @@ const AnimalGalleries: React.FC<AnimalGalleriesProps> = ({ darkMode }) => {
                       key={currentImageIndex}
                       src={selectedAnimal?.images[currentImageIndex]}
                       alt={`${selectedAnimal?.displayName} hunting trophy - New Zealand ${selectedAnimal?.displayName} hunting photo ${currentImageIndex + 1}`}
-                      className={`w-full ${isFullscreen ? 'h-[calc(100vh-200px)]' : 'h-96 md:h-[600px]'} object-contain mx-auto`}
-                      style={{ imageRendering: 'crisp-edges' }}
+                      className="object-contain mx-auto"
+                      style={{ 
+                        minWidth: '800px',
+                        minHeight: '600px',
+                        maxWidth: '100%',
+                        maxHeight: isFullscreen ? 'calc(100vh - 200px)' : '600px',
+                        width: 'auto',
+                        height: 'auto',
+                        imageRendering: 'crisp-edges',
+                        filter: selectedAnimal?.images[currentImageIndex].includes('/gallimg/')
+                          ? 'contrast(1.1) saturate(1.1) brightness(1.05)'
+                          : 'none'
+                      }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}

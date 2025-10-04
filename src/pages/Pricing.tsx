@@ -220,8 +220,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                   <h3 className="text-xl font-bold mb-4 text-amber-600">Red Stag Wilderness</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>Wilderness Hunt</span>
+                      <span>Animal Cost</span>
                       <span className="font-bold">$2,500</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>Daily Rates (4 days)</span>
+                      <span className="font-bold">$1,520</span>
+                    </div>
+                    <div className="border-t pt-2">
+                      <div className="flex justify-between items-center font-bold text-lg">
+                        <span>Total</span>
+                        <span className="text-amber-600">$4,000</span>
+                      </div>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 4 days
@@ -246,15 +256,21 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                   <h3 className="text-xl font-bold mb-4 text-amber-600">Bull Tahr Wilderness - 12"</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>1 Tahr</span>
+                      <span>Animal Cost</span>
                       <span className="font-bold">$3,500</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>2 Tahr</span>
-                      <span className="font-bold">$5,500</span>
+                      <span>Daily Rates (4 days)</span>
+                      <span className="font-bold">$1,520</span>
+                    </div>
+                    <div className="border-t pt-2">
+                      <div className="flex justify-between items-center font-bold text-lg">
+                        <span>Total</span>
+                        <span className="text-amber-600">$5,000</span>
+                      </div>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 4-5 days
+                      Duration: 4 days
                     </div>
                     <div className="mt-4">
                       <button
@@ -276,8 +292,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                   <h3 className="text-xl font-bold mb-4 text-amber-600">Spring Tahr - 12"</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>1 Tahr</span>
+                      <span>Animal Cost</span>
                       <span className="font-bold">$3,000</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>Daily Rates (4 days)</span>
+                      <span className="font-bold">$1,520</span>
+                    </div>
+                    <div className="border-t pt-2">
+                      <div className="flex justify-between items-center font-bold text-lg">
+                        <span>Total</span>
+                        <span className="text-amber-600">$4,500</span>
+                      </div>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 4 days
@@ -311,23 +337,32 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                   <h3 className="text-xl font-bold mb-4 text-amber-600">Red Stag Private Land</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>Silver</span>
+                      <span>Silver Animal</span>
                       <span className="font-bold">$4,400</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>Gold</span>
+                      <span>Gold Animal</span>
                       <span className="font-bold">$5,900</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>400-450"</span>
+                      <span>400-450" Animal</span>
                       <span className="font-bold">$8,500</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>450"+</span>
+                      <span>450"+ Animal</span>
                       <span className="font-bold text-amber-500">POA</span>
                     </div>
+                    <div className="flex justify-between items-center">
+                      <span>Daily Rates (3 days)</span>
+                      <span className="font-bold">$1,140</span>
+                    </div>
+                    <div className="border-t pt-2">
+                      <div className="text-sm text-gray-500">
+                        Total = Animal Cost + Daily Rates
+                      </div>
+                    </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 3-7 days
+                      Duration: 3 days
                     </div>
                     <div className="mt-4">
                       <button
@@ -349,23 +384,32 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                   <h3 className="text-xl font-bold mb-4 text-amber-600">Bull Tahr Private Land</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>12"</span>
+                      <span>12" Animal</span>
                       <span className="font-bold">$4,000</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>13"</span>
+                      <span>13" Animal</span>
                       <span className="font-bold">$5,000</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>14"</span>
+                      <span>14" Animal</span>
                       <span className="font-bold">$6,100</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>15"</span>
+                      <span>15" Animal</span>
                       <span className="font-bold">$8,500</span>
                     </div>
+                    <div className="flex justify-between items-center">
+                      <span>Daily Rates (3 days)</span>
+                      <span className="font-bold">$1,140</span>
+                    </div>
+                    <div className="border-t pt-2">
+                      <div className="text-sm text-gray-500">
+                        Total = Animal Cost + Daily Rates
+                      </div>
+                    </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 4-5 days
+                      Duration: 3 days
                     </div>
                     <div className="mt-4">
                       <button
@@ -387,11 +431,21 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                   <h3 className="text-xl font-bold mb-4 text-amber-600">Chamois Private Land</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>Chamois Hunt</span>
+                      <span>Animal Cost</span>
                       <span className="font-bold">$6,400</span>
                     </div>
+                    <div className="flex justify-between items-center">
+                      <span>Daily Rates (3 days)</span>
+                      <span className="font-bold">$1,140</span>
+                    </div>
+                    <div className="border-t pt-2">
+                      <div className="flex justify-between items-center font-bold text-lg">
+                        <span>Total</span>
+                        <span className="text-amber-600">$7,550</span>
+                      </div>
+                    </div>
                     <div className="text-sm text-gray-500 mt-2">
-                      Duration: 4 days
+                      Duration: 3 days
                     </div>
                     <div className="mt-4">
                       <button
@@ -420,8 +474,18 @@ const Pricing: React.FC<PricingProps> = ({ darkMode }) => {
                   <h3 className="text-xl font-bold mb-4 text-amber-600">Chamois Wilderness Hunt</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>1 Chamois</span>
+                      <span>Animal Cost</span>
                       <span className="font-bold">$3,000</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>Daily Rates (4 days)</span>
+                      <span className="font-bold">$1,520</span>
+                    </div>
+                    <div className="border-t pt-2">
+                      <div className="flex justify-between items-center font-bold text-lg">
+                        <span>Total</span>
+                        <span className="text-amber-600">$4,500</span>
+                      </div>
                     </div>
                     <div className="text-sm text-gray-500 mt-2">
                       Duration: 4 days

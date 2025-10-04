@@ -94,7 +94,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
     }));
   }, [customPackage.hunts, customPackage.additionalDays, customPackage.selectedExtras, customPackage.people]);
 
-  const addHunt = (hunt: HuntData) => {
+  const addAnimal = (hunt: HuntData) => {
     setCustomPackage(prev => {
       const existingHunt = prev.hunts.find(h => h.hunt.id === hunt.id);
       if (existingHunt) {
@@ -115,16 +115,16 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
     });
   };
 
-  const removeHunt = (huntId: string) => {
+  const removeAnimal = (huntId: string) => {
     setCustomPackage(prev => ({
       ...prev,
       hunts: prev.hunts.filter(h => h.hunt.id !== huntId)
     }));
   };
 
-  const updateHuntQuantity = (huntId: string, quantity: number) => {
+  const updateAnimalQuantity = (huntId: string, quantity: number) => {
     if (quantity <= 0) {
-      removeHunt(huntId);
+      removeAnimal(huntId);
       return;
     }
     
@@ -443,7 +443,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
           {/* Available Hunts */}
           <div>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">Available Hunts</h2>
+              <h2 className="text-2xl font-bold">Available Animals</h2>
               <button
                 onClick={() => setShowInfo(!showInfo)}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-colors"
@@ -465,9 +465,9 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
                   <div className="space-y-2 text-sm">
                     <p className="font-medium">Smart Package Building:</p>
                     <ul className="space-y-1 text-gray-600 dark:text-gray-400">
-                      <li>• <strong>First animal:</strong> Uses the full hunt duration (4 days)</li>
-                      <li>• <strong>Additional animals:</strong> Only 1 extra day per animal</li>
-                      <li>• <strong>Same location hunts:</strong> Can be combined efficiently</li>
+                      <li>• <strong>First animal:</strong> Includes full hunt duration + daily rates</li>
+                      <li>• <strong>Additional animals:</strong> Only animal cost (no extra daily rates)</li>
+                      <li>• <strong>Same location animals:</strong> Can be combined efficiently</li>
                       <li>• <strong>Different locations:</strong> May require travel days</li>
                     </ul>
                   </div>
@@ -478,7 +478,7 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
             <HuntSelector
               hunts={hunts}
               darkMode={darkMode}
-              onAddHunt={addHunt}
+              onAddHunt={addAnimal}
               onViewDetails={setSelectedHuntForDetails}
             />
           </div>
@@ -489,8 +489,8 @@ const PackageCustomization: React.FC<PackageCustomizationProps> = ({ darkMode })
               darkMode={darkMode}
               customPackage={customPackage}
               dayRate={dayRate}
-              onRemoveHunt={removeHunt}
-              onUpdateHuntQuantity={updateHuntQuantity}
+              onRemoveHunt={removeAnimal}
+              onUpdateHuntQuantity={updateAnimalQuantity}
               onUpdateAdditionalDays={updateAdditionalDays}
               onUpdateHunters={updateHunters}
               onUpdateNonHunters={updateNonHunters}

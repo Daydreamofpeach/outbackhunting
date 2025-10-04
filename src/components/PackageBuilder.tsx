@@ -119,7 +119,7 @@ const PackageBuilder: React.FC<PackageBuilderProps> = ({
                     <Target size={24} className="text-amber-600" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">Selected Hunts</h3>
+                    <h3 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">Selected Animals</h3>
                     <p className="text-lg lg:text-xl text-gray-700 dark:text-gray-300">
                       {totalHuntItems} animal{totalHuntItems !== 1 ? 's' : ''} selected
                     </p>
@@ -183,7 +183,7 @@ const PackageBuilder: React.FC<PackageBuilderProps> = ({
                             </div>
                             <div className="flex justify-center">
                               <span className="text-xl lg:text-2xl font-bold text-amber-600">
-                                ${(hunt.basePrice * quantity).toLocaleString()}
+                                ${(hunt.priceOnApplication ? 0 : (quantity === 1 ? hunt.basePrice : hunt.basePrice + (hunt.additionalAnimalPrice * (quantity - 1)))).toLocaleString()}
                               </span>
                             </div>
                           </div>

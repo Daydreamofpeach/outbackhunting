@@ -25,11 +25,24 @@ interface AnimalGallery {
   location: string;
 }
 
+// Utility function to randomize array while keeping first element in place
+const randomizeArrayAfterFirst = (arr: string[]): string[] => {
+  if (arr.length <= 1) return arr;
+  const first = arr[0];
+  const rest = arr.slice(1);
+  // Fisher-Yates shuffle for the rest of the array
+  for (let i = rest.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [rest[i], rest[j]] = [rest[j], rest[i]];
+  }
+  return [first, ...rest];
+};
+
 const animalGalleries: AnimalGallery[] = [
   {
     name: 'deer',
     displayName: 'Red Deer',
-    images: [
+    images: randomizeArrayAfterFirst([
       // Original Gareth images
       '/assets/img/gareth/Deer/12pts 4 persistence.JPG',
       '/assets/img/gareth/Deer/DSC00169.JPG',
@@ -40,9 +53,6 @@ const animalGalleries: AnimalGallery[] = [
       '/assets/img/gareth/Deer/DSC00388.JPG',
       '/assets/img/gareth/Deer/IMG_1792.JPG',
       '/assets/img/gareth/Deer/IMG_3217.JPEG',
-      '/assets/img/gareth/Deer/IMG_5179.JPG',
-      '/assets/img/gareth/Deer/IMG_5184.JPG',
-      '/assets/img/gareth/Deer/IMG_5565.JPEG',
       '/assets/img/gareth/Deer/P4083013.JPG',
       // Additional Red Stag images from gallimg
       '/assets/img/gallimg/redstag/1.png',
@@ -66,7 +76,7 @@ const animalGalleries: AnimalGallery[] = [
       '/assets/img/gallimg/redstag/19.png',
       '/assets/img/gallimg/redstag/20.png',
       '/assets/img/gallimg/redstag/21.png'
-    ],
+    ]),
     description: 'Hunt the iconic red deer, New Zealand\'s most prized trophy animal.',
     season: 'March - July',
     location: 'Canterbury Highlands'
@@ -74,7 +84,7 @@ const animalGalleries: AnimalGallery[] = [
   {
     name: 'tahr',
     displayName: 'Tahr',
-    images: [
+    images: randomizeArrayAfterFirst([
       // Original Gareth images
       '/assets/img/gareth/Tahr/DSC00990.JPG',
       '/assets/img/gareth/Tahr/DSC01355.JPG',
@@ -163,7 +173,7 @@ const animalGalleries: AnimalGallery[] = [
       '/assets/img/gallimg/Tahr/72.png',
       '/assets/img/gallimg/Tahr/73.png',
       '/assets/img/gallimg/Tahr/74.png'
-    ],
+    ]),
     description: 'Challenge yourself with tahr hunting in New Zealand\'s alpine regions.',
     season: 'May - August',
     location: 'Southern Alps'
@@ -171,7 +181,7 @@ const animalGalleries: AnimalGallery[] = [
   {
     name: 'chamois',
     displayName: 'Chamois',
-    images: [
+    images: randomizeArrayAfterFirst([
       // Original Gareth images
       '/assets/img/gareth/Chamois/DSC01085.JPG',
       '/assets/img/gareth/Chamois/IMG_3131.JPEG',
@@ -217,7 +227,7 @@ const animalGalleries: AnimalGallery[] = [
       '/assets/img/gallimg/Chamois/35.png',
       '/assets/img/gallimg/Chamois/36.png',
       '/assets/img/gallimg/Chamois/37.png'
-    ],
+    ]),
     description: 'Experience the thrill of hunting chamois in New Zealand\'s alpine terrain.',
     season: 'May - October',
     location: 'Alpine Regions'
@@ -689,12 +699,17 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
                       ref={imageRef}
                       src={selectedGallery.images[currentImageIndex]}
                       alt={`${selectedGallery.displayName} hunting photo ${currentImageIndex + 1}`}
-                      className="max-w-full max-h-full object-contain"
+                      className="object-contain"
                       style={{
-                        // Double the size for gallimg images and add upsampling
-                        transform: selectedGallery.images[currentImageIndex].includes('/gallimg/') 
-                          ? 'scale(2)' 
-                          : 'scale(1)',
+                        minWidth: '800px',
+                        minHeight: '600px',
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        width: 'auto',
+                        height: 'auto',
+                        transform: selectedGallery.images[currentImageIndex].includes('/assets/img/gareth/Deer/IMG_1792.JPG')
+                          ? 'rotate(-90deg)'
+                          : 'none',
                         imageRendering: selectedGallery.images[currentImageIndex].includes('/gallimg/')
                           ? 'pixelated' // For low-res images, use pixelated rendering
                           : 'auto',
@@ -768,6 +783,9 @@ const Animals: React.FC<AnimalsProps> = ({ darkMode }) => {
                               : 'auto',
                             filter: image.includes('/gallimg/')
                               ? 'contrast(1.1) saturate(1.1) brightness(1.05)'
+                              : 'none',
+                            transform: image.includes('/assets/img/gareth/Deer/IMG_1792.JPG')
+                              ? 'rotate(-90deg)'
                               : 'none'
                           }}
                           loading="lazy"

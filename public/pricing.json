@@ -51,51 +51,51 @@
         "wilderness": {
           "id": "red-stag-wilderness",
           "name": "Red Stag Wilderness Hunt",
-          "basePrice": 2500,
+          "basePrice": 4000,
           "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "March - May",
           "description": "Wilderness Red Stag hunting in remote areas with tent or alpine hut accommodation.",
-          "additionalAnimalPrice": 800,
+          "additionalAnimalPrice": 2500,
           "additionalAnimalDays": 1
         },
         "private-silver": {
           "id": "red-stag-private-silver",
           "name": "Red Stag Private Land - Silver",
-          "basePrice": 4400,
+          "basePrice": 5550,
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "March - May",
           "description": "Private land Red Stag hunting with hired cabin or lodge accommodation.",
-          "additionalAnimalPrice": 800,
+          "additionalAnimalPrice": 4400,
           "additionalAnimalDays": 1
         },
         "private-gold": {
           "id": "red-stag-private-gold",
           "name": "Red Stag Private Land - Gold",
-          "basePrice": 5900,
+          "basePrice": 7000,
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "March - May",
           "description": "Premium private land Red Stag hunting with hired cabin or lodge accommodation.",
-          "additionalAnimalPrice": 900,
+          "additionalAnimalPrice": 5900,
           "additionalAnimalDays": 1
         },
         "private-400-450": {
           "id": "red-stag-private-400-450",
           "name": "Red Stag Private Land - 400-450\"",
-          "basePrice": 8500,
+          "basePrice": 9650,
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "March - May",
           "description": "Trophy Red Stag hunting for 400-450 inch stags on private land with hired cabin or lodge accommodation.",
-          "additionalAnimalPrice": 1000,
+          "additionalAnimalPrice": 8500,
           "additionalAnimalDays": 1
         },
         "private-450-plus": {
           "id": "red-stag-private-450-plus",
           "name": "Red Stag Private Land - 450\"+",
-          "basePrice": 0,
+          "basePrice": "POA",
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "March - May",
@@ -157,24 +157,24 @@
         "wilderness": {
           "id": "chamois-wilderness",
           "name": "Chamois Wilderness Hunt",
-          "basePrice": 3000,
+          "basePrice": 4500,
           "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "May - July",
           "description": "Wilderness Chamois hunting in alpine terrain with tent or alpine hut accommodation. Additional animals can be discussed.",
-          "additionalAnimalPrice": 0,
-          "additionalAnimalDays": 0,
+          "additionalAnimalPrice": 3000,
+          "additionalAnimalDays": 1,
           "note": "Additional animals pricing to be discussed"
         },
         "private": {
           "id": "chamois-private",
           "name": "Chamois Private Land",
-          "basePrice": 6400,
+          "basePrice": 7550,
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "May - July",
           "description": "Private land Chamois hunting with hired cabin or lodge accommodation.",
-          "additionalAnimalPrice": 950,
+          "additionalAnimalPrice": 6400,
           "additionalAnimalDays": 1
         }
       }
@@ -230,78 +230,78 @@
         "wilderness-1": {
           "id": "tahr-wilderness-1",
           "name": "Bull Tahr Wilderness - 12\"",
-          "basePrice": 3500,
+          "basePrice": 5000,
           "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "April - June",
           "description": "Wilderness Bull Tahr hunting for 1 Tahr in remote alpine areas with tent or alpine hut accommodation.",
-          "additionalAnimalPrice": 0,
-          "additionalAnimalDays": 0
+          "additionalAnimalPrice": 3500,
+          "additionalAnimalDays": 1
         },
         "wilderness-2": {
           "id": "tahr-wilderness-2",
           "name": "Bull Tahr Wilderness - 2x 12\"",
-          "basePrice": 5500,
+          "basePrice": 7000,
           "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "April - June",
           "description": "Wilderness Bull Tahr hunting for 2 Tahr in remote alpine areas with tent or alpine hut accommodation.",
-          "additionalAnimalPrice": 0,
-          "additionalAnimalDays": 0
+          "additionalAnimalPrice": 5500,
+          "additionalAnimalDays": 1
         },
         "spring-1": {
           "id": "tahr-spring-1",
           "name": "Spring Tahr - 12\"",
-          "basePrice": 3000,
+          "basePrice": 4500,
           "baseDays": 4,
           "location": "Wilderness Areas",
           "bestSeason": "Spring",
           "description": "Spring Tahr hunting for 1 Tahr in accessible terrain with tent or alpine hut accommodation.",
-          "additionalAnimalPrice": 0,
-          "additionalAnimalDays": 0
+          "additionalAnimalPrice": 3000,
+          "additionalAnimalDays": 1
         },
         "private-12": {
           "id": "tahr-private-12",
           "name": "Bull Tahr Private Land - 12\"",
-          "basePrice": 4000,
+          "basePrice": 5150,
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "April - June",
           "description": "Private land Bull Tahr hunting for 12\" Tahr with hired cabin or lodge accommodation.",
-          "additionalAnimalPrice": 800,
+          "additionalAnimalPrice": 4000,
           "additionalAnimalDays": 1
         },
         "private-13": {
           "id": "tahr-private-13",
           "name": "Bull Tahr Private Land - 13\"",
-          "basePrice": 5000,
+          "basePrice": 6150,
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "April - June",
           "description": "Private land Bull Tahr hunting for 13\" Tahr with hired cabin or lodge accommodation.",
-          "additionalAnimalPrice": 900,
+          "additionalAnimalPrice": 5000,
           "additionalAnimalDays": 1
         },
         "private-14": {
           "id": "tahr-private-14",
           "name": "Bull Tahr Private Land - 14\"",
-          "basePrice": 6100,
+          "basePrice": 7250,
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "April - June",
           "description": "Private land Bull Tahr hunting for 14\" Tahr with hired cabin or lodge accommodation.",
-          "additionalAnimalPrice": 1000,
+          "additionalAnimalPrice": 6100,
           "additionalAnimalDays": 1
         },
         "private-15": {
           "id": "tahr-private-15",
           "name": "Bull Tahr Private Land - 15\"",
-          "basePrice": 8500,
+          "basePrice": 9650,
           "baseDays": 3,
           "location": "Private Land",
           "bestSeason": "April - June",
           "description": "Private land Bull Tahr hunting for 15\" Tahr with hired cabin or lodge accommodation.",
-          "additionalAnimalPrice": 1100,
+          "additionalAnimalPrice": 8500,
           "additionalAnimalDays": 1
         }
       }

@@ -126,18 +126,15 @@ class PricingService {
     }
     
     if (quantity <= 1) {
-      return hunt.basePrice;
+      return this.roundToNearestFifty(hunt.basePrice);
     }
     
-    // For private land hunts, additional animals cost the same as the base price
-    // For wilderness hunts, additional animals cost 90% of base price (rounded down)
-    if (hunt.location === 'Private Land') {
-      return hunt.basePrice * quantity;
-    } else {
-      // First animal at base price, additional animals at 90% of base price
-      const additionalAnimalPrice = Math.floor(hunt.basePrice * 0.9);
-      return hunt.basePrice + (additionalAnimalPrice * (quantity - 1));
-    }
+    // First animal costs full base price (includes daily rates)
+    // Additional animals cost only the animal cost (additionalAnimalPrice)
+    const firstAnimalPrice = hunt.basePrice;
+    const additionalAnimalsPrice = hunt.additionalAnimalPrice * (quantity - 1);
+    
+    return this.roundToNearestFifty(firstAnimalPrice + additionalAnimalsPrice);
   }
 
   calculateHuntDays(hunt: HuntData, quantity: number): number {
@@ -166,7 +163,7 @@ class PricingService {
     }, 0);
 
     // Calculate additional days cost
-    const additionalDaysCost = additionalDays * data.dayRates.solo;
+    const additionalDaysCost = this.roundToNearestFifty(additionalDays * data.dayRates.solo);
 
     // Calculate extras cost
     const extrasCost = selectedExtras.reduce((sum, selectedExtra) => {
@@ -187,8 +184,8 @@ class PricingService {
     }, 0);
 
     // Calculate people costs
-    const huntersCost = people.hunters > 1 ? (people.hunters - 1) * data.dayRates.additionalHunter * totalDays : 0;
-    const nonHuntersCost = people.nonHunters * data.dayRates.nonHunter * totalDays;
+    const huntersCost = people.hunters > 1 ? this.roundToNearestFifty((people.hunters - 1) * data.dayRates.additionalHunter * totalDays) : 0;
+    const nonHuntersCost = this.roundToNearestFifty(people.nonHunters * data.dayRates.nonHunter * totalDays);
     
     return huntTotal + additionalDaysCost + extrasCost + huntersCost + nonHuntersCost;
   }
@@ -249,6 +246,18 @@ class PricingService {
     return this.pricingData?.booking || { deposit: 0.25, currency: 'NZD', depositNote: 'A 25% deposit is required to secure your booking. Final payment is due at the conclusion of your hunt as pricing may vary based on your specific requirements and additional services.' };
   }
 
+  getAnimalCost(hunt: HuntData): number {
+    // Calculate the animal cost by subtracting daily rates from base price
+    const dailyRates = this.getDayRates();
+    const dailyCost = dailyRates.solo * hunt.baseDays;
+    return hunt.basePrice - dailyCost;
+  }
+
+  roundToNearestFifty(price: number): number {
+    // Round to nearest $50 or $0
+    return Math.round(price / 50) * 50;
+  }
+
   generateBillBreakdown(
     hunts: Array<{ hunt: HuntData; quantity: number }>,
     additionalDays: number,
@@ -261,9 +270,8 @@ class PricingService {
 
     const breakdown = [];
 
-    // Hunt costs
+    // Hunt costs - show detailed breakdown
     hunts.forEach(({ hunt, quantity }) => {
-      const huntPrice = this.calculateHuntPrice(hunt, quantity);
       if (hunt.priceOnApplication) {
         breakdown.push({
           item: `${hunt.name} (${quantity}x)`,
@@ -271,11 +279,38 @@ class PricingService {
           description: `Price on Application - ${quantity} ${hunt.species}${quantity > 1 ? 's' : ''}`
         });
       } else {
-        breakdown.push({
-          item: `${hunt.name} (${quantity}x)`,
-          price: huntPrice,
-          description: `${quantity} ${hunt.species}${quantity > 1 ? 's' : ''}`
-        });
+        // Show animal cost breakdown
+        const animalCost = this.getAnimalCost(hunt);
+        const dailyRates = this.getDayRates();
+        const dailyCost = dailyRates.solo * hunt.baseDays;
+        
+        if (quantity === 1) {
+          // Single animal - show animal cost + daily rates
+          breakdown.push({
+            item: `${hunt.name} - Animal Cost`,
+            price: this.roundToNearestFifty(animalCost),
+            description: `1 ${hunt.species}`
+          });
+          breakdown.push({
+            item: `${hunt.name} - Daily Rates`,
+            price: this.roundToNearestFifty(dailyCost),
+            description: `${hunt.baseDays} days at $${dailyRates.solo}/day`
+          });
+        } else {
+          // Multiple animals - show first animal with daily rates, then additional animals
+          breakdown.push({
+            item: `${hunt.name} - First Animal`,
+            price: this.roundToNearestFifty(animalCost + dailyCost),
+            description: `1 ${hunt.species} + ${hunt.baseDays} days at $${dailyRates.solo}/day`
+          });
+          if (quantity > 1) {
+            breakdown.push({
+              item: `${hunt.name} - Additional Animals`,
+              price: this.roundToNearestFifty(animalCost * (quantity - 1)),
+              description: `${quantity - 1} additional ${hunt.species}${quantity > 2 ? 's' : ''}`
+            });
+          }
+        }
       }
     });
 
@@ -283,7 +318,7 @@ class PricingService {
     if (additionalDays > 0) {
       breakdown.push({
         item: 'Additional Days',
-        price: additionalDays * data.dayRates.solo,
+        price: this.roundToNearestFifty(additionalDays * data.dayRates.solo),
         description: `${additionalDays} day(s) at $${data.dayRates.solo}/day`
       });
     }
@@ -293,7 +328,7 @@ class PricingService {
       const additionalHunters = people.hunters - 1;
       breakdown.push({
         item: 'Additional Hunters',
-        price: additionalHunters * data.dayRates.additionalHunter * totalDays,
+        price: this.roundToNearestFifty(additionalHunters * data.dayRates.additionalHunter * totalDays),
         description: `${additionalHunters} additional hunter(s) at $${data.dayRates.additionalHunter}/day for ${totalDays} days`
       });
     }
@@ -301,7 +336,7 @@ class PricingService {
     if (people.nonHunters > 0) {
       breakdown.push({
         item: 'Non-Hunters',
-        price: people.nonHunters * data.dayRates.nonHunter * totalDays,
+        price: this.roundToNearestFifty(people.nonHunters * data.dayRates.nonHunter * totalDays),
         description: `${people.nonHunters} non-hunter(s) at $${data.dayRates.nonHunter}/day for ${totalDays} days`
       });
     }
@@ -327,7 +362,7 @@ class PricingService {
         
         breakdown.push({
           item: extra.name,
-          price: extraPrice,
+          price: this.roundToNearestFifty(extraPrice),
           description: `${selectedExtra.quantity}x ${extra.description}${extra.perDay ? ` for ${totalDays} days` : ''}`
         });
       }

@@ -62,7 +62,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
       <SEO 
         title="About Gareth Hall | Professional New Zealand Hunting Guide | 30+ Years Experience"
         description="Meet Gareth Hall, professional New Zealand hunting guide with 30+ years experience in Red Deer, Tahr, and Chamois hunting. Based in Canterbury, specializing in wilderness trophy hunting adventures. Learn about our hunting services, expertise, and commitment to world-class hunting experiences."
-        keywords="Gareth Hall hunting guide, New Zealand hunting guide, professional hunting guide NZ, Red Deer hunting guide, Tahr hunting guide, Chamois hunting guide, Canterbury hunting guide, South Island hunting guide, experienced hunting guide, trophy hunting guide NZ, wilderness hunting expert, hunting outfitter New Zealand, hunting guide 30 years experience, New Zealand hunting services, hunting guide Canterbury, alpine hunting guide"
+        keywords="Gareth Hall hunting guide, New Zealand hunting guide, professional hunting guide NZ, Red Deer hunting guide, Tahr hunting guide, Chamois hunting guide, Canterbury hunting guide, South Island hunting guide, experienced hunting guide, trophy hunting guide NZ, wilderness hunting experienced guide, hunting outfitter New Zealand, hunting guide 30 years experience, New Zealand hunting services, hunting guide Canterbury, alpine hunting guide"
         image="/assets/img/gareth/profile/Pic2.JPG"
         url="/about"
         type="article"
@@ -99,7 +99,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             </h1>
             
             <p className="text-xl text-gray-200 mb-6">
-              Meet Gareth Hall, your expert New Zealand hunting guide with 30+ years experience in Red Deer, Tahr, and Chamois hunting across Canterbury's pristine wilderness areas.
+              Meet Gareth Hall, your experienced New Zealand hunting guide with 30+ years experience in Red Deer, Tahr, and Chamois hunting across Canterbury's pristine wilderness areas.
             </p>
           </motion.div>
         </div>
@@ -143,7 +143,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                 {[
                   { icon: <Users size={20} className="mr-2" />, text: '30+ Years Experience' },
                   { icon: <Award size={20} className="mr-2" />, text: 'International Hunting' },
-                  { icon: <MapPin size={20} className="mr-2" />, text: 'South Island Expert' },
+                  { icon: <MapPin size={20} className="mr-2" />, text: 'South Island Experienced Guide' },
                   { icon: <ShieldCheck size={20} className="mr-2" />, text: 'Licensed & Insured' }
                 ].map((item, index) => (
                   <div 
@@ -174,7 +174,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                 />
                 <OptimizedImage 
                   src="/assets/img/gareth/profile/Pic2.JPG" 
-                  alt="Gareth - Expert hunting guide with 30+ years experience" 
+                  alt="Gareth - Experienced hunting guide with 30+ years experience" 
                   className="rounded-lg h-64 object-cover w-full shadow-md"
                   loading="lazy"
                 />

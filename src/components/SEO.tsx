@@ -170,7 +170,7 @@ const SEO: React.FC<SEOProps> = ({
               "@type": "Person",
               "name": "Gareth Hall",
               "jobTitle": "Professional Hunting Guide & Owner",
-              "description": "Expert hunting guide with 30+ years experience in New Zealand wilderness hunting.",
+              "description": "Experienced hunting guide with 30+ years experience in New Zealand wilderness hunting.",
               "knowsAbout": huntingSpecific?.species || ["Red Deer Hunting", "Tahr Hunting", "Chamois Hunting"]
             },
             "hasOfferCatalog": {

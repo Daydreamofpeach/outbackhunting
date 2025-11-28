@@ -13,7 +13,7 @@ const ParallaxContent: React.FC = () => {
               </h2>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Immerse yourself in the breathtaking landscapes of New Zealand's South Island. 
-                Our expert guides will take you on an unforgettable journey through pristine wilderness 
+                Our experienced guide will take you on an unforgettable journey through pristine wilderness 
                 areas where trophy animals roam freely in their natural habitat.
               </p>
               <div className="space-y-4">
@@ -45,7 +45,7 @@ const ParallaxContent: React.FC = () => {
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-amber-600">15</div>
-                    <div className="text-gray-600">Expert Guides</div>
+                    <div className="text-gray-600">Experienced Guides</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-amber-600">50k+</div>
@@ -160,7 +160,7 @@ const ParallaxContent: React.FC = () => {
                     <span className="text-amber-600 text-xl">🎯</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Expert Local Guides</h3>
+                    <h3 className="text-xl font-semibold mb-2">Experienced Local Guides</h3>
                     <p className="text-gray-600">
                       Our professional guides have intimate knowledge of the terrain, 
                       animal behavior, and the best hunting spots across New Zealand.

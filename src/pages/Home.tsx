@@ -32,12 +32,12 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Outback Hunting New Zealand - Premium New Zealand Hunting Experiences",
-    "description": "Experience the ultimate New Zealand hunting adventure with Outback Hunting New Zealand. Trophy hunting packages for Red Deer, Tahr, and Chamois. Expert guides, luxury accommodations, and exclusive hunting grounds.",
+    "description": "Experience the ultimate New Zealand hunting adventure with Outback Hunting New Zealand. Trophy hunting packages for Red Deer, Tahr, and Chamois. Experienced guides, luxury accommodations, and exclusive hunting grounds.",
     "url": "https://outbackhuntingnz.com",
     "mainEntity": {
       "@type": "TouristInformationCenter",
       "name": "Outback Hunting New Zealand",
-      "description": "Premium New Zealand hunting experiences with expert guides, luxury accommodations, and exclusive hunting grounds.",
+      "description": "Premium New Zealand hunting experiences with experienced guides, luxury accommodations, and exclusive hunting grounds.",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "NZ",
@@ -52,13 +52,13 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
     <>
       <Helmet>
         <title>Outback Hunting New Zealand | Premier Red Deer, Tahr & Chamois Hunting | NZ Wilderness Adventures</title>
-        <meta name="description" content="Experience world-class hunting in New Zealand's pristine wilderness. Guided Red Deer stag hunting, Tahr alpine adventures, and Chamois mountain hunts. Trophy hunting packages with expert guide Gareth Hall in Canterbury's stunning landscapes." />
+        <meta name="description" content="Experience world-class hunting in New Zealand's pristine wilderness. Guided Red Deer stag hunting, Tahr alpine adventures, and Chamois mountain hunts. Trophy hunting packages with experienced guide Gareth Hall in Canterbury's stunning landscapes." />
         <meta name="keywords" content="New Zealand hunting, NZ hunting, Red Deer hunting New Zealand, Tahr hunting, Chamois hunting, stag hunting, trophy hunting NZ, wilderness hunting, alpine hunting, Canterbury hunting, South Island hunting, deer stag antlers, guided hunting New Zealand, hunting outfitter NZ, New Zealand hunting guide, backcountry hunting, mountain hunting, trophy stag, red stag hunting, bull tahr, chamois hunting guide, hunting packages New Zealand, scenic hunting, outback hunting, deer hunting Canterbury, hunting adventures NZ, trophy deer hunting, New Zealand hunting experience, guided stag hunting, hunting guide Gareth Hall, wilderness adventures New Zealand, hunting scenery, New Zealand hunting lodge, hunting accommodation NZ, hunting trips New Zealand, hunting holidays NZ, red deer trophy, tahr trophy, chamois trophy, hunting South Island, Canterbury hunting guide, alpine hunting New Zealand, mountain hunting guide, wilderness hunting guide" />
         <link rel="canonical" href="https://outbackhuntingnz.com" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Premier New Zealand Red Deer, Tahr & Chamois Hunting | Outback Hunting NZ" />
-        <meta property="og:description" content="Experience world-class hunting in New Zealand's pristine wilderness. Guided Red Deer stag hunting, Tahr alpine adventures, and Chamois mountain hunts with expert guide Gareth Hall." />
+        <meta property="og:description" content="Experience world-class hunting in New Zealand's pristine wilderness. Guided Red Deer stag hunting, Tahr alpine adventures, and Chamois mountain hunts with experienced guide Gareth Hall." />
         <meta property="og:image" content="/assets/img/gareth/profile/Pic2.JPG" />
         <meta property="og:url" content="https://outbackhuntingnz.com" />
         <meta property="og:type" content="website" />
@@ -280,7 +280,7 @@ const Home: React.FC<HomeProps> = ({ darkMode }) => {
               <ul className="space-y-4">
                 {[
                   '30+ years of hunting experience across New Zealand and internationally',
-                  'Expert knowledge of Red Deer, Chamois, and Tahr hunting',
+                  'Experienced knowledge of Red Deer, Chamois, and Tahr hunting',
                   'Personalized guided hunts tailored to your goals and fitness level',
                   'Access to exclusive Canterbury Highlands and Southern Alps terrain',
                   'Professional field dressing and trophy preparation included',

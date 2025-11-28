@@ -3,6 +3,11 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
+// Load react-grab in development mode only
+if (import.meta.env.DEV) {
+  import('react-grab');
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

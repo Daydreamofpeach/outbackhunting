@@ -94,7 +94,7 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
       "@type": "Person",
       "name": "Gareth Hall",
       "jobTitle": "Professional Hunting Guide",
-      "description": "Expert hunting guide with 30+ years experience in New Zealand wilderness hunting"
+      "description": "Experienced hunting guide with 30+ years experience in New Zealand wilderness hunting"
     }
   };
 
@@ -622,6 +622,7 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
             className="w-full h-full"
             priority={true}
             sizes="100vw"
+            clickToView={true}
           />
         </div>
         
@@ -650,7 +651,7 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
               <p className={`font-light text-lg md:text-xl leading-relaxed text-center mt-2 mb-8 ${
                 darkMode ? 'text-gray-200 drop-shadow-lg' : 'text-gray-800 drop-shadow-md'
               }`}>
-                Expert New Zealand hunting guides with 30+ years experience specializing in Red Deer stag hunting, 
+                Experienced New Zealand hunting guides with 30+ years experience specializing in Red Deer stag hunting, 
                 alpine Tahr hunting, and Chamois mountain hunting in Canterbury's pristine wilderness areas. 
                 Every trophy hunting adventure is customized to your goals, fitness level, and preferences.
               </p>
@@ -759,6 +760,7 @@ const Parallax: React.FC<ParallaxProps> = ({ darkMode, toggleDarkMode }) => {
                 style={{ maxHeight: '600px' }}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 loading="lazy"
+                clickToView={true}
               />
             </div>
             

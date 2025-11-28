@@ -25,7 +25,9 @@ const ImageSlider: React.FC<ImageSliderProps> = () => {
     '/assets/img/gareth/slider/11.png',
     '/assets/img/gareth/slider/12.png',
     '/assets/img/gareth/slider/13.png',
-    '/assets/img/gareth/slider/14.png'
+    '/assets/img/gareth/slider/14.png',
+    '/assets/img/gareth/thumbnail_image0.jpg',
+    '/assets/img/gareth/thumbnail_image1.jpg'
   ];
 
   const nextSlide = () => {
@@ -62,9 +64,10 @@ const ImageSlider: React.FC<ImageSliderProps> = () => {
             alt={`Hunting experience ${currentIndex + 1}`}
             className="w-full h-full object-cover"
             priority={true}
+            clickToView={true}
           />
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
         </div>
 
 
